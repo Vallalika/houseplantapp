@@ -14,18 +14,29 @@ public class ServerApplication {
 
 	public static void main(String[] args) {
 //		SpringApplication.run(ServerApplication.class, args);
-		CareTask myTask;
-		LocalDate aDate;
+//		CareTask myTask;
+//		LocalDate aDate;
+//
+//		aDate = LocalDate.of(2022,7,3);
+//
+//		myTask = CareTask
+//				.builder()
+//				.taskName("Water all the plants in the garden")
+//				.taskDate(aDate)
+//				.completed(true)
+//				.build();
+//		System.out.println(myTask);
 
-		aDate = LocalDate.of(2022,7,3);
-
-		myTask = CareTask
+		Plant myPlant = Plant
 				.builder()
-				.taskName("Water all the plants in the garden")
-				.taskDate(aDate)
-				.completed(true)
+				.plantNameOne("Cheese plant")
+				.temperature("Over 18 degrees")
+				.growingSeason("June/July")
+				.light("Indirect sunlight")
+				.water("Slightly humid, stop regular watering schedule if plant is crying")
+				.humidity("loves it")
 				.build();
-		System.out.println(myTask);
+		System.out.println(myPlant);
 	}
 
 }

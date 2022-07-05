@@ -3,10 +3,11 @@ package com.codeclan.houseplantapp.server;
 import com.codeclan.houseplantapp.server.classes.CareTask;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 import java.time.LocalDate;
 
-import static org.junit.Assert.*;
+
 
 public class CareTaskTest {
 
