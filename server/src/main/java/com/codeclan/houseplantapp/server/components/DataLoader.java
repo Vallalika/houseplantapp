@@ -39,7 +39,6 @@ public class DataLoader implements ApplicationRunner {
         Garden livingRoom = Garden
                 .builder()
                 .gardenName("Living room")
-                .plantList(new ArrayList<>())
                 .build();
         gardenRepository.save(livingRoom);
 
@@ -73,6 +72,9 @@ public class DataLoader implements ApplicationRunner {
                 .build();
         plantRepository.save(cheesePlant);
 
+        livingRoom.addPlant(cheesePlant);
+        livingRoom.addPlant(dragonPlant);
+
 
         CareTask myFirstTask = CareTask
                 .builder()
@@ -89,7 +91,6 @@ public class DataLoader implements ApplicationRunner {
                 .taskDate(LocalDate.of(2022,07,07))
                 .build();
         careTaskRepository.save(mySecondTask);
-
 
     }
 
