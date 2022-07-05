@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Profile("!test")
-@Component
+//@Component
 
 public class DataLoader implements ApplicationRunner {
 
