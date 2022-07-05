@@ -49,7 +49,6 @@ public class Plant {
     private String water;
 
     @Column(name = "temperature")
-    @NonNull
     private String temperature;
 
     @Column(name = "nutrients")
