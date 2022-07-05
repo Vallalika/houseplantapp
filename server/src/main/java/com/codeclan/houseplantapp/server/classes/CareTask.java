@@ -14,7 +14,7 @@ public class CareTask {
     private String taskName;
     private String taskDescription;
     @NonNull
-    private LocalDate date;
+    private LocalDate taskDate;
     private boolean completed;
 
 }

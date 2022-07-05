@@ -14,28 +14,16 @@ public class ServerApplication {
 
 	public static void main(String[] args) {
 //		SpringApplication.run(ServerApplication.class, args);
-		Plant myPlant = Plant
-				.builder()
-				.plantNameOne("Calathea Rufibarba")
-				.light("Bright indirect or partial shade")
-				.water("Keep moist at all times, no puddles at the top when watering")
-				.temperature("15 to 20C")
-				.build();
-		System.out.println(myPlant);
+		CareTask myTask;
+		LocalDate aDate;
 
-		Garden myGarden = Garden
-				.builder()
-				.gardenName("living room")
-				.hardinessZone("EH7")
-				.build();
-		System.out.println(myGarden);
+		aDate = LocalDate.of(2022,7,3);
 
-		LocalDate taskDate = LocalDate.of(2020,1,8);
-
-		CareTask myTask = CareTask
+		myTask = CareTask
 				.builder()
-				.taskName("Repot Calathea")
-				.date(taskDate)
+				.taskName("Water all the plants in the garden")
+				.taskDate(aDate)
+				.completed(true)
 				.build();
 		System.out.println(myTask);
 	}
