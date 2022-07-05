@@ -3,6 +3,9 @@ package com.codeclan.houseplantapp.server;
 import com.codeclan.houseplantapp.server.classes.Plant;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.time.LocalDate;
+
 import static org.junit.Assert.*;
 
 public class PlantTest {
@@ -14,6 +17,7 @@ public class PlantTest {
         myPlant = Plant
                 .builder()
                 .plantNameOne("Cheese plant")
+                .acquisitionDate(LocalDate.of(2022,01,26))
                 .temperature("Over 18 degrees")
                 .growingSeason("June/July")
                 .light("Indirect sunlight")
@@ -25,6 +29,11 @@ public class PlantTest {
     @Test
     public void hasFirstName() {
         assertEquals("Cheese plant",myPlant.getPlantNameOne());
+    }
+
+    @Test
+    public void hasAcquisitionDate() {
+        assertEquals(LocalDate.of(2022,01,26),myPlant.getAcquisitionDate());
     }
 
     @Test

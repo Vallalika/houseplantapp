@@ -3,6 +3,7 @@ package com.codeclan.houseplantapp.server.classes;
 import lombok.*;
 import org.springframework.scheduling.config.Task;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Builder
@@ -12,6 +13,7 @@ public class Plant {
     private String plantNameOne;
     private String plantNameTwo;
     private String origin;
+    private LocalDate acquisitionDate;
     private String growingSeason;
     @NonNull
     private String light;
