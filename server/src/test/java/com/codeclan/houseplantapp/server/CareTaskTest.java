@@ -3,12 +3,14 @@ package com.codeclan.houseplantapp.server;
 import com.codeclan.houseplantapp.server.classes.CareTask;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.test.context.ActiveProfiles;
+
 import static org.junit.Assert.*;
 
 import java.time.LocalDate;
 
 
-
+@ActiveProfiles("test")
 public class CareTaskTest {
 
     private CareTask myTask;

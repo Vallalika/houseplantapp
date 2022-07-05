@@ -21,6 +21,7 @@ public class Plant {
     private String water;
     @NonNull
     private String temperature;
+    private String nutrient;
     private String humidity;
     private String soil;
     private String pruning;

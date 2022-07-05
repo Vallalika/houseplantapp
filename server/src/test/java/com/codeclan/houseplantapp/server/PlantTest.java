@@ -3,11 +3,13 @@ package com.codeclan.houseplantapp.server;
 import com.codeclan.houseplantapp.server.classes.Plant;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.time.LocalDate;
 
 import static org.junit.Assert.*;
 
+@ActiveProfiles("test")
 public class PlantTest {
 
     private Plant myPlant;
