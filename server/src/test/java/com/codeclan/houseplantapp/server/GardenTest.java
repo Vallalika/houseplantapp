@@ -21,7 +21,6 @@ public class GardenTest {
         myGarden = Garden
                 .builder()
                 .gardenName("living-room")
-//                .plantList(new ArrayList<>())
                 .build();
 
         myPlant = Plant

@@ -77,5 +77,14 @@ public class Plant {
 
     @JsonIgnoreProperties({"plant"})
     @OneToMany(mappedBy = "plant", fetch = FetchType.LAZY)
-    private List<CareTask> taskList;
+    @Builder.Default
+    private List<CareTask> taskList = new ArrayList<>();
+
+    public void addTask(CareTask task) {
+        this.taskList.add(task);
+    }
+
+    public void removeTask(CareTask task) {
+        this.taskList.remove(task);
+    }
 }

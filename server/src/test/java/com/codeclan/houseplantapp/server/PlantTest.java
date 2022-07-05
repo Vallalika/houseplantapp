@@ -1,5 +1,6 @@
 package com.codeclan.houseplantapp.server;
 
+import com.codeclan.houseplantapp.server.classes.CareTask;
 import com.codeclan.houseplantapp.server.classes.Garden;
 import com.codeclan.houseplantapp.server.classes.Plant;
 import org.junit.Before;
@@ -15,6 +16,8 @@ public class PlantTest {
 
     private Plant myPlant;
     private Garden myGarden;
+    private CareTask myTask;
+    private LocalDate aDate;
 
     @Before
     public void before() {
@@ -34,6 +37,15 @@ public class PlantTest {
                 .humidity("loves it")
                 .garden(myGarden)
                 .build();
+
+        aDate = LocalDate.of(2022,7,3);
+
+        myTask = CareTask
+                .builder()
+                .taskName("Water all the plants in the garden")
+                .taskDate(aDate)
+                .build();
+
     }
 
     @Test
@@ -85,6 +97,19 @@ public class PlantTest {
 
     @Test
     public void startsWithEmptyTaskList() {
-        assertNull(myPlant.getTaskList());
+        assertEquals(0,myPlant.getTaskList().size());
+    }
+
+    @Test
+    public void canAddTask() {
+        myPlant.addTask(myTask);
+        assertEquals(1, myPlant.getTaskList().size());
+    }
+
+    @Test
+    public void canRemovePlant() {
+        myPlant.addTask(myTask);
+        myPlant.removeTask(myTask);
+        assertEquals(0, myPlant.getTaskList().size());
     }
 }
