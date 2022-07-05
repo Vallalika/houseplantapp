@@ -1,5 +1,6 @@
 package com.codeclan.houseplantapp.server;
 
+import com.codeclan.houseplantapp.server.classes.Garden;
 import com.codeclan.houseplantapp.server.classes.Plant;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,9 +14,15 @@ import static org.junit.Assert.*;
 public class PlantTest {
 
     private Plant myPlant;
+    private Garden myGarden;
 
     @Before
     public void before() {
+        myGarden = Garden
+                .builder()
+                .gardenName("living room")
+                .build();
+
         myPlant = Plant
                 .builder()
                 .plantNameOne("Cheese plant")
@@ -25,6 +32,7 @@ public class PlantTest {
                 .light("Indirect sunlight")
                 .water("Slightly humid, stop regular watering schedule if plant is crying")
                 .humidity("loves it")
+                .garden(myGarden)
                 .build();
     }
 
@@ -56,12 +64,17 @@ public class PlantTest {
 
     @Test
     public void hasWater() {
-        assertEquals("Slightly humid, stop regular watering schedule if plant is crying",myPlant.getLight());
+        assertEquals("Slightly humid, stop regular watering schedule if plant is crying",myPlant.getWater());
     }
 
     @Test
     public void hasTemperature() {
         assertEquals("Over 18 degrees",myPlant.getTemperature());
+    }
+
+    @Test
+    public void hasGarden() {
+        assertEquals(myGarden,myPlant.getGarden());
     }
 
     @Test

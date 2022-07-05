@@ -8,12 +8,14 @@ public class User {
     private String email;
     private String password;
     private ArrayList<String> passwordHistory;
+    private ArrayList<Garden> gardenList;
 
     public User(String username, String password, String email) {
         this.username = username;
         this.email = email;
         this.password = password;
-        passwordHistory = new ArrayList<>();
+        this.passwordHistory = new ArrayList<>();
+        this.gardenList = new ArrayList<>();
     }
 
     public String getUsername() {
