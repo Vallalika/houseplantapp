@@ -28,8 +28,17 @@ public class Garden {
     @Column(name = "hardiness_zone")
     private String hardinessZone;
 
+    @Builder.Default
     @JsonIgnoreProperties({"garden"})
     @OneToMany(mappedBy = "garden", fetch = FetchType.LAZY)
-    private List<Plant> plantList;
+    private List<Plant> plantList = new ArrayList<>();
+
+    public void addPlant(Plant plant) {
+        this.plantList.add(plant);
+    }
+
+    public void removePlant(Plant plant) {
+        this.plantList.remove(plant);
+    }
 
 }

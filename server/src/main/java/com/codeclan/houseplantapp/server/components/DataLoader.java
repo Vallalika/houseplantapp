@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 @Profile("!test")
 @Component
@@ -38,6 +39,7 @@ public class DataLoader implements ApplicationRunner {
         Garden livingRoom = Garden
                 .builder()
                 .gardenName("Living room")
+                .plantList(new ArrayList<>())
                 .build();
         gardenRepository.save(livingRoom);
 
