@@ -1,5 +1,6 @@
 package com.codeclan.houseplantapp.server.controllers;
 
+import com.codeclan.houseplantapp.server.classes.CareTask;
 import com.codeclan.houseplantapp.server.classes.Plant;
 import com.codeclan.houseplantapp.server.repositories.PlantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,19 @@ public class PlantController {
     public ResponseEntity<Plant> createPlant(@RequestBody Plant plant){
         plantRepository.save(plant);
         return new ResponseEntity<>(plant, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping(value = "/plants/{id}")
+    public ResponseEntity deletePlantByID(@PathVariable Long id) {
+        plantRepository.deleteById(id);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping(value = "/plants/{id}")
+    public ResponseEntity updatePlantById(@RequestBody Plant plant, @PathVariable Long id) {
+        plant.setId(id);
+        plantRepository.save(plant);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
 }
