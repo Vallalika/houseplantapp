@@ -17,7 +17,7 @@ public class CareTaskController {
     @Autowired
     CareTaskRepository careTaskRepository;
 
-    @GetMapping(value = "/careTasks")
+    @GetMapping(value = "/api/careTasks")
     public ResponseEntity getAllCareTasksAndFilters(
             @RequestParam(required = false, name = "completed") String completedStatus,
             @RequestParam(required = false, name = "date") String date,
@@ -47,24 +47,24 @@ public class CareTaskController {
     }
 
 
-    @GetMapping(value = "/careTasks/{id}")
+    @GetMapping(value = "/api/careTasks/{id}")
     public ResponseEntity getTask(@PathVariable Long id){
         return new ResponseEntity<>(careTaskRepository.findById(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/careTasks")
+    @PostMapping(value = "/api/careTasks")
     public ResponseEntity<CareTask> createCareTask(@RequestBody CareTask task){
         careTaskRepository.save(task);
         return new ResponseEntity<>(task, HttpStatus.CREATED);
     }
 
-    @DeleteMapping(value = "/careTasks/{id}")
+    @DeleteMapping(value = "/api/careTasks/{id}")
     public ResponseEntity deleteTaskByID(@PathVariable Long id) {
         careTaskRepository.deleteById(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping(value = "/careTasks/{id}")
+    @PutMapping(value = "/api/careTasks/{id}")
     public ResponseEntity updateTaskById(@RequestBody CareTask task, @PathVariable Long id) {
         task.setId(id);
         careTaskRepository.save(task);

@@ -19,29 +19,29 @@ public class PlantController {
     @Autowired
     PlantRepository plantRepository;
 
-    @GetMapping(value = "/plants")
+    @GetMapping(value = "/api/plants")
     public ResponseEntity<List<Plant>> getAllPlants(){
         return new ResponseEntity<>(plantRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/plants/{id}")
+    @GetMapping(value = "/api/plants/{id}")
     public ResponseEntity getPlant(@PathVariable Long id){
         return new ResponseEntity<>(plantRepository.findById(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/plants")
+    @PostMapping(value = "/api/plants")
     public ResponseEntity<Plant> createPlant(@RequestBody Plant plant){
         plantRepository.save(plant);
         return new ResponseEntity<>(plant, HttpStatus.CREATED);
     }
 
-    @DeleteMapping(value = "/plants/{id}")
+    @DeleteMapping(value = "/api/plants/{id}")
     public ResponseEntity deletePlantByID(@PathVariable Long id) {
         plantRepository.deleteById(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping(value = "/plants/{id}")
+    @PutMapping(value = "/api/plants/{id}")
     public ResponseEntity updatePlantById(@RequestBody Plant plant, @PathVariable Long id) {
         plant.setId(id);
         plantRepository.save(plant);

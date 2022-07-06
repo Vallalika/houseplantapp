@@ -16,29 +16,29 @@ public class GardenController {
     @Autowired
     GardenRepository gardenRepository;
 
-    @GetMapping(value = "/gardens")
+    @GetMapping(value = "/api/gardens")
     public ResponseEntity<List<Garden>> getAllGardens(){
         return new ResponseEntity<>(gardenRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/gardens/{id}")
+    @GetMapping(value = "/api/gardens/{id}")
     public ResponseEntity getGarden(@PathVariable Long id){
         return new ResponseEntity<>(gardenRepository.findById(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/gardens")
+    @PostMapping(value = "/api/gardens")
     public ResponseEntity<Garden> createGarden(@RequestBody Garden garden){
         gardenRepository.save(garden);
         return new ResponseEntity<>(garden, HttpStatus.CREATED);
     }
 
-    @DeleteMapping(value = "/gardens/{id}")
+    @DeleteMapping(value = "/api/gardens/{id}")
     public ResponseEntity deleteGardenByID(@PathVariable Long id) {
         gardenRepository.deleteById(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping(value = "/gardens/{id}")
+    @PutMapping(value = "/api/gardens/{id}")
     public ResponseEntity updateGardenById(@RequestBody Garden garden, @PathVariable Long id) {
         garden.setId(id);
         gardenRepository.save(garden);
