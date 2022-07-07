@@ -25,6 +25,7 @@ const PlantCard = ({plantDetails, setSelectedPlant, deletePlant}) => {
             <p>Soil: {plantDetails.soil}</p>
             <p>Humidity: {plantDetails.humidity}</p>
             <p onClick = {handleClick}> <Link to="/plantDetails">More details</Link></p>
+            <p onClick={handleClick}> <Link to="/editPlant">Edit plant</Link></p>
             <button onClick={handleDeletePlant}>
                 <span>❌</span> Delete Plant
             </button>

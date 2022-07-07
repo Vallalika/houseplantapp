@@ -3,7 +3,7 @@ import PlantCard from "./PlantCard";
 import { Link } from "react-router-dom";
 
 
-const PlantList = ({plants,setSelectedPlant, deletePlant}) => {
+const PlantList = ({plants, setSelectedPlant, deletePlant}) => {
 
     const mapPlants = plants.map((plant, index) =>
         <PlantCard

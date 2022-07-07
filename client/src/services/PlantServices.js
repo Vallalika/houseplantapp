@@ -18,7 +18,7 @@ const PlantServices =  {
     },
 
     updatePlant(plant) {
-        return fetch(baseURL + plant._id, {
+        return fetch(baseURL + plant.id, {
         method: 'PUT',
         body: JSON.stringify(plant),
         headers: {
