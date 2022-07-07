@@ -35,6 +35,11 @@ const PlantManagement = () => {
       .then(savedPlant => setPlants([ ...plants, savedPlant ]));
   };
 
+  const deletePlant = idToDelete => {
+    PlantServices.deletePlant(idToDelete);
+    setPlants(plants.filter(plant => plant.id !== idToDelete));
+  };
+
   return (
     <>
       <Router>
@@ -42,7 +47,7 @@ const PlantManagement = () => {
         <Navigation />
         <Routes>
           <Route path="/upcomingCare" element = {<UpcomingTaskList/>} />
-          <Route path="/allPlants" element = {<PlantList plants = { plants } setSelectedPlant = {setSelectedPlant} />}/>
+          <Route path="/allPlants" element = {<PlantList plants = { plants } setSelectedPlant = {setSelectedPlant} deletePlant = {deletePlant}/>}/>
           <Route path="/calendar" element = {<Calendar />} />
           <Route path="/plantDetails" element = {<PlantDetails selectedPlant = {selectedPlant}  />} />
           <Route path="/createplant" element = {<PlantCreation createPlant = {createPlant} gardens = {gardens} />} />

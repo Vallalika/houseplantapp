@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:8080/api/plants';
+const baseURL = 'http://localhost:8080/api/plants/';
 
 const PlantServices =  {
     getPlants() {

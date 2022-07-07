@@ -1,10 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const PlantCard = ({plantDetails, setSelectedPlant}) => {
+const PlantCard = ({plantDetails, setSelectedPlant, deletePlant}) => {
 
     const handleClick = () => {
         setSelectedPlant(plantDetails)
+    }
+
+    const handleDeletePlant = () => {
+        deletePlant(plantDetails.id);
     }
 
     return (
@@ -21,6 +25,9 @@ const PlantCard = ({plantDetails, setSelectedPlant}) => {
             <p>Soil: {plantDetails.soil}</p>
             <p>Humidity: {plantDetails.humidity}</p>
             <p onClick = {handleClick}> <Link to="/plantDetails">More details</Link></p>
+            <button onClick={handleDeletePlant}>
+                <span>❌</span> Delete Plant
+            </button>
         </>
     );
 }
