@@ -1,6 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const PlantCard = ({plantDetails}) => {
+const PlantCard = ({plantDetails, setSelectedPlant}) => {
+
+    const handleClick = () => {
+        setSelectedPlant(plantDetails)
+    }
 
     return (
         <>
@@ -15,6 +20,7 @@ const PlantCard = ({plantDetails}) => {
             <p>Temperature: {plantDetails.temperature}</p>
             <p>Soil: {plantDetails.soil}</p>
             <p>Humidity: {plantDetails.humidity}</p>
+            <p onClick = {handleClick}> <Link to="/plantDetails">More details</Link></p>
         </>
     );
 }
