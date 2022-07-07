@@ -30,6 +30,11 @@ const PlantManagement = () => {
 
   }, []);
 
+  const createPlant = newPlant => {
+    PlantServices.addPlant(newPlant)
+      .then(savedPlant => setPlants([ ...plants, savedPlant ]));
+  };
+
   return (
     <>
       <Router>
@@ -40,7 +45,7 @@ const PlantManagement = () => {
           <Route path="/allPlants" element = {<PlantList plants = { plants } setSelectedPlant = {setSelectedPlant} />}/>
           <Route path="/calendar" element = {<Calendar />} />
           <Route path="/plantDetails" element = {<PlantDetails selectedPlant = {selectedPlant}  />} />
-          <Route path="/createplant" element = {<PlantCreation />} />
+          <Route path="/createplant" element = {<PlantCreation createPlant = {createPlant} gardens = {gardens} />} />
         </Routes>
       </Router>
     </>
