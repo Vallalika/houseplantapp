@@ -2,14 +2,15 @@ import React from "react";
 import PlantCard from "./PlantCard";
 import PlantItem from "./PlantItem";
 
-const PlantList = () => {
+const PlantList = ({plants}) => {
+
+    const mapPlants = plants.map((plant, index) =>
+        <PlantCard key={index} className={plant.plantNameOne} plantDetails = {plant}> {plant.plantNameOne} </PlantCard>)
 
     return (
         <>
-        <h3>This is PlantList.js</h3>
-        <PlantCard />
-        <PlantItem />
-        
+        <h3>All plants</h3>
+        {mapPlants}
         </>
     );
 }

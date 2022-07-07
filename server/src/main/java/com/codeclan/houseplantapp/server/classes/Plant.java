@@ -37,6 +37,10 @@ public class Plant {
     @Column(name = "acquisition_date")
     private LocalDate acquisitionDate;
 
+    @NonNull
+    @Column(name = "status")
+    private String status;
+
     @Column(name = "growing_season")
     private String growingSeason;
 

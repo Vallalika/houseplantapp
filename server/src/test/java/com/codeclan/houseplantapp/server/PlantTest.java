@@ -30,6 +30,7 @@ public class PlantTest {
                 .builder()
                 .plantNameOne("Cheese plant")
                 .acquisitionDate(LocalDate.of(2022,01,26))
+                .status("Healthy")
                 .temperature("Over 18 degrees")
                 .growingSeason("June/July")
                 .light("Indirect sunlight")

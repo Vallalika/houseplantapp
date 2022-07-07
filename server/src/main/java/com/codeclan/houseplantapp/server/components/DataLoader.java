@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Profile("!test")
-//@Component
+@Component
 
 public class DataLoader implements ApplicationRunner {
 
@@ -46,6 +46,7 @@ public class DataLoader implements ApplicationRunner {
                 .builder()
                 .plantNameOne("Dragon Plant")
                 .plantNameTwo("Dracaena Marginata")
+                .status("Healthy")
                 .light("Indirect sunlight or partial shade")
                 .temperature("15 to 26 degrees")
                 .water("Slightly humid near the roots, avoid soggy soil")
@@ -61,6 +62,7 @@ public class DataLoader implements ApplicationRunner {
         Plant cheesePlant = Plant
                 .builder()
                 .plantNameOne("Cheese Plant")
+                .status("Healthy")
                 .light("Indirect bright sunlight")
                 .temperature("Over 18 degrees")
                 .water("Humid near roots, stop watering when plant is crying")
