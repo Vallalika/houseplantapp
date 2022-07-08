@@ -1,9 +1,11 @@
 import React, {useState,useEffect} from "react";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+
 import AppHeader from '../components/AppHeader';
 import Navigation from '../components/Navigation';
 import UpcomingTaskList from "../components/UpcomingTaskList";
 import PlantList from "../components/PlantList";
-import Calendar from "../components/Calendar";
+import CalendarViewer from "../components/CalendarViewer";
 import PlantDetails from "../components/PlantDetails";
 import PlantServices from "../services/PlantServices";
 import GardenServices from "../services/GardenServices";
@@ -11,7 +13,7 @@ import TaskServices from "../services/TaskServices";
 import PlantCreation from "../components/PlantCreation";
 import TaskCreation from "../components/TaskCreation";
 import EditPlant from "../components/EditPlant";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+
 
 const PlantManagement = () => {
 
@@ -21,6 +23,17 @@ const PlantManagement = () => {
   
   const [selectedPlant, setSelectedPlant] = useState({});
   const [selectedTask, setSelectedTask] = useState({});
+
+  // const [testTask, setTestTask] = useState(
+  //   {
+  //   "id": 1,
+  //   "taskName": "Water plant",
+  //   "taskDescription": null,
+  //   "start": "2022-06-03",
+  //   "end": "2022-06-04",
+  //   "completed": false
+  //   }
+  // );
 
   useEffect(() => {
     PlantServices.getPlants()
@@ -33,7 +46,16 @@ const PlantManagement = () => {
     .then(tasks => setTasks(tasks));
 
   }, []);
+  
+  // const convertTaskDate = () => {
+  //   let updatedTestTask = {...testTask}
+  //   const stringDate = updatedTestTask.start;
+  //   console.log(stringDate);
+  //   updatedTestTask.start = new Date(stringDate);
+  //   console.log(JSON.stringify(updatedTestTask));
+  // }
 
+  // convertTaskDate();
 
   // Plant functionalities
   const createPlant = newPlant => {
@@ -89,7 +111,7 @@ const PlantManagement = () => {
         <Routes>
           <Route path="/upcomingCare" element = {<UpcomingTaskList/>} />
           <Route path="/allPlants" element = {<PlantList plants = { plants } setSelectedPlant = {setSelectedPlant} deletePlant = {deletePlant}/>}/>
-          <Route path="/calendar" element = {<Calendar tasks = { tasks }/>} />
+          <Route path="/calendar" element = {<CalendarViewer tasks = { tasks }/>} />
           <Route path="/plantDetails" element = {<PlantDetails selectedPlant = {selectedPlant}  />} />
           <Route path="/createPlant" element = {<PlantCreation createPlant = {createPlant} gardens = {gardens} />} />
           <Route path="/editPlant" element = {<EditPlant editPlant = {editPlant} selectedPlant = {selectedPlant} gardens = {gardens} />} />

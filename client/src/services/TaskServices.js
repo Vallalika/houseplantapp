@@ -3,7 +3,7 @@ const baseURL = 'http://localhost:8080/api/careTasks/';
 const TaskServices =  {
     getTasks() {
         return fetch(baseURL)
-        .then(res => res.json());
+        .then(res => res.json())
     },
 
     addTask(task) {
