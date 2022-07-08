@@ -43,8 +43,9 @@ public class PlantTest {
 
         myTask = CareTask
                 .builder()
-                .taskName("Water all the plants in the garden")
-                .taskDate(aDate)
+                .title("Water all the plants in the garden")
+                .start(aDate)
+                .end(aDate)
                 .build();
 
     }

@@ -24,17 +24,6 @@ const PlantManagement = () => {
   const [selectedPlant, setSelectedPlant] = useState({});
   const [selectedTask, setSelectedTask] = useState({});
 
-  // const [testTask, setTestTask] = useState(
-  //   {
-  //   "id": 1,
-  //   "taskName": "Water plant",
-  //   "taskDescription": null,
-  //   "start": "2022-06-03",
-  //   "end": "2022-06-04",
-  //   "completed": false
-  //   }
-  // );
-
   useEffect(() => {
     PlantServices.getPlants()
       .then(plants => setPlants(plants));
@@ -46,16 +35,6 @@ const PlantManagement = () => {
     .then(tasks => setTasks(tasks));
 
   }, []);
-  
-  // const convertTaskDate = () => {
-  //   let updatedTestTask = {...testTask}
-  //   const stringDate = updatedTestTask.start;
-  //   console.log(stringDate);
-  //   updatedTestTask.start = new Date(stringDate);
-  //   console.log(JSON.stringify(updatedTestTask));
-  // }
-
-  // convertTaskDate();
 
   // Plant functionalities
   const createPlant = newPlant => {

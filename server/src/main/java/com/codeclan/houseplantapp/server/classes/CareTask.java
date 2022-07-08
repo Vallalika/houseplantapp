@@ -23,14 +23,22 @@ public class CareTask {
 
     @Column(name = "task_name")
     @NonNull
-    private String taskName;
+    private String title;
 
     @Column(name = "task_description")
     private String taskDescription;
 
-    @Column(name = "task_date")
+    @Column(name = "all_day")
+    @Builder.Default
+    private Boolean allDay = true;
+
+    @Column(name = "task_start")
     @NonNull
-    private LocalDate taskDate;
+    private LocalDate start;
+
+    @Column(name = "task_end")
+    @NonNull
+    private LocalDate end;
 
     @Column(name = "completed")
     private boolean completed;

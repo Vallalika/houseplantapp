@@ -22,20 +22,21 @@ public class CareTaskTest {
 
         myTask = CareTask
                 .builder()
-                .taskName("Water all the plants in the garden")
-                .taskDate(aDate)
+                .title("Water all the plants in the garden")
+                .start(aDate)
+                .end(aDate)
                 .build();
     }
 
     @Test
     public void hasName() {
-        assertEquals("Water all the plants in the garden", myTask.getTaskName());
+        assertEquals("Water all the plants in the garden", myTask.getTitle());
     }
 
     @Test
     public void hasDate() {
         LocalDate newDate = LocalDate.of(2022,7,3);
-        assertEquals(newDate, myTask.getTaskDate());
+        assertEquals(newDate, myTask.getStart());
     }
 
     @Test
@@ -46,6 +47,11 @@ public class CareTaskTest {
     @Test
     public void startsWithNullDescription() {
         assertNull(myTask.getTaskDescription());
+    }
+
+    @Test
+    public void startsWithAllDayTrue() {
+        assertTrue(myTask.getAllDay());
     }
 
 }

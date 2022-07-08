@@ -2,18 +2,21 @@ import React, {useState} from "react";
 
 const TaskCreation = ({createTask, plants}) => {
 
-    const [taskName, setTaskName] = useState("");
+    const [title, setTitle] = useState("");
     const [taskDescription, setTaskDescription] = useState("");
-    const [taskDate, setTaskDate] = useState("");
+    const [start, setStart] = useState("");
+    const [end, setEnd] = useState("");
     const [isComplete, setIsComplete] = useState(false);
     const [plantId, setPlantId] = useState(0);
     
     
-    const handleNameChange = (ev) => setTaskName(ev.target.value);
+    const handleTitleChange = (ev) => setTitle(ev.target.value);
     
     const handleDescriptionChange = (ev) => setTaskDescription(ev.target.value);
     
-    const handleDateChange = (ev) => setTaskDate(ev.target.value);
+    const handleStartDateChange = (ev) => setStart(ev.target.value);
+
+    const handleEndDateChange = (ev) => setEnd(ev.target.value);
     
     const handleCompletedChange = (ev) => {
         if (ev.target.value === "Complete") {
@@ -28,18 +31,21 @@ const TaskCreation = ({createTask, plants}) => {
     const handleSubmit = ev => {
         ev.preventDefault();
         let newTask = {
-            taskName: taskName,
+            title: title,
             taskDescription: taskDescription,
-            taskDate: taskDate,
-            isComplete: isComplete,
+            allDay: true,
+            start: new Date(start),
+            end: new Date(end),
+            completed: isComplete,
             plant: {
                 id: plantId
             }
         }
         createTask(newTask);
-        setTaskName("");
+        setTitle("");
         setTaskDescription("");
-        setTaskDate("");
+        setStart("");
+        setEnd("");
         setIsComplete(false);
         setPlantId(1);
     }
@@ -55,15 +61,18 @@ const TaskCreation = ({createTask, plants}) => {
             <p>Fill in the below form to add a task to your calendar</p>
             <form onSubmit = { handleSubmit }>
 
-                <input text="text" placeholder = "Task title" name="taskName" id="taskName" size="50" value = {taskName} onChange = {handleNameChange} required />
+                <input type="text" placeholder = "Task title" name="title" id="title" size="50" value = {title} onChange = {handleTitleChange} required />
                 <br />
 
-                <textarea text="text" placeholder = "Task description" name="taskDescription" id="taskDescription" rows="10" cols="45" value={taskDescription} onChange={handleDescriptionChange} />
+                <textarea type="text" placeholder = "Task description" name="taskDescription" id="taskDescription" rows="10" cols="45" value={taskDescription} onChange={handleDescriptionChange} />
                 <br />
 
-                <input type="date" name="taskDate" id="taskDate" size="taskDate" value={taskDate} onChange = {handleDateChange} />
+                <input type="date" name="start" id="start" value={start} onChange = {handleStartDateChange} />
                 <br />
                 
+                <input type="date" name="end" id="end" value={end} onChange = {handleEndDateChange} />
+                <br />
+
                 <select name="isComplete" id="isComplete" onChange = {handleCompletedChange} required>
                     <option value="Incomplete">Incomplete</option>
                     <option value="Complete">Complete</option>

@@ -12,7 +12,7 @@ public interface CareTaskRepository extends JpaRepository<CareTask,Long> {
     @Query("select c from CareTask c where c.completed = ?1")
     List<CareTask> findByCompleted(boolean completedStatus);
 
-    @Query("select c from CareTask c where c.taskDate = ?1")
-    List<CareTask> findByTaskDate(LocalDate taskDate);
+    @Query("select c from CareTask c where c.start = ?1")
+    List<CareTask> findByStart(LocalDate start);
 
 }

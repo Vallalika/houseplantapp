@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
+import PropTypes from 'prop-types';
 import format from "date-fns/format";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
@@ -31,21 +32,14 @@ const CalendarViewer = ({ tasks }) => {
         locales
     })
 
-    // const tasks = [
-    //     {
-    //         title: "Big Meeting",
-    //         allDay: true,
-    //         start: new Date(2022,6,5),
-    //         end: new Date(2022,6,7),
-    //         completed: true
-    //     }]
-
     return (
         <>
         <h3>All tasks</h3>
         <button><Link to="/createTask">Add new task</Link></button>
-        <Calendar localizer={localizer} events = {tasks}
+        <Calendar localizer={localizer} events = { tasks }
         startAccessor = "start" endAccessor="end" style={{height: 500, margin: "50px"}}  />
+
+
         {/* {mapTasks} */}
         </>
     );

@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 @Profile("!test")
 @Component
@@ -80,17 +79,19 @@ public class DataLoader implements ApplicationRunner {
 
         CareTask myFirstTask = CareTask
                 .builder()
-                .taskName("Water plant")
+                .title("Water plant")
                 .plant(cheesePlant)
-                .taskDate(LocalDate.of(2022,07,03))
+                .start(LocalDate.of(2022,07,03))
+                .end(LocalDate.of(2022,07,03))
                 .build();
         careTaskRepository.save(myFirstTask);
 
         CareTask mySecondTask = CareTask
                 .builder()
-                .taskName("Repot")
+                .title("Repot")
                 .plant(dragonPlant)
-                .taskDate(LocalDate.of(2022,07,07))
+                .start(LocalDate.of(2022,07,07))
+                .end(LocalDate.of(2022,07,07))
                 .build();
         careTaskRepository.save(mySecondTask);
 

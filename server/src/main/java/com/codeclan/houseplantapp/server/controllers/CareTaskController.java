@@ -34,12 +34,12 @@ public class CareTaskController {
 
         if (date != null) {
             LocalDate convertedDate = LocalDate.parse(date);
-            return new ResponseEntity(careTaskRepository.findByTaskDate(convertedDate),HttpStatus.OK);
+            return new ResponseEntity(careTaskRepository.findByStart(convertedDate),HttpStatus.OK);
         }
 
         if (today != null) {
             LocalDate todaysDate = LocalDate.now();
-            return new ResponseEntity(careTaskRepository.findByTaskDate(todaysDate), HttpStatus.OK);
+            return new ResponseEntity(careTaskRepository.findByStart(todaysDate), HttpStatus.OK);
         }
 
         // default: we have none of the query strings GET /careTasks
