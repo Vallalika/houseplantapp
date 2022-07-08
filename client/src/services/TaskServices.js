@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:8080/api/careTasks';
+const baseURL = 'http://localhost:8080/api/careTasks/';
 
 const TaskServices =  {
     getTasks() {
@@ -7,6 +7,8 @@ const TaskServices =  {
     },
 
     addTask(task) {
+        let json = JSON.stringify(task);
+        console.log(json);
         return fetch(baseURL, {
         method: 'POST',
         body: JSON.stringify(task),
@@ -18,7 +20,7 @@ const TaskServices =  {
     },
 
     updateTask(task) {
-        return fetch(baseURL + task._id, {
+        return fetch(baseURL + task.id, {
         method: 'PUT',
         body: JSON.stringify(task),
         headers: {

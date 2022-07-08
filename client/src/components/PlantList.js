@@ -12,14 +12,12 @@ const PlantList = ({plants, setSelectedPlant, deletePlant}) => {
             plantDetails = {plant}
             setSelectedPlant = {setSelectedPlant}
             deletePlant = {deletePlant}
-            >
-                {plant.plantNameOne}
-            </PlantCard>)
+            />)
 
     return (
         <>
         <h3>All plants</h3>
-        <button><Link to="/createplant">Add new plant</Link></button>
+        <button><Link to="/createPlant">Add new plant</Link></button>
         {mapPlants}
         </>
     );

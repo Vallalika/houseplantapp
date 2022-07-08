@@ -1,10 +1,13 @@
 import React from 'react';
 
-const Task = () => {
+const Task = ({taskDetails}) => {
     
     return (
     <>
-        <h4>This is Task.js</h4>
+        <h4> {taskDetails.taskDate} </h4>
+        <p> {taskDetails.plant.plantNameOne} - {taskDetails.taskName} </p>
+        <p> {taskDetails.taskDescription} </p>
+        <p> Status: {taskDetails.completed ? "complete" : "incomplete" } </p>
         
     </>
     )

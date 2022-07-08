@@ -7,6 +7,7 @@ const PlantItem = () => {
         <>
             <h4>This is PlantItem.js</h4>
             <PlantDetails />
+            
         </>
     );
 }
