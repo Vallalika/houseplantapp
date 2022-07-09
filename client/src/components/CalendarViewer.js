@@ -12,14 +12,6 @@ import Task from "./Task";
 
 const CalendarViewer = ({ tasks }) => {
 
-    const mapTasks = tasks.map((task, index) =>
-        <Task
-            key={index}
-            className={task.taskName}
-            plantDetails = {task}
-            taskDetails = {task}
-            />)
-
     const locales = {
         "en-GB": require("date-fns/locale/en-GB")
     }
@@ -38,9 +30,6 @@ const CalendarViewer = ({ tasks }) => {
         <button><Link to="/createTask">Add new task</Link></button>
         <Calendar localizer={localizer} events = { tasks }
         startAccessor = "start" endAccessor="end" style={{height: 500, margin: "50px"}}  />
-
-
-        {/* {mapTasks} */}
         </>
     );
 }

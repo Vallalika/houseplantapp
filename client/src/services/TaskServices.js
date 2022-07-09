@@ -1,32 +1,7 @@
+import { convertStringsToDates, convertDatesToStrings } from "./StringDateServices";
+
 const baseURL = 'http://localhost:8080/api/careTasks/';
-
-// Changes a task's start and end dates from string to JS date objects - requirement for tasks to show in calendar view
-const convertStringsToDates = (task) => {
-    let updatedTask = { ...task }
-    const stringStartDate = updatedTask.start;
-    const stringEndDate = updatedTask.end;
-    updatedTask.start = new Date(stringStartDate);
-    updatedTask.end = new Date (stringEndDate);
-    return updatedTask;
-    }
-
-// Changes a task's start and end dates from JS date objects to string - requirement for tasks to be sent to server
-const convertDatesToStrings = (task) => {
-    let updatedTask = { ...task }
-    const dateStartDate = updatedTask.start;
-    const dateEndDate = updatedTask.end;
-    updatedTask.start = formatDateToString(dateStartDate);
-    updatedTask.end = formatDateToString(dateEndDate);
-    return updatedTask;
-}
-
-// Turns a given JS date into a string of format YYYY-MM-DD
-const formatDateToString = (date) => {
-    const year = date.getFullYear();
-    let month = 0 + (date.getMonth() + 1).toString();
-    let day =  0 + date.getDate().toString();
-    return [year, month, day]. join('-');
-}
+const upcomingCareURL = 'http://localhost:8080/api/upcomingCare/';
 
 const TaskServices =  {
     
@@ -38,8 +13,11 @@ const TaskServices =  {
     },
 
     getUpcomingCareTasks() {
-        return fetch(baseUrl/)
-    }
+        return fetch(upcomingCareURL)
+        .then(res => res.json())
+        .then(upcomingTasks => upcomingTasks.map((upcomingTask) =>
+        convertStringsToDates(upcomingTask)))
+    },
 
     addTask(task) {
         convertDatesToStrings(task);

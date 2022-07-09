@@ -1,12 +1,17 @@
 import React from 'react';
-import UpcomingTask from './UpcomingTask';
+import Task from './Task';
 
-const UpcomingTaskList = () => {
+const UpcomingTaskList = ({upcomingTasks}) => {
     
+    const generateTaskList = upcomingTasks.map((upcomingTask, index) =>
+        <Task
+            key={index}
+            upcomingTask = {upcomingTask}
+            />)
+
     return (
     <>
-        <h3>This is UpcomingTaskList.js</h3>
-        <UpcomingTask />
+        {generateTaskList}
     </>
     )
 }

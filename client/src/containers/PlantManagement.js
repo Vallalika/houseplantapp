@@ -20,6 +20,7 @@ const PlantManagement = () => {
   const [plants, setPlants] = useState([]);
   const [gardens, setGardens] = useState([]);
   const [tasks, setTasks] = useState([]);
+  const [upcomingTasks, setUpcomingTasks] = useState([]);
   
   const [selectedPlant, setSelectedPlant] = useState({});
   const [selectedTask, setSelectedTask] = useState({});
@@ -34,6 +35,8 @@ const PlantManagement = () => {
     TaskServices.getTasks()
     .then(tasks => setTasks(tasks));
 
+    TaskServices.getUpcomingCareTasks()
+    .then(upcomingTasks => setUpcomingTasks(upcomingTasks));
   }, []);
 
   // Plant functionalities
@@ -85,17 +88,48 @@ const PlantManagement = () => {
   return (
     <>
       <Router>
+
         <AppHeader />
         <Navigation />
+
         <Routes>
-          <Route path="/upcomingCare" element = {<UpcomingTaskList/>} />
-          <Route path="/allPlants" element = {<PlantList plants = { plants } setSelectedPlant = {setSelectedPlant} deletePlant = {deletePlant}/>}/>
-          <Route path="/calendar" element = {<CalendarViewer tasks = { tasks }/>} />
-          <Route path="/plantDetails" element = {<PlantDetails selectedPlant = {selectedPlant}  />} />
-          <Route path="/createPlant" element = {<PlantCreation createPlant = {createPlant} gardens = {gardens} />} />
-          <Route path="/editPlant" element = {<EditPlant editPlant = {editPlant} selectedPlant = {selectedPlant} gardens = {gardens} />} />
-          <Route path="/createTask" element = {<TaskCreation createTask = { createTask } plants = { plants } />} />
+          
+          <Route path="/upcomingCare"
+                element = {<UpcomingTaskList
+                          upcomingTasks = {upcomingTasks} />} />
+          
+          <Route path="/allPlants"
+                  element = {<PlantList
+                            plants = { plants }
+                            setSelectedPlant = {setSelectedPlant}
+                            deletePlant = {deletePlant}/>}/>
+          
+          <Route path="/calendar"
+                element = {<CalendarViewer
+                            tasks = { tasks }/>} />
+          
+          <Route path="/plantDetails"
+                element = {<PlantDetails
+                          selectedPlant = {selectedPlant}  />} />
+          
+          <Route path="/createPlant"
+                element = {<PlantCreation
+                          createPlant = {createPlant}
+                          gardens = {gardens} />} />
+          
+          <Route path="/editPlant"
+                element = {<EditPlant
+                          editPlant = {editPlant}
+                          selectedPlant = {selectedPlant}
+                          gardens = {gardens} />} />
+          
+          <Route path="/createTask"
+                element = {<TaskCreation
+                          createTask = { createTask }
+                          plants = { plants } />} />
+        
         </Routes>
+
       </Router>
     </>
   );
