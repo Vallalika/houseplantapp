@@ -1,18 +1,17 @@
 import React from 'react';
-import { formatDateToString } from '../services/StringDateServices';
+import { formatDateToPrettyString } from '../services/DateFormattingServices';
 
 const Task = ({upcomingTask}) => {
     
-    const taskDateView = formatDateToString(upcomingTask.start);
+    const taskDateView = formatDateToPrettyString(upcomingTask.start);
 
     return (
     <>
         <h3> { taskDateView } </h3>
-        <h3> {upcomingTask.title} </h3>
-        <p> {upcomingTask.taskDescription}</p>
-        <p> {upcomingTask.taskDescription}</p>
-        <p> Status: {upcomingTask.completed ? "complete" : "incomplete" } </p>
-        <p> {upcomingTask.plant.plantNameOne} </p>
+        <h4> { upcomingTask.title } </h4>
+        <p> Status: { upcomingTask.completed ? "complete" : "incomplete" } </p>
+        <p> For: { upcomingTask.plant.plantNameOne }, Status: { upcomingTask.plant.status } </p>
+        <p> { upcomingTask.taskDescription }</p>
         
     </>
     )
