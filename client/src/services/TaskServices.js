@@ -37,6 +37,10 @@ const TaskServices =  {
         convertStringsToDates(task)))
     },
 
+    getUpcomingCareTasks() {
+        return fetch(baseUrl/)
+    }
+
     addTask(task) {
         convertDatesToStrings(task);
         return fetch(baseURL, {

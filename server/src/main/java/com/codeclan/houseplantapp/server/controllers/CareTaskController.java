@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.w3c.dom.html.HTMLElement;
 
 import java.time.LocalDate;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class CareTaskController {
@@ -46,6 +46,17 @@ public class CareTaskController {
         return new ResponseEntity(careTaskRepository.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/api/upcomingCare")
+    public ResponseEntity getUpcomingCareTasks() {
+        LocalDate todaysDate = LocalDate.now();
+        List<CareTask> finalQueryResults = new ArrayList<>();
+        List<CareTask> firstQueryResults = careTaskRepository.findByCompletedFalseAndStartLessThan(todaysDate);
+        List<CareTask> secondQueryResults = careTaskRepository.findByStart(todaysDate);
+        finalQueryResults.addAll(firstQueryResults);
+        finalQueryResults.addAll(secondQueryResults);
+
+        return new ResponseEntity(finalQueryResults, HttpStatus.OK);
+    }
 
     @GetMapping(value = "/api/careTasks/{id}")
     public ResponseEntity getTask(@PathVariable Long id){
