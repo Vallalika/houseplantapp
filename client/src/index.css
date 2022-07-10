@@ -50,3 +50,11 @@ h1 {
   text-decoration: underline;
   color: #1e262a;
 }
+
+.menu-link-selected {
+  color: #4c5f69;
+  text-decoration: none;
+  border-bottom: 3px solid #4c5f69;
+  border-bottom-left-radius: 30% 5%;
+  border-bottom-right-radius: 65% 5%;
+}

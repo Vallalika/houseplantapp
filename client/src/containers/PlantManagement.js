@@ -25,6 +25,7 @@ const PlantManagement = () => {
   
   const [selectedPlant, setSelectedPlant] = useState({});
   const [selectedTask, setSelectedTask] = useState({});
+  const [selectedMenu, setSelectedMenu] = useState("allPlants");
 
   useEffect(() => {
     PlantServices.getPlants()
@@ -92,7 +93,7 @@ const PlantManagement = () => {
       <Router>
 
         <AppHeader />
-        <Navigation />
+        <Navigation selectedMenu = { selectedMenu } setSelectedMenu = { setSelectedMenu } />
 
         <Routes>
           
