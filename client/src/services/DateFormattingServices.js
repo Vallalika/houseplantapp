@@ -1,6 +1,6 @@
 // DATE FORMATTING FUNCTIONS
 
-// Turns a given JS date into an easy to read string for the user)
+// Turns a given JS date into an easy to read string for the user
 export const formatDateToPrettyString = (date) => {
     const months = {
         0: "January",
@@ -59,10 +59,17 @@ export const convertStringsToDates = (task) => {
 
 // Changes a task's start and end dates from JS date objects to string (required for tasks to be sent to server)
 export const convertDatesToStrings = (task) => {
-    let updatedTask = { ...task }
+    let updatedTask = { ...task };
     const dateStartDate = updatedTask.start;
     const dateEndDate = updatedTask.end;
     updatedTask.start = formatDateToString(dateStartDate);
     updatedTask.end = formatDateToString(dateEndDate);
     return updatedTask;
+}
+
+// Sort upcoming tasks by later date first
+export const sortUpcomingTasks = (upcomingTasks) => {
+    const sortTasks = [...upcomingTasks].sort((taskA, taskB) =>
+        Number(taskB.date) - Number(taskA.date)
+    );
 }

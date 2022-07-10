@@ -56,8 +56,7 @@ const EditPlant = ({editPlant, selectedPlant, gardens}) => {
             garden: {
                 id: gardens[0].id
             }
-        }
-        console.log(editedPlant);
+        };
         editPlant(editedPlant);
     }
 
@@ -111,7 +110,7 @@ const EditPlant = ({editPlant, selectedPlant, gardens}) => {
                 <textarea placeholder="Additional notes" name="notes" id="notes" rows="10" cols="45" value = {notes} onChange = {handleNotesChange} />
                 <br />
 
-                <input type="submit" name="Submit" value="Save" />
+                <input type="submit" name="Submit" value="Update" />
 
             </form>
         </>

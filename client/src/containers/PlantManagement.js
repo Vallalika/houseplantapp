@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { sortUpcomingTasks } from "../services/DateFormattingServices";
 
 import AppHeader from '../components/AppHeader';
 import Navigation from '../components/Navigation';
@@ -37,6 +38,7 @@ const PlantManagement = () => {
 
     TaskServices.getUpcomingCareTasks()
     .then(upcomingTasks => setUpcomingTasks(upcomingTasks));
+
   }, []);
 
   // Plant functionalities
@@ -66,7 +68,7 @@ const PlantManagement = () => {
   const createTask = newTask => {
     TaskServices.addTask(newTask)
       .then(savedTask => setTasks([ ...tasks, savedTask ]));
-  };
+    };
 
   const deleteTask = idToDelete => {
     TaskServices.deleteTask(idToDelete);

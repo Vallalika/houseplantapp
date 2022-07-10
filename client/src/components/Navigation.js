@@ -6,11 +6,13 @@ const Navigation = () => {
     return (
 
         <>
-            <ul>
-                <li><Link to="/upcomingCare">Upcoming Care</Link></li>
-                <li><Link to="/calendar">Calendar</Link></li>
-                <li><Link to="/allPlants">All Plants</Link></li>
-            </ul>
+            <nav>
+                <ul className="menu-wrapper">
+                    <li><Link to="/allPlants" className="menu-link">All Plants</Link></li>
+                    <li className="menu-link"><Link to="/calendar" className="menu-link">Calendar</Link></li>
+                    <li><Link className="menu-link" to="/upcomingCare">Upcoming Care</Link></li>
+                </ul>
+            </nav>
         </>
     )
 

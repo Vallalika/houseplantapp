@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 const TaskCreation = ({createTask, plants}) => {
 
@@ -28,6 +29,8 @@ const TaskCreation = ({createTask, plants}) => {
     
     const handlePlantIdChange = (ev) => setPlantId(ev.target.value);
 
+    const Navigate = useNavigate();
+
     const handleSubmit = ev => {
         ev.preventDefault();
         let newTask = {
@@ -48,6 +51,7 @@ const TaskCreation = ({createTask, plants}) => {
         setEnd("");
         setIsComplete(false);
         setPlantId(1);
+        Navigate(("/upcomingCare"));
     }
 
     const generatePlantOptions = plants.map((plant, index) =>

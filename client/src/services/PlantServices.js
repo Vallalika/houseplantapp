@@ -19,12 +19,13 @@ const PlantServices =  {
 
     updatePlant(plant) {
         return fetch(baseURL + plant.id, {
-        method: 'PUT',
-        body: JSON.stringify(plant),
-        headers: {
-            'Content-Type': 'application/json'
+            method: 'PUT',
+            body: JSON.stringify(plant),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         }
-        })
+        )
         .then(res => res.json());
     },
 

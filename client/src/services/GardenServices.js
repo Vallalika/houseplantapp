@@ -17,7 +17,7 @@ const GardenServices =  {
         .then(res => res.json());
     },
 
-    updatePlant(garden) {
+    updateGarden(garden) {
         return fetch(baseURL + garden._id, {
         method: 'PUT',
         body: JSON.stringify(garden),
@@ -28,7 +28,7 @@ const GardenServices =  {
         .then(res => res.json());
     },
 
-    deletePlant(id) {
+    deleteGarden(id) {
         return fetch(baseURL + id, {
         method: 'DELETE'
         });

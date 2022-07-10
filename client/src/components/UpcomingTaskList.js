@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Task from './Task';
+import { Link } from 'react-router-dom';
 
 const UpcomingTaskList = ({upcomingTasks}) => {
-    
+
     const generateTaskList = upcomingTasks.map((upcomingTask, index) =>
         <Task
             key={index}
@@ -11,6 +12,7 @@ const UpcomingTaskList = ({upcomingTasks}) => {
 
     return (
     <>
+        <button><Link to="/createTask">Add new task</Link></button>
         {generateTaskList}
     </>
     )

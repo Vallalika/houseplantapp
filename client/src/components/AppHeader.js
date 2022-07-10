@@ -4,8 +4,7 @@ const AppHeader = () => {
 
     return (
         <>
-        <h1>PlantIt!!!</h1>
-        
+        <h1>PlantIt!</h1>
         </>
     );
 }
