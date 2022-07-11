@@ -21,9 +21,6 @@ const PlantCard = ({plantDetails, setSelectedPlant, deletePlant}) => {
                 <p className = "plantcard-paragraph"><span className="plantcard-field-titles">Second name: </span>
                 {plantDetails.plantNameTwo}</p>
 
-                <p className = "plantcard-paragraph"><span className="plantcard-field-titles">Origin: </span>
-                {plantDetails.origin}</p>
-
                 <p className = "plantcard-paragraph">
                 <span className="plantcard-field-titles">Status: </span>
                 {plantDetails.status} </p>

@@ -98,19 +98,22 @@ h1 {
 
 .plantcard-view-wrapper {
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
   padding-top: 3vh;
+  margin-left: 0px;
 }
 
 .plant-card-wrapper {
   display: flex;
   background-color: #d6f8d6;
   border: 0.3vw solid #7fc6a4;
-  margin: 2vw;
+  margin-top: 2vw;
+  margin-right: 2vw;
+  margin-bottom: 2vw;
+  margin-left: 0px;
   border-radius: 1vw;
   max-width: 40%;
-  flex-basis: 28%;
+  flex-basis: 30%;
 }
 
 .plant-thumbnail {
