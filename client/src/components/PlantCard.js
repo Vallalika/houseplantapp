@@ -13,23 +13,34 @@ const PlantCard = ({plantDetails, setSelectedPlant, deletePlant}) => {
 
     return (
         <>
-            <h4>{plantDetails.plantNameOne}</h4>
             <img className="plant-thumbnail" src = {plantDetails.imageUrl} alt="Picture of plant" />
-            <p>Second name: {plantDetails.plantNameTwo}</p>
-            <p>Origin {plantDetails.origin}</p>
-            <p>Acquisition date: {plantDetails.acquisitionDate}</p>
-            <p> Status: {plantDetails.status} </p>
-            <p>Growing season: {plantDetails.growingSeason}</p>
-            <p>Light: {plantDetails.light}</p>
-            <p>Water: {plantDetails.water}</p>
-            <p>Temperature: {plantDetails.temperature}</p>
-            <p>Soil: {plantDetails.soil}</p>
-            <p>Humidity: {plantDetails.humidity}</p>
-            <p onClick = {handleClick}> <Link to="/plantDetails">More details</Link></p>
-            <p onClick={handleClick}> <Link to="/editPlant">Edit plant</Link></p>
-            <button onClick={handleDeletePlant}>
-                <span>❌</span> Delete Plant
-            </button>
+
+            <div className="plant-card-text-wrapper">
+                <h3 className = "plantcard-title">{plantDetails.plantNameOne}</h3>
+                
+                <p className = "plantcard-paragraph"><span className="plantcard-field-titles">Second name: </span>
+                {plantDetails.plantNameTwo}</p>
+
+                <p className = "plantcard-paragraph"><span className="plantcard-field-titles">Origin: </span>
+                {plantDetails.origin}</p>
+
+                <p className = "plantcard-paragraph">
+                <span className="plantcard-field-titles">Status: </span>
+                {plantDetails.status} </p>
+
+                <p className = "plantcard-paragraph">
+                <span className="plantcard-field-titles">Light: </span>
+                {plantDetails.light}</p>
+
+                <p className = "plantcard-paragraph">
+                <span className="plantcard-field-titles">Water: </span>
+                {plantDetails.water}</p>
+
+
+                <Link to="/plantDetails" onClick = {handleClick}>More details</Link>
+                <Link to="/editPlant" onClick={handleClick}>Edit plant</Link>
+                <Link to="/editPlant" onClick={handleDeletePlant}> <span>❌</span> Delete plant</Link>
+            </div>
         </>
     );
 }

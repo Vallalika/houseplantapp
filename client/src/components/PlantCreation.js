@@ -60,7 +60,7 @@ const PlantCreation = ({createPlant,gardens}) => {
             }
         }
         createPlant(newPlant);
-        Navigate("/allPlants");
+        Navigate("/");
         setPlantNameOne("");
         setPlantNameTwo("");
         setOrigin("");

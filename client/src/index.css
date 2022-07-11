@@ -94,8 +94,50 @@ h1 {
 }
 
 
+/* Plant cards styling */
+
+.plantcard-view-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding-top: 3vh;
+}
+
+.plant-card-wrapper {
+  display: flex;
+  background-color: #d6f8d6;
+  border: 0.3vw solid #7fc6a4;
+  margin: 2vw;
+  border-radius: 1vw;
+  max-width: 40%;
+  flex-basis: 28%;
+}
 
 .plant-thumbnail {
-  height:15%;
-  width:10%;
+  border: 1px solid #4c5f69;
+  border-radius: 1vh;
+  max-width:40%;
+  max-height:40%;
+  margin: 1vw;
+}
+
+.plant-card-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 1vw;
+}
+
+.plantcard-title {
+  font-weight: bolder;
+  margin-top: 0.2vh;
+  font-size: 1.5vw;
+}
+
+.plantcard-paragraph {
+  margin-top: 0px;
+  font-size: 1vw;
+}
+
+.plantcard-field-titles {
+  font-weight: bold;
 }
