@@ -36,6 +36,7 @@ public class PlantTest {
                 .light("Indirect sunlight")
                 .water("Slightly humid, stop regular watering schedule if plant is crying")
                 .humidity("loves it")
+                .imageUrl("http://localhost:8080/tomatoplant.jpg")
                 .garden(myGarden)
                 .build();
 
@@ -89,6 +90,11 @@ public class PlantTest {
     @Test
     public void hasGarden() {
         assertEquals(myGarden,myPlant.getGarden());
+    }
+
+    @Test
+    public void hasImgUrl() {
+        assertEquals("http://localhost:8080/tomatoplant.jpg",myPlant.getImageUrl());
     }
 
     @Test

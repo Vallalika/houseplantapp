@@ -73,6 +73,9 @@ public class Plant {
     @Column(name = "notes")
     private String notes;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
     @NonNull
     @JsonIgnoreProperties({"plants"})
     @ManyToOne
