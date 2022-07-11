@@ -4,13 +4,12 @@ import { Link } from "react-router-dom"
 const Navigation = ({selectedMenu, setSelectedMenu}) => {
 
     const handleClick = (event) => {
-        console.log(event);
         if (event.target.innerText === "Calendar") {
             setSelectedMenu("calendar");
         } else if (event.target.innerText === "Upcoming Care") {
             setSelectedMenu("upcomingCare");
         } else {
-            setSelectedMenu("allPlants");
+            setSelectedMenu("plants");
         }
 
     }
@@ -21,9 +20,9 @@ const Navigation = ({selectedMenu, setSelectedMenu}) => {
             <nav>
                 <ul className="menu-wrapper">
                     
-                    <li><Link to="/allPlants"
-                        className = { selectedMenu === "allPlants" ? "menu-link-selected" : "menu-link" }
-                        onClick = { handleClick } >All Plants</Link>
+                    <li><Link to="/"
+                        className = { selectedMenu === "plants" ? "menu-link-selected" : "menu-link" }
+                        onClick = { handleClick } >Plants</Link>
                     </li>
 
                     <li><Link to="/calendar"

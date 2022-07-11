@@ -25,7 +25,7 @@ const PlantManagement = () => {
   
   const [selectedPlant, setSelectedPlant] = useState({});
   const [selectedTask, setSelectedTask] = useState({});
-  const [selectedMenu, setSelectedMenu] = useState("allPlants");
+  const [selectedMenu, setSelectedMenu] = useState("plants");
 
   useEffect(() => {
     PlantServices.getPlants()
@@ -101,7 +101,7 @@ const PlantManagement = () => {
                 element = {<UpcomingTaskList
                           upcomingTasks = {upcomingTasks} />} />
           
-          <Route path="/allPlants"
+          <Route path="/"
                   element = {<PlantList
                             plants = { plants }
                             setSelectedPlant = {setSelectedPlant}
