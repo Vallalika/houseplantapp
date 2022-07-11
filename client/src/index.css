@@ -91,3 +91,8 @@ h1 {
   color:#7d917d;
   background-color: #4c5f69;
 }
+
+.plant-thumbnail {
+  height:15%;
+  width:10%;
+}

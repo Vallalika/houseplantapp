@@ -54,6 +54,7 @@ public class DataLoader implements ApplicationRunner {
                 .pruning("Not needed but can prune weak branches")
                 .repotting("Every 2 to 3 years with a top soil refresh every year for nutrients")
                 .garden(livingRoom)
+                .imageUrl("http://localhost:8080/tomatoplant.jpg")
                 .build();
         plantRepository.save(dragonPlant);
 

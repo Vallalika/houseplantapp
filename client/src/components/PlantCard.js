@@ -14,6 +14,7 @@ const PlantCard = ({plantDetails, setSelectedPlant, deletePlant}) => {
     return (
         <>
             <h4>{plantDetails.plantNameOne}</h4>
+            <img className="plant-thumbnail" src = {plantDetails.imageUrl} alt="Picture of plant" />
             <p>Second name: {plantDetails.plantNameTwo}</p>
             <p>Origin {plantDetails.origin}</p>
             <p>Acquisition date: {plantDetails.acquisitionDate}</p>

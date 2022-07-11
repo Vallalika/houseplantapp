@@ -73,8 +73,9 @@ public class Plant {
     @Column(name = "notes")
     private String notes;
 
+    @Builder.Default
     @Column(name = "image_url")
-    private String imageUrl;
+    private String imageUrl = "http://localhost:8080/noimage.jpg";
 
     @NonNull
     @JsonIgnoreProperties({"plants"})
