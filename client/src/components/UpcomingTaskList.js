@@ -12,7 +12,7 @@ const UpcomingTaskList = ({upcomingTasks}) => {
 
     return (
     <>
-        <Link to="/createTask" className = "add-task">Add new task</Link>
+        <Link to="/createTask" className = "add-buttons">Add new task</Link>
         {generateTaskList}
     </>
     )

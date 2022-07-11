@@ -1,5 +1,6 @@
 body {
-  margin: 16px;
+  margin-left: 3vw;
+  margin-right: 3vw;
   font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -65,10 +66,10 @@ h1 {
 }
 
 
-/* BUTTON STYLING IN CALENDAR VIEW */
+/* ADD BUTTONS STYLING */
 
-.add-task {
-  margin-left: 3vw;
+.add-buttons {
+  /* margin-left: 3vw; */
   text-decoration: none;
   background-color: #7fc6a4;
   border-radius: 6px;
@@ -82,15 +83,17 @@ h1 {
   text-align: center;
 }
 
-.add-task:hover {
+.add-buttons:hover {
   color:#d6f8d6;
   background-color: #4c5f69;
 }
 
-.add-task:active {
+.add-buttons:active {
   color:#7d917d;
   background-color: #4c5f69;
 }
+
+
 
 .plant-thumbnail {
   height:15%;

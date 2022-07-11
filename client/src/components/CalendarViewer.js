@@ -26,10 +26,10 @@ const CalendarViewer = ({ tasks }) => {
 
     return (
         <>
-        <Link to="/createTask" className = "add-task">Add new task</Link>
+        <Link to="/createTask" className = "add-buttons">Add new task</Link>
         <Calendar localizer={localizer} events = { tasks }
         startAccessor = "start" endAccessor="end"
-        style={{height: "70vh", margin: "3vw"}}
+        style={{height: "70vh", marginTop: "2vw"}}
         />
         </>
     );

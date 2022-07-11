@@ -16,8 +16,7 @@ const PlantList = ({plants, setSelectedPlant, deletePlant}) => {
 
     return (
         <>
-        <h3>All plants</h3>
-        <button><Link to="/createPlant">Add new plant</Link></button>
+        <Link to="/createPlant" className="add-buttons">Add new plant</Link>
         {mapPlants}
         </>
     );
