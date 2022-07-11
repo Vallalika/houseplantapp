@@ -32,7 +32,13 @@ const TaskCreation = ({createTask, plants}) => {
     const Navigate = useNavigate();
 
     const handleSubmit = ev => {
+        
         ev.preventDefault();
+        const targetPlantIndex = plants.findIndex(plant => plant.id == plantId);
+        const newPlant = {
+            id: plantId,
+            plantNameOne: plants[targetPlantIndex].plantNameOne,
+            status: plants[targetPlantIndex].status }
         let newTask = {
             title: title,
             taskDescription: taskDescription,
@@ -40,9 +46,7 @@ const TaskCreation = ({createTask, plants}) => {
             start: new Date(start),
             end: new Date(end),
             completed: isComplete,
-            plant: {
-                id: plantId
-            }
+            plant: newPlant,
         }
         createTask(newTask);
         setTitle("");
@@ -51,7 +55,7 @@ const TaskCreation = ({createTask, plants}) => {
         setEnd("");
         setIsComplete(false);
         setPlantId(1);
-        Navigate(("/upcomingCare"));
+        Navigate(("/calendar"));
     }
 
     const generatePlantOptions = plants.map((plant, index) =>

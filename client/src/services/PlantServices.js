@@ -18,15 +18,15 @@ const PlantServices =  {
     },
 
     updatePlant(plant) {
+        console.log("From PlantServices: "+ plant);
+        console.log(JSON.stringify(plant));
         return fetch(baseURL + plant.id, {
             method: 'PUT',
             body: JSON.stringify(plant),
             headers: {
                 'Content-Type': 'application/json'
             }
-        }
-        )
-        .then(res => res.json());
+        })
     },
 
     deletePlant(id) {

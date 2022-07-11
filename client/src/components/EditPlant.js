@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 const EditPlant = ({editPlant, selectedPlant, gardens}) => {
 
@@ -34,6 +35,8 @@ const EditPlant = ({editPlant, selectedPlant, gardens}) => {
     const handleRepottingChange = (ev) => setRepotting(ev.target.value);
     const handleNotesChange = (ev) => setNotes(ev.target.value);
 
+    const Navigate = useNavigate();
+
     const handleSubmit = ev => {
         ev.preventDefault();
         let editedPlant = {
@@ -53,11 +56,14 @@ const EditPlant = ({editPlant, selectedPlant, gardens}) => {
             pruning: pruning,
             repotting: repotting,
             notes: notes,
+            imageUrl: "http://localhost:8080/noimage.jpg",
             garden: {
                 id: gardens[0].id
             }
         };
         editPlant(editedPlant);
+        console.log("From EditPlant: "+ editedPlant);
+        Navigate("/");
     }
 
     return (

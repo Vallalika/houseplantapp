@@ -6,9 +6,8 @@ import { Link } from "react-router-dom";
 const PlantList = ({plants, setSelectedPlant, deletePlant}) => {
 
     const mapPlants = plants.map((plant, index) =>
-        <section className = "plant-card-wrapper">
+        <section key = {index} className = "plant-card-wrapper">
             <PlantCard
-                key = {index}
                 plantDetails = {plant}
                 setSelectedPlant = {setSelectedPlant}
                 deletePlant = {deletePlant}

@@ -57,18 +57,22 @@ const PlantManagement = () => {
     
     // send edited plant to db
     PlantServices.updatePlant(editedPlant);
+    console.log("From PlantManagement after plantservices updated" + editedPlant);
     
     // update locally
     const editedPlantIndex = plants.findIndex(plant => plant.id === editedPlant.id);
     const updatedPlants = [...plants];
     updatedPlants[editedPlantIndex] = editedPlant;
     setPlants(updatedPlants);
+    console.log("After setPlants: "+ updatedPlants);
   };
 
   // Task functionalities
   const createTask = newTask => {
     TaskServices.addTask(newTask)
-      .then(savedTask => setTasks([ ...tasks, savedTask ]));
+    .then(savedTask =>
+        (setTasks([ ...tasks, savedTask ]),
+        setUpcomingTasks([...upcomingTasks, savedTask])));
     };
 
   const deleteTask = idToDelete => {
