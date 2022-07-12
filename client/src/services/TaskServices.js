@@ -20,8 +20,6 @@ const TaskServices =  {
     },
 
     addTask(task) {
-        const json = JSON.stringify(task);
-        console.log(json);
         convertDatesToStrings(task);
         return fetch(baseURL, {
         method: 'POST',

@@ -36,7 +36,7 @@ const PlantCard = ({plantDetails, setSelectedPlant, deletePlant}) => {
 
                 <Link to="/plantDetails" onClick = {handleClick}>More details</Link>
                 <Link to="/editPlant" onClick={handleClick}>Edit plant</Link>
-                <Link to="/editPlant" onClick={handleDeletePlant}> <span>❌</span> Delete plant</Link>
+                <Link to="/" onClick={handleDeletePlant}> <span>❌</span> Delete plant</Link>
             </div>
         </>
     );

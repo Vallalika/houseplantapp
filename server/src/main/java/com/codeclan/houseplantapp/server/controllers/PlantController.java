@@ -38,7 +38,7 @@ public class PlantController {
     @DeleteMapping(value = "/api/plants/{id}")
     public ResponseEntity deletePlantByID(@PathVariable Long id) {
         plantRepository.deleteById(id);
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @PutMapping(value = "/api/plants/{id}")

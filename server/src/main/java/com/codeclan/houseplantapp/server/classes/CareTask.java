@@ -44,6 +44,7 @@ public class CareTask {
     private boolean completed;
 
     @JsonIgnoreProperties({"taskList"})
+    @NonNull
     @ManyToOne
     @JoinColumn(name = "plant_id", nullable = false)
     private Plant plant;

@@ -47,6 +47,7 @@ public class PlantTest {
                 .title("Water all the plants in the garden")
                 .start(aDate)
                 .end(aDate)
+                .plant(myPlant)
                 .build();
 
     }
@@ -115,9 +116,15 @@ public class PlantTest {
     }
 
     @Test
-    public void canRemovePlant() {
+    public void canRemoveTask() {
         myPlant.addTask(myTask);
         myPlant.removeTask(myTask);
         assertEquals(0, myPlant.getTaskList().size());
+    }
+
+    @Test
+    public void canGetTasks() {
+        myPlant.addTask(myTask);
+        assertEquals(1, myPlant.getTaskList().size());
     }
 }

@@ -71,8 +71,14 @@ const PlantManagement = () => {
   const createTask = newTask => {
     TaskServices.addTask(newTask)
     .then(savedTask =>
-        (setTasks([ ...tasks, savedTask ]),
-        setUpcomingTasks([...upcomingTasks, savedTask])));
+        setTasks([ ...tasks, savedTask ]));
+    
+    // Version 2
+    // TaskServices.addTask(newTask)
+    // .then(savedTask =>
+    //     (setTasks([ ...tasks, savedTask ]),
+    //     setUpcomingTasks([...upcomingTasks, savedTask])));
+    // console.log(isUpcomingTask(newTask));
     };
 
   const deleteTask = idToDelete => {
@@ -91,6 +97,20 @@ const PlantManagement = () => {
     updatedTasks[editedTaskIndex] = editedTask;
     setTasks(updatedTasks);
   };
+  // const isUpcomingTask = (newTask) => {
+  //   // console.log(newTask.start);
+  //   // console.log(new Date());
+  //   let today = new Date();
+  //   today = today.setDate(today.getDate() + 1)
+  //   const previousDay = today.setDate( today.getDate() - 1 );
+  //   console.log("Today: ", today);
+  //   console.log("Yesterday: ", previousDay);
+  //   // if ( (newTask.completed === false && newTask.start < new Date()) || ("hihi" < newTask.start <= new Date())) {
+  //   //   return true;
+  //   // } else {
+  //   //   return false;
+  //   // }
+  // }
 
   return (
     <>
