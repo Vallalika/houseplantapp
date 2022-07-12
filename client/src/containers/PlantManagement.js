@@ -51,6 +51,7 @@ const PlantManagement = () => {
   const deletePlant = idToDelete => {
     PlantServices.deletePlant(idToDelete);
     setPlants(plants.filter(plant => plant.id !== idToDelete));
+    setTasks(tasks.filter(task => task.plant.id !== idToDelete));
   };
 
   const editPlant = editedPlant => {
