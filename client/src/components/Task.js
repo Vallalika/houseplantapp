@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatDateToPrettyString } from '../services/DateFormattingServices';
+import { formatDateToPrettyString } from '../services/DateServices';
 
 const Task = ({upcomingTask}) => {
     

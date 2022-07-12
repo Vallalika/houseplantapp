@@ -1,4 +1,4 @@
-// DATE FORMATTING FUNCTIONS
+// FUNCTIONS REQUIRING DATE CALCULATIONS AND DATE FORMATTING
 
 // Turns a given JS date into an easy to read string for the user
 export const formatDateToPrettyString = (date) => {
@@ -72,4 +72,27 @@ export const convertDatesToStrings = (task) => {
 export const sortUpcomingTasks = (upcomingTasks) => {
     const sortTasks = [...upcomingTasks].sort((taskA, taskB) => Number(taskB.start)-Number(taskA.start));
     return sortTasks;
+}
+
+export const isUpcomingTask = (newTask) => {
+    let todayStart = new Date();
+    todayStart.setUTCHours(0,0,0,0);
+    let todayEnd = new Date();
+    todayEnd.setUTCHours(23,59,59,999);
+
+    // if the task is incomplete and its start is in the past, then return true
+    // also if the task is from today, return true whether complete or imcomplete
+    if (((newTask.completed === false)
+        &&
+        (newTask.start < todayStart))
+
+        ||
+
+        ((todayStart <= newTask.start)
+        &&
+        (newTask.start <= todayEnd))){
+            return true
+        } else {
+            return false
+        };
 }

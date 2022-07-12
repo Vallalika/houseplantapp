@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import { sortUpcomingTasks } from "../services/DateFormattingServices";
+import { isUpcomingTask, sortUpcomingTasks } from "../services/DateServices";
 
 import AppHeader from '../components/AppHeader';
 import Navigation from '../components/Navigation';
@@ -71,16 +71,16 @@ const PlantManagement = () => {
 
   // Task functionalities
   const createTask = newTask => {
+    if (isUpcomingTask(newTask)) {
+      let upcomingTasksUpdated = [...upcomingTasks];
+      upcomingTasksUpdated.push(newTask);
+      upcomingTasksUpdated = sortUpcomingTasks(upcomingTasksUpdated);
+      setUpcomingTasks(upcomingTasksUpdated);
+    }
+    
     TaskServices.addTask(newTask)
     .then(savedTask =>
         setTasks([ ...tasks, savedTask ]));
-    
-    // Version 2
-    // TaskServices.addTask(newTask)
-    // .then(savedTask =>
-    //     (setTasks([ ...tasks, savedTask ]),
-    //     setUpcomingTasks([...upcomingTasks, savedTask])));
-    // console.log(isUpcomingTask(newTask));
     };
 
   const deleteTask = idToDelete => {
@@ -99,21 +99,6 @@ const PlantManagement = () => {
     updatedTasks[editedTaskIndex] = editedTask;
     setTasks(updatedTasks);
   };
-  
-  // const isUpcomingTask = (newTask) => {
-  //   // console.log(newTask.start);
-  //   // console.log(new Date());
-  //   let today = new Date();
-  //   today = today.setDate(today.getDate() + 1)
-  //   const previousDay = today.setDate( today.getDate() - 1 );
-  //   console.log("Today: ", today);
-  //   console.log("Yesterday: ", previousDay);
-  //   // if ( (newTask.completed === false && newTask.start < new Date()) || ("hihi" < newTask.start <= new Date())) {
-  //   //   return true;
-  //   // } else {
-  //   //   return false;
-  //   // }
-  // }
 
   return (
     <>
