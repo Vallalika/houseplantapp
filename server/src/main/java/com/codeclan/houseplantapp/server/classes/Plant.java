@@ -84,7 +84,7 @@ public class Plant {
     private Garden garden;
 
     @JsonIgnoreProperties({"plant"})
-    @OneToMany(mappedBy = "plant", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "plant", fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     @Builder.Default
     private List<CareTask> taskList = new ArrayList<>();
 

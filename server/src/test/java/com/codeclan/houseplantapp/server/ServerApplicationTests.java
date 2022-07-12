@@ -36,4 +36,11 @@ class ServerApplicationTests {
 		assertEquals(2, found.size());
 		assertEquals("Water plant", found.get(0).getTitle());
 	}
+
+	@Test
+	public void canDeleteByPlantId () {
+		careTaskRepository.deleteByPlantId(14L);
+		List<CareTask> found = careTaskRepository.findByPlant_Id(14L);
+		assertEquals(0, found.size());
+	}
 }
