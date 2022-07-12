@@ -2,12 +2,13 @@ import React, {useState} from 'react';
 import Task from './Task';
 import { Link } from 'react-router-dom';
 
-const UpcomingTaskList = ({ upcomingTasks, deleteTask }) => {
+const UpcomingTaskList = ({ upcomingTasks, setSelectedTask, deleteTask }) => {
 
     const generateTaskList = upcomingTasks.map((upcomingTask, index) =>
         <Task
             key={index}
             upcomingTask = {upcomingTask}
+            setSelectedTask = {setSelectedTask}
             deleteTask = {deleteTask}
             />)
 

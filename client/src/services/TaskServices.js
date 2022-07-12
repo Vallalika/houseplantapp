@@ -40,7 +40,6 @@ const TaskServices =  {
             'Content-Type': 'application/json'
         }
         })
-        .then(res => res.json());
     },
 
     deleteTask(id) {

@@ -148,7 +148,14 @@ h1 {
 /* DELETE BUTTONS STYLING */
 
 .delete-icon {
-  width: 2%;
-  height: 2%;
+  width: 1.5%;
+  height: 1.5%;
   cursor: pointer;
+}
+
+.edit-icon {
+  width: 1.5%;
+  height: 1.5%;
+  cursor: pointer;
+  padding-right: 1vw;
 }

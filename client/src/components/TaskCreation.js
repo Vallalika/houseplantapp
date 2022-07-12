@@ -7,7 +7,7 @@ const TaskCreation = ({createTask, plants}) => {
     const [taskDescription, setTaskDescription] = useState("");
     const [start, setStart] = useState("");
     const [end, setEnd] = useState("");
-    const [isComplete, setIsComplete] = useState(false);
+    const [completed, setCompleted] = useState(false);
     const [plantId, setPlantId] = useState(0);
     
     
@@ -21,9 +21,9 @@ const TaskCreation = ({createTask, plants}) => {
     
     const handleCompletedChange = (ev) => {
         if (ev.target.value === "Complete") {
-            setIsComplete(true);
+            setCompleted(true);
         } else {
-            setIsComplete(false);
+            setCompleted(false);
         }
     }
     
@@ -45,7 +45,7 @@ const TaskCreation = ({createTask, plants}) => {
             allDay: true,
             start: new Date(start),
             end: new Date(end),
-            completed: isComplete,
+            completed: completed,
             plant: newPlant,
         }
         createTask(newTask);
@@ -53,7 +53,7 @@ const TaskCreation = ({createTask, plants}) => {
         setTaskDescription("");
         setStart("");
         setEnd("");
-        setIsComplete(false);
+        setCompleted(false);
         setPlantId(1);
         Navigate(("/calendar"));
     }
@@ -81,7 +81,7 @@ const TaskCreation = ({createTask, plants}) => {
                 <input type="date" name="end" id="end" value={end} onChange = {handleEndDateChange} />
                 <br />
 
-                <select name="isComplete" id="isComplete" onChange = {handleCompletedChange} required>
+                <select name="completed" id="completed" onChange = {handleCompletedChange} required>
                     <option value="Incomplete">Incomplete</option>
                     <option value="Complete">Complete</option>
                 </select>

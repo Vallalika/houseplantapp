@@ -14,6 +14,7 @@ import TaskServices from "../services/TaskServices";
 import PlantCreation from "../components/PlantCreation";
 import TaskCreation from "../components/TaskCreation";
 import EditPlant from "../components/EditPlant";
+import EditTask from "../components/EditTask";
 
 
 const PlantManagement = () => {
@@ -99,6 +100,10 @@ const PlantManagement = () => {
     const updatedTasks = [...tasks];
     updatedTasks[editedTaskIndex] = editedTask;
     setTasks(updatedTasks);
+    
+    TaskServices.getUpcomingCareTasks()
+      .then(upcomingTasks => sortUpcomingTasks(upcomingTasks))
+      .then(upcomingTasks => setUpcomingTasks(upcomingTasks));
   };
 
   return (
@@ -112,8 +117,18 @@ const PlantManagement = () => {
           
           <Route path="/upcomingCare"
                 element = {<UpcomingTaskList
-                          upcomingTasks = {upcomingTasks} deleteTask = { deleteTask } />} />
+                          upcomingTasks = {upcomingTasks}
+                          setSelectedTask = {setSelectedTask}
+                          deleteTask = { deleteTask } />} />
           
+          <Route path="/editTask"
+                element = {<EditTask
+                          selectedTask = {selectedTask}
+                          setSelectedTask = {setSelectedTask}
+                          plants = {plants}
+                          editTask = {editTask}
+                          deleteTask = { deleteTask } />} />
+
           <Route path="/"
                   element = {<PlantList
                             plants = { plants }

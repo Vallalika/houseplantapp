@@ -41,9 +41,11 @@ export const formatDateToPrettyString = (date) => {
 // Turns a given JS date into a string of format YYYY-MM-DD (required for server send)
 export const formatDateToString = (date) => {
     const year = date.getFullYear();
-    let month = 0 + (date.getMonth() + 1).toString();
-    let day =  0 + date.getDate().toString();
-    return [year, month, day]. join('-');
+    let month = (date.getMonth() + 1).toString();
+    let day =  date.getDate().toString();
+    let month2digits = month.padStart(2,'0');
+    let day2digits = day.padStart(2,'0');
+    return [year, month2digits, day2digits]. join('-');
 }
 
 // Changes a task's start and end dates from string to JS date objects (required for tasks to show in calendar view)
