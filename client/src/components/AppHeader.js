@@ -4,7 +4,7 @@ const AppHeader = () => {
 
     return (
         <>
-        <h1>PlantIt!</h1>
+        <h1> PlantIt! <img id="header-icon" src="http://localhost:8080/plant.png" alt="plant icon" /> </h1>
         </>
     );
 }
