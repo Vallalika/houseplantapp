@@ -86,6 +86,7 @@ const PlantManagement = () => {
   const deleteTask = idToDelete => {
     TaskServices.deleteTask(idToDelete);
     setTasks(tasks.filter(task => task.id !== idToDelete));
+    setUpcomingTasks(upcomingTasks.filter(upcomingTask => upcomingTask.id != idToDelete));
   };
 
   const editTask = editedTask => {
@@ -111,7 +112,7 @@ const PlantManagement = () => {
           
           <Route path="/upcomingCare"
                 element = {<UpcomingTaskList
-                          upcomingTasks = {upcomingTasks} />} />
+                          upcomingTasks = {upcomingTasks} deleteTask = { deleteTask } />} />
           
           <Route path="/"
                   element = {<PlantList

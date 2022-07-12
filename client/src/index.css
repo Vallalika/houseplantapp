@@ -144,3 +144,11 @@ h1 {
 .plantcard-field-titles {
   font-weight: bold;
 }
+
+/* DELETE BUTTONS STYLING */
+
+.delete-icon {
+  width: 2%;
+  height: 2%;
+  cursor: pointer;
+}
