@@ -58,6 +58,7 @@ export const convertStringsToDates = (task) => {
 }
 
 // Changes a task's start and end dates from JS date objects to string (required for tasks to be sent to server)
+
 export const convertDatesToStrings = (task) => {
     let updatedTask = { ...task };
     const dateStartDate = updatedTask.start;
@@ -69,7 +70,6 @@ export const convertDatesToStrings = (task) => {
 
 // Sort upcoming tasks by later date first
 export const sortUpcomingTasks = (upcomingTasks) => {
-    const sortTasks = [...upcomingTasks].sort((taskA, taskB) =>
-        Number(taskB.date) - Number(taskA.date)
-    );
+    const sortTasks = [...upcomingTasks].sort((taskA, taskB) => Number(taskB.start)-Number(taskA.start));
+    return sortTasks;
 }
