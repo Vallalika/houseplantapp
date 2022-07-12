@@ -161,6 +161,13 @@ h1 {
   cursor: pointer;
 }
 
+.view-icon {
+  min-width: 25px;
+  max-height: 25px;
+  cursor: pointer;
+  padding-right: 1vw;
+}
+
 .edit-icon {
   min-width: 25px;
   max-height: 25px;

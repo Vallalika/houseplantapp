@@ -6,6 +6,11 @@ const PlantCard = ({plantDetails, setSelectedPlant, deletePlant}) => {
 
     const Navigate = useNavigate();
 
+    const handleViewClick = () => {
+        setSelectedPlant(plantDetails);
+        Navigate("/plantDetails");
+    }
+
     const handleClickEdit = () => {
         setSelectedPlant(plantDetails)
         Navigate(("/editPlant"));
@@ -39,6 +44,7 @@ const PlantCard = ({plantDetails, setSelectedPlant, deletePlant}) => {
 
                 <div className = "plant-card-icon-wrapper">
                 {/* <Link to="/plantDetails" onClick = {handleClick}>More details</Link> */}
+                    <img className="view-icon" src="http://localhost:8080/eye.png" alt="view icon" onClick={ handleViewClick }/>
                     <img className ="edit-icon" src="http://localhost:8080/draw.png" alt="edit icon" onClick = { handleClickEdit } />
                     <img className ="delete-icon" src="http://localhost:8080/delete.png" alt="delete icon" onClick = { handleDeletePlant } />
                 </div>
