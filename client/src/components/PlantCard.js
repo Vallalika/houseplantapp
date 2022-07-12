@@ -1,10 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const PlantCard = ({plantDetails, setSelectedPlant, deletePlant}) => {
 
-    const handleClick = () => {
+    const Navigate = useNavigate();
+
+    const handleClickEdit = () => {
         setSelectedPlant(plantDetails)
+        Navigate(("/editPlant"));
     }
 
     const handleDeletePlant = () => {
@@ -33,10 +37,12 @@ const PlantCard = ({plantDetails, setSelectedPlant, deletePlant}) => {
                 <span className="plantcard-field-titles">Water: </span>
                 {plantDetails.water}</p>
 
-
-                <Link to="/plantDetails" onClick = {handleClick}>More details</Link>
-                <Link to="/editPlant" onClick={handleClick}>Edit plant</Link>
-                <Link to="/" onClick={handleDeletePlant}> <span>❌</span> Delete plant</Link>
+                <div className = "plant-card-icon-wrapper">
+                {/* <Link to="/plantDetails" onClick = {handleClick}>More details</Link> */}
+                    <img className ="edit-icon" src="http://localhost:8080/draw.png" alt="edit icon" onClick = { handleClickEdit } />
+                    <img className ="delete-icon" src="http://localhost:8080/delete.png" alt="delete icon" onClick = { handleDeletePlant } />
+                </div>
+                
             </div>
         </>
     );

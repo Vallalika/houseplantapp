@@ -124,16 +124,24 @@ h1 {
   margin: 1vw;
 }
 
-.plant-card-text-wrapper {
-  display: flex;
-  flex-direction: column;
-  margin: 1vw;
-}
-
 .plantcard-title {
   font-weight: bolder;
   margin-top: 0.2vh;
   font-size: 1.5vw;
+}
+
+.plant-card-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 1vw;
+}
+
+.plant-card-icon-wrapper {
+  display: flex;
+  align-self: stretch;
+  margin-top: auto;
+  justify-content: flex-end;
 }
 
 .plantcard-paragraph {
@@ -145,17 +153,17 @@ h1 {
   font-weight: bold;
 }
 
-/* DELETE BUTTONS STYLING */
+/* DELETE AND EDIT BUTTONS STYLING */
 
 .delete-icon {
-  width: 1.5%;
-  height: 1.5%;
+  min-width: 25px;
+  max-height: 25px;
   cursor: pointer;
 }
 
 .edit-icon {
-  width: 1.5%;
-  height: 1.5%;
+  min-width: 25px;
+  max-height: 25px;
   cursor: pointer;
   padding-right: 1vw;
 }
