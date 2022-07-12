@@ -19,6 +19,11 @@ public interface CareTaskRepository extends JpaRepository<CareTask,Long> {
     @Query("select c from CareTask c where c.completed = false and c.start < ?1")
     List<CareTask> findByCompletedFalseAndStartLessThan(LocalDate start);
 
+    @Query("select c from CareTask c where c.plant.id = ?1")
+    List<CareTask> findByPlant_Id(Long id);
+
+
+
 
 
 
