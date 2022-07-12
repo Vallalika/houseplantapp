@@ -141,7 +141,8 @@ const PlantManagement = () => {
           
           <Route path="/plantDetails"
                 element = {<PlantDetails
-                          selectedPlant = {selectedPlant}  />} />
+                          selectedPlant = {selectedPlant}
+                          setSelectedPlant = {setSelectedPlant}  />} />
           
           <Route path="/createPlant"
                 element = {<PlantCreation

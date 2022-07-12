@@ -1,6 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const PlantDetails = ({selectedPlant}) => {
+const PlantDetails = ({selectedPlant, setSelectedPlant}) => {
+
+    const handleClick = () => {
+        setSelectedPlant({});
+    }
 
     return (
         <>
@@ -19,6 +24,7 @@ const PlantDetails = ({selectedPlant}) => {
             <p>Pruning: {selectedPlant.pruning}</p>
             <p>Repotting/Top Soil add: {selectedPlant.repotting}</p>
             <p>Notes: {selectedPlant.notes}</p>
+            <Link to="/" className="add-buttons" onClick = { handleClick }>Back to plants</Link>
         </>
     );
 }

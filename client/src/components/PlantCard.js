@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const PlantCard = ({plantDetails, setSelectedPlant, deletePlant}) => {
@@ -43,7 +42,6 @@ const PlantCard = ({plantDetails, setSelectedPlant, deletePlant}) => {
                 {plantDetails.water}</p>
 
                 <div className = "plant-card-icon-wrapper">
-                {/* <Link to="/plantDetails" onClick = {handleClick}>More details</Link> */}
                     <img className="view-icon" src="http://localhost:8080/eye.png" alt="view icon" onClick={ handleViewClick }/>
                     <img className ="edit-icon" src="http://localhost:8080/draw.png" alt="edit icon" onClick = { handleClickEdit } />
                     <img className ="delete-icon" src="http://localhost:8080/delete.png" alt="delete icon" onClick = { handleDeletePlant } />
