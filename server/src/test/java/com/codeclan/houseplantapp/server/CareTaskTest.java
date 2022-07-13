@@ -27,6 +27,7 @@ public class CareTaskTest {
                 .builder()
                 .gardenName("Test")
                 .build();
+
         myPlant = Plant
                 .builder()
                 .plantNameOne("Test")
