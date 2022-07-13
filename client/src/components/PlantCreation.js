@@ -78,12 +78,17 @@ const PlantCreation = ({createPlant,gardens}) => {
         setNotes("");
     }
 
+    const handleCancelClick = () => {
+        Navigate(("/"));
+    }
+
     return (
         <>
             <p>Fill in the below form to add a new plant to your garden</p>
             <form onSubmit = { handleSubmit }>
 
                 <input text="text" placeholder = "Name" name="plantNameOne" id="plantNameOne" size="50" value = {plantNameOne} onChange = {handleNameOneChange} required />
+                <span className = "required-field"> *</span>
                 <br />
 
                 <input text="text" placeholder = "Second name" name="plantNameTwo" id="plantNameTwo" size="50" value={plantNameTwo} onChange={handleNameTwoChange} />
@@ -96,15 +101,18 @@ const PlantCreation = ({createPlant,gardens}) => {
                 <br />        
         
                 <input text="text" placeholder="Status e.g. healthy" name="status" id="status" size="50" value = {status} onChange = {handleStatusChange} required />
+                <span className = "required-field"> *</span>
                 <br />
                 
                 <input text="text" placeholder="Growing season" name="growingSeason" id="growingSeason" size="50" value = {growingSeason} onChange = {handleGrowingSeasonChange} />
                 <br />
 
                 <input text="text" placeholder="Light needs e.g. direct sunlight, partial shade, etc." name="light" id="light" size="50" value = {light} onChange = {handleLightChange} required />
+                <span className = "required-field"> *</span>
                 <br />
 
                 <input text="text" placeholder="Water e.g. signs of ideal soil humidity" name="water" id="water" size="50" value = { water } onChange = {handleWaterChange} required />
+                <span className = "required-field"> *</span>
                 <br />
 
                 <input text="text" placeholder="Ideal temperature range" name="temperature" id="temperature" size="50" value = { temperature } onChange = {handleTemperatureChange} />
@@ -125,9 +133,10 @@ const PlantCreation = ({createPlant,gardens}) => {
                 <input text="text" placeholder="Repotting frequency" name="repotting" id="repotting" size="50" value = {repotting} onChange = {handleRepottingChange} />
                 <br />
 
-                <textarea placeholder="Additional notes" name="notes" id="notes" rows="10" cols="45" value = {notes} onChange = {handleNotesChange} />
+                <textarea placeholder="Additional notes" name="notes" id="notes" rows="10" cols="41" value = {notes} onChange = {handleNotesChange} />
                 <br />
 
+                <button className = "cancel-button" onClick = { handleCancelClick }> Cancel </button>
                 <input type="submit" name="Submit" value="Save" />
 
             </form>

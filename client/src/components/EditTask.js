@@ -53,6 +53,10 @@ const EditTask = ({ editTask, selectedTask, setSelectedTask, deleteTask, plants 
         setSelectedTask({});
     }
 
+    const handleCancelClick = () => {
+        Navigate("/upcomingCare");
+    }
+
     const generatePlantOptions = plants.map((plant, index) =>
         <option key = {index} value={plant.id}> {plant.plantNameOne} </option>
 
@@ -64,30 +68,36 @@ const EditTask = ({ editTask, selectedTask, setSelectedTask, deleteTask, plants 
             <form onSubmit = { handleSubmit }>
 
                 <input text="text" name="title" id="title" size="50" value = {title} onChange = {handleTitleChange} required />
+                <span className = "required-field"> *</span>
                 <br />
 
                 <textarea type="text" name="taskDescription" id="taskDescription" rows="10" cols="40" value={taskDescription} onChange={handleDescriptionChange} />
                 <br />
 
-                <input type="date" name="start" id="start" value={start} onChange = {handleStartChange} />
+                <input type="date" name="start" id="start" value={start} onChange = {handleStartChange} required />
+                <span className = "required-field"> *</span>
                 <br />
                 
-                <input type="date" name="end" id="end" value={end} onChange = {handleEndChange} />
+                <input type="date" name="end" id="end" value={end} onChange = {handleEndChange} required/>
+                <span className = "required-field"> *</span>
                 <br />
 
                 <select name="completed" id="completed" onChange = {handleCompletedChange} required>
                     <option value="Incomplete">Incomplete</option>
                     <option value="Complete">Complete</option>
                 </select>
+                <span className = "required-field"> *</span>
                 <br />
 
                 <select name="plantId" id="plantId" onChange = {handlePlantIdChange} required>
                     <option value = {plantId}> { selectedTask.plant.plantNameOne } </option>
                     {generatePlantOptions}
                 </select>
+                <span className = "required-field"> *</span>
                 <br />
 
-                <input type="submit" name="Submit" value="Save" />
+                <button className = "cancel-button" onClick = { handleCancelClick }> Cancel </button>
+                <input className = "submit" type="submit" name="Submit" value="Save" />
 
             </form>
         </>
