@@ -84,7 +84,7 @@ const PlantCreation = ({createPlant,gardens}) => {
 
     return (
         <>
-            <p>Fill in the below form to add a new plant to your garden</p>
+            <p>Fill in the below form to add a new plant to your garden.</p>
             <form onSubmit = { handleSubmit }>
 
                 <input text="text" placeholder = "Name" name="plantNameOne" id="plantNameOne" size="50" value = {plantNameOne} onChange = {handleNameOneChange} required />

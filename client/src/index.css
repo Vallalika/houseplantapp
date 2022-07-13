@@ -257,3 +257,22 @@ select {
   font-size: 1.1vw;
 }
 
+
+/* MODAL STYLING */
+.modal-show {
+  display: block;
+  width: fit-content;
+  margin: auto;
+  padding: 2vw;
+  background-color: white;
+  border: 0.3vw solid #7fc6a4;
+  border-radius: 1vw;
+}
+
+.modal-hide {
+  display: none;
+}
+
+.centered-button {
+  text-align: center;
+}

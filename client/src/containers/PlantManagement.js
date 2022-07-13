@@ -143,7 +143,10 @@ const PlantManagement = () => {
           
           <Route path="/calendar"
                 element = {<CalendarViewer
-                            tasks = { tasks }/>} />
+                            tasks = { tasks }
+                            selectedTask = { selectedTask }
+                            setSelectedTask = { setSelectedTask }
+                            />} />
           
           <Route path="/plantDetails"
                 element = {<PlantDetails

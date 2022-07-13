@@ -64,7 +64,7 @@ const EditTask = ({ editTask, selectedTask, setSelectedTask, deleteTask, plants 
 
     return (
         <>
-            <p>Edit task</p>
+            <h3>Edit task</h3>
             <form onSubmit = { handleSubmit }>
 
                 <input text="text" name="title" id="title" size="50" value = {title} onChange = {handleTitleChange} required />
