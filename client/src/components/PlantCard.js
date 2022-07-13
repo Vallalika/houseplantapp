@@ -18,6 +18,7 @@ const PlantCard = ({plantDetails, setSelectedPlant, deletePlant}) => {
     const handleDeletePlant = () => {
         deletePlant(plantDetails.id);
     }
+    
 
     return (
         <>

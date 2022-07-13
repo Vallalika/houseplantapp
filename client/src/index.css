@@ -127,7 +127,8 @@ h1 {
 .plant-thumbnail {
   border: 1px solid #4c5f69;
   border-radius: 1vh;
-  width: auto;
+  max-width: 190px;
+  max-width: auto;
   max-height:250px;
   margin: 1vw;
 }
@@ -157,7 +158,9 @@ h1 {
   font-size: 1vw;
 }
 
+/* Also used in plantDetails page */
 .plantcard-field-titles {
+  font-size: 1.2vw;
   font-weight: bold;
 }
 
@@ -183,17 +186,6 @@ h1 {
   cursor: pointer;
 }
 
-/* PLANT DETAILS STYLES */
-
-.plant-picture {
-  border: 1px solid #4c5f69;
-  border-radius: 1vh;
-  max-height:300px;
-  width:auto;
-  margin: 1vw;
-}
-
-
 /* FORM STYLING */
 .required-field {
   font-weight:bolder;
@@ -217,3 +209,51 @@ input {
 select {
   margin-bottom: 8px;
 }
+
+/* PLANT DETAILS STYLING */
+
+.plant-details-wrapper {
+  display: flex;
+  justify-content: center;
+  max-width: fit-content;
+  margin: auto;
+  background-color: #d6f8d6;
+  border: 0.3vw solid #7fc6a4;
+  border-radius: 1vw;
+}
+
+.id-card-wrapper {
+  display:flex;
+  flex-direction: column;
+  max-width: fit-content;
+
+}
+
+.plant-picture {
+  border: 1px solid #4c5f69;
+  border-radius: 1vh;
+  max-height:300px;
+  max-width:225px;
+  margin: 1vw;
+}
+
+.details-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.plant-details-main-name {
+  margin-bottom: 8px;
+}
+
+.plant-details-other-name {
+  font-style: italic;
+  margin-top: 0px;
+}
+
+.plant-details-paragraph {
+  margin-left: 1vw;
+  margin-top: 0px;
+  font-size: 1.1vw;
+}
+
