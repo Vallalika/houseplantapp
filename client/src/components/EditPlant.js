@@ -8,7 +8,7 @@ const EditPlant = ({editPlant, selectedPlant, gardens}) => {
     const [origin, setOrigin] = useState(selectedPlant.origin);
     const [acquisitionDate, setAcquisitionDate] = useState(selectedPlant.acquisitionDate);
     const [status, setStatus] = useState(selectedPlant.status);
-    const [growingSeason, setGrowingSeason] = useState(selectedPlant.plantGrowingSeason);
+    const [growingSeason, setGrowingSeason] = useState(selectedPlant.growingSeason);
     const [light, setLight] = useState(selectedPlant.light);
     const [water, setWater] = useState(selectedPlant.water);
     const [temperature, setTemperature] = useState(selectedPlant.temperature);

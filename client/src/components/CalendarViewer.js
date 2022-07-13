@@ -53,7 +53,7 @@ const CalendarViewer = ({ tasks, selectedTask, setSelectedTask }) => {
                 <p>{selectedTask.plant.plantNameOne}</p>
                 <br />
                 <p><span className="plantcard-field-titles">Title: </span>{selectedTask.title}</p>
-                <p><span className="plantcard-field-titles">Description: {selectedTask.description}</span></p>
+                <p><span className="plantcard-field-titles">Description: </span>{selectedTask.taskDescription}</p>
                 <p><span className="plantcard-field-titles">Completed: </span> {isEventCompleted(selectedTask.completed)}</p>
                 <br />
                 <button className="centered-button" onClick={ handleModalClose }>Close</button>
