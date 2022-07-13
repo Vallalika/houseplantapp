@@ -56,7 +56,7 @@ const EditPlant = ({editPlant, selectedPlant, gardens}) => {
             pruning: pruning,
             repotting: repotting,
             notes: notes,
-            imageUrl: "http://localhost:8080/noimage.jpg",
+            imageUrl: selectedPlant.imageUrl,
             garden: {
                 id: gardens[0].id
             }

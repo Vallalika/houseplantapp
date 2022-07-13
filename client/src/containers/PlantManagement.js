@@ -93,17 +93,23 @@ const PlantManagement = () => {
   const editTask = editedTask => {
     
     // send edited task to db
-    TaskServices.updateTask(editedTask);
+    TaskServices.updateTask(editedTask)
+      .then(() => {
+        TaskServices.getUpcomingCareTasks()
+          .then(upcomingTasks => sortUpcomingTasks(upcomingTasks))
+          .then(upcomingTasks => {
+            setUpcomingTasks(upcomingTasks)
+            return upcomingTasks
+        })
+        .then(upcomingTasks => console.log(upcomingTasks));
+      })
     
     // update locally
     const editedTaskIndex = tasks.findIndex(task => task.id === editedTask.id);
     const updatedTasks = [...tasks];
     updatedTasks[editedTaskIndex] = editedTask;
     setTasks(updatedTasks);
-    
-    TaskServices.getUpcomingCareTasks()
-      .then(upcomingTasks => sortUpcomingTasks(upcomingTasks))
-      .then(upcomingTasks => setUpcomingTasks(upcomingTasks));
+
   };
 
   return (

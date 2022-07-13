@@ -25,7 +25,7 @@ const Task = ({upcomingTask, deleteTask, setSelectedTask}) => {
         <p> For: { upcomingTask.plant.plantNameOne }, Status: { upcomingTask.plant.status } </p>
         <p> { upcomingTask.taskDescription }</p>
         <img className ="edit-icon" src="http://localhost:8080/draw.png" alt="edit icon" onClick = { handleClickEdit } />
-        <img className ="delete-icon" src="http://localhost:8080/delete.png" alt="delete icon" />
+        <img className ="delete-icon" src="http://localhost:8080/delete.png" alt="delete icon" onClick = { handleClickDelete } />
     </>
     )
 }
