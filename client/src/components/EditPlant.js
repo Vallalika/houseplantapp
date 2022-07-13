@@ -62,16 +62,16 @@ const EditPlant = ({editPlant, selectedPlant, gardens}) => {
             }
         };
         editPlant(editedPlant);
-        console.log("From EditPlant: "+ editedPlant);
         Navigate("/");
     }
 
     return (
         <>
-            <p>Edit plant</p>
+            <h3>Edit plant</h3>
             <form onSubmit = { handleSubmit }>
 
                 <input text="text" placeholder = "Name" name="plantNameOne" id="plantNameOne" size="50" value = {plantNameOne} onChange = {handleNameOneChange} required />
+                <span className = "required-field"> *</span>
                 <br />
 
                 <input text="text" placeholder = "Second name" name="plantNameTwo" id="plantNameTwo" size="50" value={plantNameTwo} onChange={handleNameTwoChange} />
@@ -90,9 +90,11 @@ const EditPlant = ({editPlant, selectedPlant, gardens}) => {
                 <br />
 
                 <input text="text" placeholder="Light needs e.g. direct sunlight, partial shade, etc." name="light" id="light" size="50" value = {light} onChange = {handleLightChange} required />
+                <span className = "required-field"> *</span>
                 <br />
 
                 <input text="text" placeholder="Water e.g. signs of ideal soil humidity" name="water" id="water" size="50" value = { water } onChange = {handleWaterChange} required />
+                <span className = "required-field"> *</span>
                 <br />
 
                 <input text="text" placeholder="Ideal temperature range" name="temperature" id="temperature" size="50" value = { temperature } onChange = {handleTemperatureChange} />

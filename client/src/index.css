@@ -192,3 +192,8 @@ h1 {
   width:auto;
   margin: 1vw;
 }
+
+.required-field {
+  font-weight:bolder;
+  color: red;
+}
