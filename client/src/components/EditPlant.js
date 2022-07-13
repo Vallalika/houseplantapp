@@ -120,11 +120,11 @@ const EditPlant = ({editPlant, selectedPlant, gardens}) => {
                 <input text="text" placeholder="Repotting frequency" name="repotting" id="repotting" size="50" value = {repotting} onChange = {handleRepottingChange} />
                 <br />
 
-                <textarea placeholder="Additional notes" name="notes" id="notes" rows="10" cols="41" value = {notes} onChange = {handleNotesChange} />
+                <textarea placeholder="Additional notes" name="notes" id="notes" rows="7" cols="41" value = {notes} onChange = {handleNotesChange} />
                 <br />
 
                 <button className = "cancel-button" onClick = { handleCancelClick }> Cancel </button>
-                <input type="submit" name="Submit" value="Update" />
+                <input className = "submit-button" type="submit" name="Submit" value="Update" />
 
             </form>
         </>

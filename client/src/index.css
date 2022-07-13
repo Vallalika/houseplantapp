@@ -203,4 +203,17 @@ h1 {
 .cancel-button {
   margin-top: 8px;
   margin-right: 16px;
+  min-width: 70px;
+}
+
+.submit-button {
+  min-width: 70px;
+}
+
+input {
+  margin-bottom: 8px;
+}
+
+select {
+  margin-bottom: 8px;
 }

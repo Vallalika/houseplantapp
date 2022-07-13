@@ -137,7 +137,7 @@ const PlantCreation = ({createPlant,gardens}) => {
                 <br />
 
                 <button className = "cancel-button" onClick = { handleCancelClick }> Cancel </button>
-                <input type="submit" name="Submit" value="Save" />
+                <input className = "submit-button" type="submit" name="Submit" value="Save" />
 
             </form>
         </>

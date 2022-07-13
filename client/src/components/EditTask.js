@@ -71,7 +71,7 @@ const EditTask = ({ editTask, selectedTask, setSelectedTask, deleteTask, plants 
                 <span className = "required-field"> *</span>
                 <br />
 
-                <textarea type="text" name="taskDescription" id="taskDescription" rows="10" cols="40" value={taskDescription} onChange={handleDescriptionChange} />
+                <textarea type="text" name="taskDescription" id="taskDescription" rows="8" cols="41" value={taskDescription} onChange={handleDescriptionChange} />
                 <br />
 
                 <input type="date" name="start" id="start" value={start} onChange = {handleStartChange} required />
@@ -97,7 +97,7 @@ const EditTask = ({ editTask, selectedTask, setSelectedTask, deleteTask, plants 
                 <br />
 
                 <button className = "cancel-button" onClick = { handleCancelClick }> Cancel </button>
-                <input className = "submit" type="submit" name="Submit" value="Save" />
+                <input className = "submit-button" type="submit" name="Submit" value="Save" />
 
             </form>
         </>
