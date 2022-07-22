@@ -21,4 +21,4 @@ Current features:
         git clone git@github.com:Vallalika/houseplantapp.git
 
     *The app folder is now created and should be visible.*
-4. Open the server folder with IntelliJ.
+4. Open the server folder with IntelliJ and navigate to server/src/main/java
