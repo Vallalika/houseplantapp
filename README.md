@@ -11,7 +11,7 @@ Current features:
 - a calendar to view all plant care tasks and schedule new ones.
 - a to-do list including your tasks of the day and past incomplete tasks.
 
-![plantitapp](/Users/user/CodeClan_work/Projects/PlantApp/Pic.png)
+<img width="1399" alt="houseplant app image" src="https://user-images.githubusercontent.com/101068957/180453893-2464767b-d2f3-4de3-be98-cee973bf949d.png">
 
 ## Install & Run (MAC OS)
 1. Make sure you have PostrgeSQL, Node, Node Package Manager, JDK and IntelliJ all installed.
@@ -34,3 +34,5 @@ Current features:
         npm start
         
    *Chrome will now open and show the homepage of the app.*
+   
+**Note:** If Chrome doesn't open the page automatically, navigate to http://localhost:3000.
