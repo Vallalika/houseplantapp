@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 
 @Profile("!test")
-//@Component
+@Component
 
 public class DataLoader implements ApplicationRunner {
 
