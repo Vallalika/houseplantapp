@@ -1,5 +1,5 @@
 import React from "react";
-import PlantCard from "./PlantCard";
+import PlantCard from "../features/plants/PlantCard";
 import { Link } from "react-router-dom";
 
 

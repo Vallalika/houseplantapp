@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import Task from './Task';
+import Task from '../features/tasks/Task';
 import { Link } from 'react-router-dom';
 
 const UpcomingTaskList = ({ upcomingTasks, setSelectedTask, deleteTask }) => {

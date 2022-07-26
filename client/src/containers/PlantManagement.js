@@ -2,19 +2,19 @@ import React, { useState, useEffect } from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import { isUpcomingTask, sortUpcomingTasks } from "../services/DateServices";
 
-import AppHeader from '../components/AppHeader';
-import Navigation from '../components/Navigation';
-import UpcomingTaskList from "../components/UpcomingTaskList";
-import PlantList from "../components/PlantList";
-import CalendarViewer from "../components/CalendarViewer";
-import PlantDetails from "../components/PlantDetails";
+import AppHeader from '../sharedComponents/AppHeader';
+import Navigation from '../sharedComponents/Navigation';
+import UpcomingTaskList from "../pages/UpcomingTaskList";
+import PlantList from "../pages/PlantList";
+import CalendarViewer from "../pages/CalendarViewer";
+import PlantDetails from "../features/plants/PlantDetails";
 import PlantServices from "../services/PlantServices";
 import GardenServices from "../services/GardenServices";
 import TaskServices from "../services/TaskServices";
-import PlantCreation from "../components/PlantCreation";
-import TaskCreation from "../components/TaskCreation";
-import EditPlant from "../components/EditPlant";
-import EditTask from "../components/EditTask";
+import PlantCreation from "../features/plants/PlantCreation";
+import TaskCreation from "../features/tasks/TaskCreation";
+import EditPlant from "../features/plants/EditPlant";
+import EditTask from "../features/tasks/EditTask";
 
 
 const PlantManagement = () => {
