@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import PlantManagement from './containers/PlantManagement';
+import PlantManagement from './PlantManagement';
 
 
 function App() {
