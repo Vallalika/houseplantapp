@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from 'react-modal';
 import { Link } from "react-router-dom";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
-import { formatDateToPrettyString } from "../services/DateServices";
+import { formatDateToPrettyString } from "services/DateServices";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";

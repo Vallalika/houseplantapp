@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
-import { formatDateToString } from "../../services/DateServices";
+import { formatDateToString } from "services/DateServices";
 
 const EditTask = ({ editTask, selectedTask, setSelectedTask, deleteTask, plants }) => {
 

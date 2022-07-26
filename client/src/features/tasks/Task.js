@@ -1,6 +1,6 @@
 import React from 'react';
-import { formatDateToPrettyString } from '../../services/DateServices';
 import { useNavigate } from 'react-router-dom';
+import { formatDateToPrettyString } from 'services/DateServices';
 
 const Task = ({upcomingTask, deleteTask, setSelectedTask}) => {
     
