@@ -45,27 +45,27 @@ const CalendarViewer = ({ tasks, selectedTask, setSelectedTask }) => {
 
     return (
         <>
-        <Modal className = { `modal-${isModalOpen == true ? 'show' : 'hide'}` } isOpen = { isModalOpen } ariaHideApp = { false } contentLabel = "Task Details">
-            { isModalOpen
-            &&
-            <>
-                <p className="plantcard-field-titles">{formatDateToPrettyString(selectedTask.start)}</p>
-                <p>{selectedTask.plant.plantNameOne}</p>
-                <br />
-                <p><span className="plantcard-field-titles">Title: </span>{selectedTask.title}</p>
-                <p><span className="plantcard-field-titles">Description: </span>{selectedTask.taskDescription}</p>
-                <p><span className="plantcard-field-titles">Completed: </span> {isEventCompleted(selectedTask.completed)}</p>
-                <br />
-                <button className="centered-button" onClick={ handleModalClose }>Close</button>
-            </> }
-        </Modal>
-        <Link to="/createTask" className = "add-buttons">Add new task</Link>
-        <Calendar localizer={localizer} events = { tasks }
-        startAccessor = "start" endAccessor="end"
-        style={{height: 450, marginTop: "2vw"}}
-        onSelectEvent = { handleSelectedEvent }
-        popup
-        />
+            <Link to="/createTask" className = "add-buttons">Add new task</Link>
+            <Calendar localizer={localizer} events = { tasks }
+            startAccessor = "start" endAccessor="end"
+            style={{height: 450, marginTop: "2vw"}}
+            onSelectEvent = { handleSelectedEvent }
+            popup
+            />
+            <Modal className = { `modal-${isModalOpen === true ? 'show' : 'hide'}` } isOpen = { isModalOpen } ariaHideApp = { false } contentLabel = "Task Details">
+                { isModalOpen
+                &&
+                <>
+                    <p className="plantcard-field-titles">{formatDateToPrettyString(selectedTask.start)}</p>
+                    <p>{selectedTask.plant.plantNameOne}</p>
+                    <br />
+                    <p><span className="plantcard-field-titles">Title: </span>{selectedTask.title}</p>
+                    <p><span className="plantcard-field-titles">Description: </span>{selectedTask.taskDescription}</p>
+                    <p><span className="plantcard-field-titles">Completed: </span> {isEventCompleted(selectedTask.completed)}</p>
+                    <br />
+                    <button className="centered-button" onClick={ handleModalClose }>Close</button>
+                </> }
+            </Modal>
         </>
     );
 }
