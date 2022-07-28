@@ -48,11 +48,11 @@ const CalendarViewer = ({ tasks, selectedTask, setSelectedTask }) => {
             <Link to="/createTask" className = "add-buttons">Add new task</Link>
             <Calendar localizer={localizer} events = { tasks }
             startAccessor = "start" endAccessor="end"
-            style={{height: 450, marginTop: "2vw"}}
+            style={{height: 450, marginTop: "2vw", position: "static", zIndex: "0"}}
             onSelectEvent = { handleSelectedEvent }
             popup
             />
-            <Modal className = { `modal-${isModalOpen === true ? 'show' : 'hide'}` } isOpen = { isModalOpen } ariaHideApp = { false } contentLabel = "Task Details">
+            <Modal className = { `modal-${isModalOpen === true ? 'show' : 'hide'}` } overlayClassName = "modal-overlay" isOpen = { isModalOpen } ariaHideApp = { false } contentLabel = "Task Details">
                 { isModalOpen
                 &&
                 <>

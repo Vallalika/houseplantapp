@@ -270,8 +270,16 @@ select {
   width: 33%;
   height: 33%;
   padding: 16px;
-  z-index: 5;
   overflow: auto;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
 }
 
 .modal-hide {
