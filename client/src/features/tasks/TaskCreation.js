@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 
-const TaskCreation = ({createTask, plants}) => {
+const TaskCreation = ({createTask, plants, setSelectedMenu}) => {
 
     const [title, setTitle] = useState("");
     const [taskDescription, setTaskDescription] = useState("");
@@ -55,6 +55,7 @@ const TaskCreation = ({createTask, plants}) => {
         setEnd("");
         setCompleted(false);
         setPlantId(1);
+        setSelectedMenu("calendar");
         Navigate(("/calendar"));
     }
 

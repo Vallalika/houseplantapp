@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import { isUpcomingTask, sortUpcomingTasks } from "./services/DateServices";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { isUpcomingTask, sortUpcomingTasks } from "services/DateServices";
 
 
 import AppHeader from "shared-components/AppHeader";
@@ -168,7 +168,8 @@ const PlantManagement = () => {
           <Route path="/createTask"
                 element = {<TaskCreation
                           createTask = { createTask }
-                          plants = { plants } />} />
+                          plants = { plants }
+                          setSelectedMenu = { setSelectedMenu }/>} />
         
         </Routes>
 
