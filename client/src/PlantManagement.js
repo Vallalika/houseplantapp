@@ -32,7 +32,7 @@ const PlantManagement = () => {
   
   const [selectedPlant, setSelectedPlant] = useState({});
   const [selectedTask, setSelectedTask] = useState({});
-  const [selectedMenu, setSelectedMenu] = useState("plants");
+  const [selectedMenu, setSelectedMenu] = useState(getSessionStorage("menu","plants"));
 
   useEffect(() => {
     PlantServices.getPlants()
@@ -50,7 +50,22 @@ const PlantManagement = () => {
 
   }, []);
 
+  useEffect(() => {
+    sessionStorage.setItem("menu",selectedMenu);
+  }, [selectedMenu]);
+
+
+  // Session storage to ensure menu stays selected after page reload
+  function getSessionStorage (key, defaultValue) {
+    const currentMenu = sessionStorage.getItem(key);
+    if (!currentMenu) {
+      return defaultValue;
+    }
+    return currentMenu;
+  }
+
   // Plant functionalities
+
   const createPlant = newPlant => {
     PlantServices.addPlant(newPlant)
       .then(savedPlant => setPlants([ ...plants, savedPlant ]));
