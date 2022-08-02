@@ -1,15 +1,20 @@
 package com.codeclan.houseplantapp.server.controllers;
 
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 public class ApiController {
 
-    @GetMapping(value = "/")
-    public String displayMessage () {
-        return "Please go to \"/api\" to use this api.";
-    };
+    @GetMapping(value="/")
+    public RedirectView redirectToApiRoute(RedirectAttributes attributes){
+        attributes.addAttribute("attribute", "/");
+        return new RedirectView("api");
+    }
 
     @GetMapping(value = "/api")
     public String apiRoutes () {
