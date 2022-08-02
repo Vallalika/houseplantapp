@@ -1,7 +1,7 @@
 import { convertStringsToDates, convertDatesToStrings } from "./DateServices";
 
 const baseURL = 'http://localhost:8080/api/careTasks/';
-const upcomingCareURL = 'http://localhost:8080/api/upcomingCare/';
+const upcomingCareURL = 'http://localhost:8080/api/toDo/';
 
 const TaskServices =  {
     

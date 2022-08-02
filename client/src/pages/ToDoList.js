@@ -1,7 +1,7 @@
 import Task from 'features/tasks/Task';
 import { Link } from 'react-router-dom';
 
-const UpcomingTaskList = ({ upcomingTasks, setSelectedTask, deleteTask }) => {
+const ToDoList = ({ upcomingTasks, setSelectedTask, deleteTask }) => {
 
     const generateTaskList = upcomingTasks.map((upcomingTask, index) =>
         <Task
@@ -19,4 +19,4 @@ const UpcomingTaskList = ({ upcomingTasks, setSelectedTask, deleteTask }) => {
     )
 }
 
-export default UpcomingTaskList;
+export default ToDoList;

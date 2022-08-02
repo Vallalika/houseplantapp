@@ -16,6 +16,11 @@ public class GardenController {
     @Autowired
     GardenRepository gardenRepository;
 
+    @GetMapping(value = "/")
+    public String displayMessage () {
+        return "Please go to \"/api\" to view all data.";
+    };
+
     @GetMapping(value = "/api/gardens")
     public ResponseEntity<List<Garden>> getAllGardens(){
         return new ResponseEntity<>(gardenRepository.findAll(), HttpStatus.OK);

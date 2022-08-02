@@ -7,7 +7,7 @@ import AppHeader from "shared-components/AppHeader";
 import Navigation from "shared-components/Navigation";
 
 
-import UpcomingTaskList from "pages/UpcomingTaskList";
+import UpcomingTaskList from "pages/ToDoList";
 import PlantList from "pages/PlantList";
 import CalendarViewer from "pages/CalendarViewer";
 
