@@ -46,8 +46,8 @@ public class CareTaskController {
         return new ResponseEntity(careTaskRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/api/upcomingCare")
-    public ResponseEntity getUpcomingCareTasks() {
+    @GetMapping(value = "/api/toDo")
+    public ResponseEntity getToDoCareTasks() {
         LocalDate todaysDate = LocalDate.now();
         List<CareTask> finalQueryResults = new ArrayList<>();
         List<CareTask> firstQueryResults = careTaskRepository.findByCompletedFalseAndStartLessThan(todaysDate);
