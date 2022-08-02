@@ -14,10 +14,13 @@ public class ApiController {
     @GetMapping(value = "/api")
     public String apiRoutes () {
         return (
-                "Available routes for this API: <br />" +
-                "&nbsp; /gardens and /gardens/{id} <br />" +
-                "&nbsp; /plants and /plants/{id} <br />" +
-                "&nbsp; /careTasks and /careTasks/{id} <br />" +
+                "Available routes for this API: <br /> <br />" +
+                "&nbsp; /gardens <br />" +
+                "&nbsp; /gardens/{id} <br /> <br />" +
+                "&nbsp; /plants <br />" +
+                "&nbsp; /plants/{id} <br /> <br />" +
+                "&nbsp; /careTasks <br />" +
+                "&nbsp; /careTasks/{id} <br />" +
                 "&nbsp; /toDo"
                 );
     }
