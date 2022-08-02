@@ -43,4 +43,6 @@ class ServerApplicationTests {
 		List<CareTask> found = careTaskRepository.findByPlant_Id(14L);
 		assertEquals(0, found.size());
 	}
+
+
 }
