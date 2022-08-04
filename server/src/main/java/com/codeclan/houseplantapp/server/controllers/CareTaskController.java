@@ -26,9 +26,10 @@ public class CareTaskController {
 
         if (completedStatus != null) {
             if (completedStatus.equalsIgnoreCase("incomplete")) {
-                return new ResponseEntity(careTaskRepository.findByCompleted(false), HttpStatus.OK);
+
+                return new ResponseEntity(careTaskRepository.findByCompletedOrderByStartDesc(false), HttpStatus.OK);
             } else {
-                return new ResponseEntity(careTaskRepository.findByCompleted(true), HttpStatus.OK);
+                return new ResponseEntity(careTaskRepository.findByCompletedOrderByStartDesc(true), HttpStatus.OK);
             }
         }
 
