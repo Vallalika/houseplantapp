@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class PlantController {
@@ -54,12 +53,12 @@ public class PlantController {
 //            //careTaskRepository.deleteByPlantId(plant.get().getId());
 //            plantRepository.deleteById(id);
 //        };
-        try{
+        try {
             plantRepository.deleteById(id);
-            return new ResponseEntity("Plant Deleted",HttpStatus.OK);
+            return new ResponseEntity("Plant Deleted", HttpStatus.OK);
         }
         catch(Exception e){
-            return new ResponseEntity("Plant Problem, Cant delete plant with id " + id,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity("Plant Problem, Can't delete plant with id " + id, HttpStatus.BAD_REQUEST);
         }
     }
 
