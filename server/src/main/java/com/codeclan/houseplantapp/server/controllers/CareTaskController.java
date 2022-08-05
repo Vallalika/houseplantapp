@@ -35,12 +35,12 @@ public class CareTaskController {
 
         if (date != null) {
             LocalDate convertedDate = LocalDate.parse(date);
-            return new ResponseEntity(careTaskRepository.findByStart(convertedDate),HttpStatus.OK);
+            return new ResponseEntity(careTaskRepository.findByStartOrderByIdDesc(convertedDate),HttpStatus.OK);
         }
 
         if (today != null) {
             LocalDate todaysDate = LocalDate.now();
-            return new ResponseEntity(careTaskRepository.findByStart(todaysDate), HttpStatus.OK);
+            return new ResponseEntity(careTaskRepository.findByStartOrderByIdDesc(todaysDate), HttpStatus.OK);
         }
 
         // default: we have none of the query strings GET /careTasks
@@ -52,7 +52,7 @@ public class CareTaskController {
         LocalDate todaysDate = LocalDate.now();
         List<CareTask> finalQueryResults = new ArrayList<>();
         List<CareTask> firstQueryResults = careTaskRepository.findByCompletedFalseAndStartLessThan(todaysDate);
-        List<CareTask> secondQueryResults = careTaskRepository.findByStart(todaysDate);
+        List<CareTask> secondQueryResults = careTaskRepository.findByStartOrderByIdDesc(todaysDate);
         finalQueryResults.addAll(firstQueryResults);
         finalQueryResults.addAll(secondQueryResults);
 

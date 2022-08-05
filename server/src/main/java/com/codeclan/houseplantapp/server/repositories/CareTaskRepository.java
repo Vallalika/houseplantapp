@@ -16,9 +16,11 @@ public interface CareTaskRepository extends JpaRepository<CareTask,Long> {
     @Query("select c from CareTask c where c.completed = ?1 order by c.start DESC")
     List<CareTask> findByCompletedOrderByStartDesc(boolean completed);
 
-//    @Query("select c from CareTask c where c.start = ?1 order by c.id DESC")
-//    List<CareTask> findByStartOrderByIdDesc(LocalDate start, Sort sort);
+    @Query("select c from CareTask c where c.start = ?1 order by c.id DESC")
+    List<CareTask> findByStartOrderByIdDesc(LocalDate start);
 
+
+//    OLD CODE
 //    @Query("select c from CareTask c where c.completed = ?1")
 //    List<CareTask> findByCompleted(boolean completedStatus);
 
