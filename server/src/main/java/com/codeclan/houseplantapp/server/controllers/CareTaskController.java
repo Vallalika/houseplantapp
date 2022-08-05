@@ -44,7 +44,7 @@ public class CareTaskController {
         }
 
         // default: we have none of the query strings GET /careTasks
-        return new ResponseEntity(careTaskRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity(careTaskRepository.findByOrderByStartDescIdDesc(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/api/toDo")

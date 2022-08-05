@@ -1,8 +1,6 @@
 package com.codeclan.houseplantapp.server.repositories;
 
 import com.codeclan.houseplantapp.server.classes.CareTask;
-import com.codeclan.houseplantapp.server.classes.Plant;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,6 +10,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface CareTaskRepository extends JpaRepository<CareTask,Long> {
+
+    List<CareTask> findByOrderByStartDescIdDesc();
 
     @Query("select c from CareTask c where c.completed = ?1 order by c.start DESC")
     List<CareTask> findByCompletedOrderByStartDesc(boolean completed);
