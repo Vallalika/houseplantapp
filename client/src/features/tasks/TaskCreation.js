@@ -74,30 +74,30 @@ const TaskCreation = ({createTask, plants, setSelectedMenu}) => {
             <p>Fill in the below form to add a task to your calendar.</p>
             <form onSubmit = { handleSubmit }>
 
-                <input type="text" placeholder = "Task title" name="title" id="title" size="50" value = {title} onChange = {handleTitleChange} required />
+                <input type="text" placeholder = "Task title" name="title" id="title" size="50" value = {title} onChange = { handleTitleChange } required />
                 <span className = "required-field"> *</span>
                 <br />
 
-                <textarea type="text" placeholder = "Task description" name="taskDescription" id="taskDescription" rows="10" cols="41" value={taskDescription} onChange={handleDescriptionChange} />
+                <textarea type="text" placeholder = "Task description" name="taskDescription" id="taskDescription" rows="10" cols="41" value={taskDescription} onChange={ handleDescriptionChange } />
                 <br />
 
                 <label>Start </label>
-                <input type="date" name="start" id="start" value={start} onChange = {handleStartDateChange} required />
+                <input type="date" name="start" id="start" value={start} onChange = { handleStartDateChange } required />
                 <span className = "required-field"> *</span>
                 <br />
                 
                 <label>End &nbsp; </label>
-                <input type="date" name="end" id="end" value={end} onChange = {handleEndDateChange} required />
+                <input type="date" name="end" id="end" value={end} onChange = { handleEndDateChange } required />
                 <span className = "required-field"> *</span>
                 <br />
 
-                <select name="completed" id="completed" onChange = {handleCompletedChange} required>
+                <select name="completed" id="completed" onChange = { handleCompletedChange } required>
                     <option value="Incomplete">Incomplete</option>
                     <option value="Complete">Complete</option>
                 </select>
                 <br />
 
-                <select name="plantId" id="plantId" onChange = {handlePlantIdChange} required>
+                <select name="plantId" id="plantId" onChange = { handlePlantIdChange } required>
                     <option value = "Select an option"> Select a plant </option>
                     {generatePlantOptions}
                 </select>

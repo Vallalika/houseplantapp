@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const ToDoList = ({ tasks, setSelectedTask, deleteTask }) => {
 
     // TO-DO: sort and filter tasks
+    
     const generateTaskList = tasks.map((toDoTask, index) =>
         <Task
             key={index}

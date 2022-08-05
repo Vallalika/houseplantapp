@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { isUpcomingTask, sortUpcomingTasks } from "services/DateServices";
+import { sortUpcomingTasks } from "services/DateServices";
 
 
 import AppHeader from "shared-components/AppHeader";
@@ -28,7 +28,6 @@ const PlantManagement = () => {
   const [plants, setPlants] = useState([]);
   const [gardens, setGardens] = useState([]);
   const [tasks, setTasks] = useState([]);
-  const [upcomingTasks, setUpcomingTasks] = useState([]);
   
   const [selectedPlant, setSelectedPlant] = useState({});
   const [selectedTask, setSelectedTask] = useState({});
@@ -43,10 +42,6 @@ const PlantManagement = () => {
     
     TaskServices.getTasks()
     .then(tasks => setTasks(tasks));
-
-    TaskServices.getUpcomingCareTasks()
-    .then(upcomingTasks => sortUpcomingTasks(upcomingTasks))
-    .then(upcomingTasks => setUpcomingTasks(upcomingTasks));
 
   }, []);
 
@@ -75,7 +70,6 @@ const PlantManagement = () => {
     PlantServices.deletePlant(idToDelete);
     setPlants(plants.filter(plant => plant.id !== idToDelete));
     setTasks(tasks.filter(task => task.plant.id !== idToDelete));
-    setUpcomingTasks(upcomingTasks.filter(task => task.plant.id != idToDelete))
   };
 
   const editPlant = editedPlant => {
@@ -93,39 +87,24 @@ const PlantManagement = () => {
 
   // Task functionalities
   const createTask = newTask => {
-    if (isUpcomingTask(newTask)) {
-      let upcomingTasksUpdated = [...upcomingTasks];
-      upcomingTasksUpdated.push(newTask);
-      upcomingTasksUpdated = sortUpcomingTasks(upcomingTasksUpdated);
-      setUpcomingTasks(upcomingTasksUpdated);
-    }
-    
     TaskServices.addTask(newTask)
     .then(savedTask =>
         setTasks([ ...tasks, savedTask ]));
+        // To-Do: Sort task in list
     };
 
   const deleteTask = idToDelete => {
     TaskServices.deleteTask(idToDelete);
     setTasks(tasks.filter(task => task.id !== idToDelete));
-    setUpcomingTasks(upcomingTasks.filter(upcomingTask => upcomingTask.id != idToDelete));
   };
 
   const editTask = editedTask => {
     
-    // send edited task to db
+    // send edited task to db, then update state with new task
+    // TO-DO: just update locally later
     TaskServices.updateTask(editedTask)
-      .then(() => {
-        TaskServices.getTasks()
-          .then(upcomingTasks => sortUpcomingTasks(upcomingTasks))
-          .then(upcomingTasks => setUpcomingTasks(upcomingTasks))
-      })
-    
-    // update locally
-    const editedTaskIndex = tasks.findIndex(task => task.id === editedTask.id);
-    const updatedTasks = [...tasks];
-    updatedTasks[editedTaskIndex] = editedTask;
-    setTasks(updatedTasks);
+      .then(() => TaskServices.getTasks())
+      .then(tasks => setTasks(tasks));
 
   };
 
@@ -146,17 +125,17 @@ const PlantManagement = () => {
           
           <Route path="/editTask"
                 element = {<EditTask
-                          selectedTask = {selectedTask}
-                          setSelectedTask = {setSelectedTask}
-                          plants = {plants}
-                          editTask = {editTask}
+                          selectedTask = { selectedTask }
+                          setSelectedTask = { setSelectedTask }
+                          plants = { plants }
+                          editTask = { editTask }
                           deleteTask = { deleteTask } />} />
 
           <Route path="/"
                   element = {<PlantList
                             plants = { plants }
-                            setSelectedPlant = {setSelectedPlant}
-                            deletePlant = {deletePlant}/>}/>
+                            setSelectedPlant = { setSelectedPlant }
+                            deletePlant = { deletePlant }/>}/>
           
           <Route path="/calendar"
                 element = {<CalendarViewer
@@ -167,19 +146,19 @@ const PlantManagement = () => {
           
           <Route path="/plantDetails"
                 element = {<PlantDetails
-                          selectedPlant = {selectedPlant}
-                          setSelectedPlant = {setSelectedPlant}  />} />
+                          selectedPlant = { selectedPlant }
+                          setSelectedPlant = { setSelectedPlant }  />} />
           
           <Route path="/createPlant"
                 element = {<PlantCreation
-                          createPlant = {createPlant}
-                          gardens = {gardens} />} />
+                          createPlant = { createPlant }
+                          gardens = { gardens } />} />
           
           <Route path="/editPlant"
                 element = {<EditPlant
-                          editPlant = {editPlant}
-                          selectedPlant = {selectedPlant}
-                          gardens = {gardens} />} />
+                          editPlant = { editPlant }
+                          selectedPlant = { selectedPlant }
+                          gardens = { gardens } />} />
           
           <Route path="/createTask"
                 element = {<TaskCreation

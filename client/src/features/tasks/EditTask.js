@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { formatDateToString } from "services/DateServices";
 
-const EditTask = ({ editTask, selectedTask, setSelectedTask, deleteTask, plants }) => {
+const EditTask = ({ editTask, selectedTask, setSelectedTask, plants }) => {
 
     const noNullValueForDescription = () => {
         if (selectedTask.taskDescription === null) {
@@ -49,12 +49,12 @@ const EditTask = ({ editTask, selectedTask, setSelectedTask, deleteTask, plants 
             }
         };
         editTask(editedTask);
-        Navigate("/upcomingCare");
+        Navigate("/toDo");
         setSelectedTask({});
     }
 
     const handleCancelClick = () => {
-        Navigate("/upcomingCare");
+        Navigate("/toDo");
     }
 
     const generatePlantOptions = plants.map((plant, index) =>
@@ -67,7 +67,7 @@ const EditTask = ({ editTask, selectedTask, setSelectedTask, deleteTask, plants 
             <h3>Edit task</h3>
             <form onSubmit = { handleSubmit }>
 
-                <input text="text" name="title" id="title" size="50" value = {title} onChange = {handleTitleChange} required />
+                <input text="text" name="title" id="title" size="50" value = {title} onChange = { handleTitleChange } required />
                 <span className = "required-field"> *</span>
                 <br />
 
