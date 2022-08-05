@@ -97,6 +97,23 @@ public class DataLoader implements ApplicationRunner {
                 .build();
         careTaskRepository.save(mySecondTask);
 
+        CareTask myThirdTask = CareTask
+                .builder()
+                .title("Same day, added later task")
+                .plant(dragonPlant)
+                .start(LocalDate.of(2022,07,07))
+                .end(LocalDate.of(2022,07,07))
+                .build();
+        careTaskRepository.save(myThirdTask);
+
+        CareTask myFourthTask = CareTask
+                .builder()
+                .title("Same day, added even later task")
+                .plant(dragonPlant)
+                .start(LocalDate.of(2022,07,07))
+                .end(LocalDate.of(2022,07,07))
+                .build();
+        careTaskRepository.save(myFourthTask);
     }
 
 }

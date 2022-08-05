@@ -31,9 +31,17 @@ class ServerApplicationTests {
 	}
 
 	@Test
+	public void canFindAllTasksSortDescending () {
+		List<CareTask> found = careTaskRepository.findByOrderByStartDescIdDesc();
+		assertEquals(4, found.size());
+		assertEquals("Same day, added even later task", found.get(0).getTitle());
+		assertEquals("Water plant", found.get(found.size()-1).getTitle());
+	}
+
+	@Test
 	public void canFindAllTasksByPlantId () {
 		List<CareTask> found = careTaskRepository.findByPlant_Id(2L);
-		assertEquals(2, found.size());
+		assertEquals(1, found.size());
 		assertEquals("Water plant", found.get(0).getTitle());
 	}
 

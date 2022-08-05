@@ -18,32 +18,7 @@ public class CareTaskController {
     CareTaskRepository careTaskRepository;
 
     @GetMapping(value = "/api/careTasks")
-    public ResponseEntity getAllCareTasksAndFilters(
-            @RequestParam(required = false, name = "completed") String completedStatus,
-            @RequestParam(required = false, name = "date") String date,
-            @RequestParam(required = false, name = "today") String today
-    ) {
-
-        if (completedStatus != null) {
-            if (completedStatus.equalsIgnoreCase("incomplete")) {
-
-                return new ResponseEntity(careTaskRepository.findByCompletedOrderByStartDesc(false), HttpStatus.OK);
-            } else {
-                return new ResponseEntity(careTaskRepository.findByCompletedOrderByStartDesc(true), HttpStatus.OK);
-            }
-        }
-
-        if (date != null) {
-            LocalDate convertedDate = LocalDate.parse(date);
-            return new ResponseEntity(careTaskRepository.findByStartOrderByIdDesc(convertedDate),HttpStatus.OK);
-        }
-
-        if (today != null) {
-            LocalDate todaysDate = LocalDate.now();
-            return new ResponseEntity(careTaskRepository.findByStartOrderByIdDesc(todaysDate), HttpStatus.OK);
-        }
-
-        // default: we have none of the query strings GET /careTasks
+    public ResponseEntity getAllCareTasksSorted() {
         return new ResponseEntity(careTaskRepository.findByOrderByStartDescIdDesc(), HttpStatus.OK);
     }
 
