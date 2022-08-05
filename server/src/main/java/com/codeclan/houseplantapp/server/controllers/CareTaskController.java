@@ -51,7 +51,7 @@ public class CareTaskController {
     public ResponseEntity getToDoCareTasks() {
         LocalDate todaysDate = LocalDate.now();
         List<CareTask> finalQueryResults = new ArrayList<>();
-        List<CareTask> firstQueryResults = careTaskRepository.findByCompletedFalseAndStartLessThan(todaysDate);
+        List<CareTask> firstQueryResults = careTaskRepository.findByCompletedFalseAndStartLessThanOrderByStartDescIdDesc(todaysDate);
         List<CareTask> secondQueryResults = careTaskRepository.findByStartOrderByIdDesc(todaysDate);
         finalQueryResults.addAll(firstQueryResults);
         finalQueryResults.addAll(secondQueryResults);

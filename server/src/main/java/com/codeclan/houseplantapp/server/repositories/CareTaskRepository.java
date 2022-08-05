@@ -19,23 +19,15 @@ public interface CareTaskRepository extends JpaRepository<CareTask,Long> {
     @Query("select c from CareTask c where c.start = ?1 order by c.id DESC")
     List<CareTask> findByStartOrderByIdDesc(LocalDate start);
 
-
-//    OLD CODE
-//    @Query("select c from CareTask c where c.completed = ?1")
-//    List<CareTask> findByCompleted(boolean completedStatus);
-
-//    @Query("select c from CareTask c where c.start = ?1 ")
-//    List<CareTask> findByStart(LocalDate start);
-
-    @Query("select c from CareTask c where c.completed = false and c.start < ?1")
-    List<CareTask> findByCompletedFalseAndStartLessThan(LocalDate start);
+    @Query(value = "select * from care_tasks where completed = false and task_start < ?1 ORDER BY task_start DESC, id DESC", nativeQuery = true)
+    List<CareTask> findByCompletedFalseAndStartLessThanOrderByStartDescIdDesc(LocalDate start);
 
     @Query("select c from CareTask c where c.plant.id = ?1")
     List<CareTask> findByPlant_Id(Long id);
 
     @Transactional
     @Modifying
-    @Query(value = "delete from care_tasks where plant_id = ?1",nativeQuery = true)
+    @Query(value = "delete from care_tasks where plant_id = ?1", nativeQuery = true)
     void deleteByPlantId(Long id);
 
 }
