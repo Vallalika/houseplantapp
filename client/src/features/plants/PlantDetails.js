@@ -1,17 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-const PlantDetails = ({selectedPlant, setSelectedPlant}) => {
-
-    // const handleClickBack = () => {
-    //     setSelectedPlant({});
-    // }
+const PlantDetails = ({ selectedPlant }) => {
 
     return (
         <>  
             <div className = "plant-details-wrapper">
                 <section className = "id-card-wrapper">
-                    <img className = "plant-picture" src= {selectedPlant.imageUrl} alt="plant picture" />
+                    <img className = "plant-picture" src= {selectedPlant.imageUrl} alt="plant placeholder" />
                     <p className = "plant-details-paragraph"><span className = "plantcard-field-titles"> Status: </span>{selectedPlant.status} </p>
                     <p className = "plant-details-paragraph"><span className = "plantcard-field-titles">Light: </span>{selectedPlant.light}</p>
                     <p className = "plant-details-paragraph"><span className = "plantcard-field-titles">Water: </span>{selectedPlant.water}</p>

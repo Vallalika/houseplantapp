@@ -7,7 +7,7 @@ import AppHeader from "shared-components/AppHeader";
 import Navigation from "shared-components/Navigation";
 
 
-import UpcomingTaskList from "pages/ToDoList";
+import ToDoList from "pages/ToDoList";
 import PlantList from "pages/PlantList";
 import CalendarViewer from "pages/CalendarViewer";
 
@@ -116,7 +116,7 @@ const PlantManagement = () => {
     // send edited task to db
     TaskServices.updateTask(editedTask)
       .then(() => {
-        TaskServices.getUpcomingCareTasks()
+        TaskServices.getTasks()
           .then(upcomingTasks => sortUpcomingTasks(upcomingTasks))
           .then(upcomingTasks => setUpcomingTasks(upcomingTasks))
       })
@@ -138,10 +138,10 @@ const PlantManagement = () => {
 
         <Routes>
           
-          <Route path="/upcomingCare"
-                element = {<UpcomingTaskList
-                          upcomingTasks = {upcomingTasks}
-                          setSelectedTask = {setSelectedTask}
+          <Route path="/toDo"
+                element = {<ToDoList
+                          tasks = { tasks }
+                          setSelectedTask = { setSelectedTask }
                           deleteTask = { deleteTask } />} />
           
           <Route path="/editTask"

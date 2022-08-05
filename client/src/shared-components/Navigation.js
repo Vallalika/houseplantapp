@@ -7,7 +7,7 @@ const Navigation = ({selectedMenu, setSelectedMenu}) => {
         if (event.target.innerText === "Calendar") {
             setSelectedMenu("calendar");
         } else if (event.target.innerText === "To Do") {
-            setSelectedMenu("To Do");
+            setSelectedMenu("to-do");
         } else {
             setSelectedMenu("plants");
         }
@@ -30,8 +30,8 @@ const Navigation = ({selectedMenu, setSelectedMenu}) => {
                         onClick = { handleClick } >Calendar</Link>
                     </li>
 
-                    <li><Link to="/upcomingCare"
-                        className = { selectedMenu === "To Do" ? "menu-link-selected" : "menu-link" }
+                    <li><Link to="/toDo"
+                        className = { selectedMenu === "to-do" ? "menu-link-selected" : "menu-link" }
                         onClick = { handleClick } >To Do
                         </Link>
                     </li>

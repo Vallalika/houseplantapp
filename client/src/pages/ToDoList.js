@@ -1,20 +1,21 @@
 import Task from 'features/tasks/Task';
 import { Link } from 'react-router-dom';
 
-const ToDoList = ({ upcomingTasks, setSelectedTask, deleteTask }) => {
+const ToDoList = ({ tasks, setSelectedTask, deleteTask }) => {
 
-    const generateTaskList = upcomingTasks.map((upcomingTask, index) =>
+    // TO-DO: sort and filter tasks
+    const generateTaskList = tasks.map((toDoTask, index) =>
         <Task
             key={index}
-            upcomingTask = {upcomingTask}
-            setSelectedTask = {setSelectedTask}
-            deleteTask = {deleteTask}
+            toDoTask = { toDoTask }
+            setSelectedTask = { setSelectedTask }
+            deleteTask = { deleteTask }
             />)
 
     return (
     <>
         <Link to="/createTask" className = "add-buttons">Add new task</Link>
-        {generateTaskList}
+        { generateTaskList }
     </>
     )
 }
