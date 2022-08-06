@@ -1,13 +1,14 @@
 import Task from 'features/tasks/Task';
 import { Link } from 'react-router-dom';
+import { isToDoTask } from 'services/DateServices';
 
 const ToDoList = ({ tasks, setSelectedTask, deleteTask }) => {
-
-    // TO-DO: sort and filter tasks
     
-    const generateTaskList = tasks.map((toDoTask, index) =>
+    const filteredTaskList = tasks.filter((task) => isToDoTask(task));
+
+    const generateTaskList = filteredTaskList.map((toDoTask, index) =>
         <Task
-            key={index}
+            key = { index }
             toDoTask = { toDoTask }
             setSelectedTask = { setSelectedTask }
             deleteTask = { deleteTask }

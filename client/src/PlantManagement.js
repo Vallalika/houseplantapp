@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { sortUpcomingTasks } from "services/DateServices";
 
 
 import AppHeader from "shared-components/AppHeader";
