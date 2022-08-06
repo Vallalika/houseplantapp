@@ -25,6 +25,7 @@ const PlantServices =  {
                 'Content-Type': 'application/json'
             }
         })
+        .then(updatedPlant => updatedPlant.json());
     },
 
     deletePlant(id) {

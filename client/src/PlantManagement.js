@@ -48,7 +48,6 @@ const PlantManagement = () => {
     sessionStorage.setItem("menu",selectedMenu);
   }, [selectedMenu]);
 
-
   // Session storage to ensure menu stays selected after page reload
   function getSessionStorage (key, defaultValue) {
     const currentMenu = sessionStorage.getItem(key);
@@ -74,13 +73,13 @@ const PlantManagement = () => {
   const editPlant = editedPlant => {
     
     // send edited plant to db
-    PlantServices.updatePlant(editedPlant);
+    PlantServices.updatePlant(editedPlant)
     
     // update locally
-    const editedPlantIndex = plants.findIndex(plant => plant.id === editedPlant.id);
-    const updatedPlants = [...plants];
-    updatedPlants[editedPlantIndex] = editedPlant;
-    setPlants(updatedPlants);
+    // const editedPlantIndex = plants.findIndex(plant => plant.id === editedPlant.id);
+    // const updatedPlants = [...plants];
+    // updatedPlants[editedPlantIndex] = editedPlant;
+    // setPlants(updatedPlants);
 
   };
 

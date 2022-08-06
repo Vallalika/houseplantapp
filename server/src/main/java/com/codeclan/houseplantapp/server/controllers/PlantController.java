@@ -1,6 +1,5 @@
 package com.codeclan.houseplantapp.server.controllers;
 
-import com.codeclan.houseplantapp.server.classes.CareTask;
 import com.codeclan.houseplantapp.server.classes.Plant;
 import com.codeclan.houseplantapp.server.repositories.CareTaskRepository;
 import com.codeclan.houseplantapp.server.repositories.PlantRepository;
@@ -66,7 +65,7 @@ public class PlantController {
     public ResponseEntity updatePlantById(@RequestBody Plant plant, @PathVariable Long id) {
         plant.setId(id);
         plantRepository.save(plant);
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
 }
