@@ -70,7 +70,7 @@ export const convertDatesToStrings = (task) => {
     return updatedTask;
 }
 
-// Sort tasks by later date first for local updates
+// Sort tasks by later date first
 // Sort array in place, so let tasks be a copy of another array
 export const sortTasks = (tasks) => {
     const sortTasks = tasks.sort((taskA, taskB) => Number(taskB.start)-Number(taskA.start));

@@ -55,6 +55,6 @@ public class CareTaskController {
     public ResponseEntity updateTaskById(@RequestBody CareTask task, @PathVariable Long id) {
         task.setId(id);
         careTaskRepository.save(task);
-        return new ResponseEntity(task,HttpStatus.OK);
+        return new ResponseEntity(careTaskRepository.findById(id), HttpStatus.OK);
     }
 }

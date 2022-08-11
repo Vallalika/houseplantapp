@@ -5,7 +5,7 @@ import { isToDoTask } from 'services/DateServices';
 const ToDoList = ({ tasks, setSelectedTask, deleteTask }) => {
     
     const filteredTaskList = tasks.filter((task) => isToDoTask(task));
-
+    
     const generateTaskList = filteredTaskList.map((toDoTask, index) =>
         <Task
             key = { index }

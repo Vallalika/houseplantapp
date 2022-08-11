@@ -87,15 +87,10 @@ const PlantManagement = () => {
   const createTask = newTask => {
     TaskServices.addTask(newTask)
     .then((savedTask) => {
-      // let updatedTasks = [...tasks];
-      // console.log(updatedTasks);
-      // updatedTasks.push(savedTask);
-      // console.log("after push");
-      // console.log(updatedTasks);
-      // sortTasks(updatedTasks);
-      // console.log("after sort");
-      // console.log(updatedTasks);
-      // setTasks(updatedTasks);
+      let updatedTasks = [...tasks];
+      updatedTasks.push(savedTask);
+      sortTasks(updatedTasks);
+      setTasks(updatedTasks);
       })
     };
 
@@ -105,14 +100,17 @@ const PlantManagement = () => {
   };
 
   const editTask = editedTask => {
-    
-    // send edited task to db, then update state with new task
-    // TO-DO: just update locally later
-    TaskServices.updateTask(editedTask)
-      .then(() => TaskServices.getTasks())
-      .then(tasks => setTasks(tasks));
 
-  };
+    // send edited task to db, then update state with new task
+    TaskServices.updateTask(editedTask)
+      .then(dbUpdatedTask => {
+        const editedTaskIndex = tasks.findIndex(task => task.id === editedTask.id);
+        const updatedTasks = [...tasks];
+        updatedTasks[editedTaskIndex] = dbUpdatedTask;
+        sortTasks(updatedTasks);
+        setTasks(updatedTasks);
+        });
+    };
 
   return (
     <>

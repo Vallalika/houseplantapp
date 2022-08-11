@@ -32,6 +32,8 @@ const TaskServices =  {
             'Content-Type': 'application/json'
         }
         })
+        .then(res => res.json())
+        .then(task => convertStringsToDates(task))
     },
 
     deleteTask(id) {

@@ -45,7 +45,7 @@ const EditTask = ({ editTask, selectedTask, setSelectedTask, plants }) => {
             end: new Date(end),
             completed: completed,
             plant: {
-                id: plantId
+                id: plantId,
             }
         };
         editTask(editedTask);
