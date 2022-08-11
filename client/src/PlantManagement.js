@@ -21,6 +21,7 @@ import EditTask from "features/tasks/EditTask";
 import PlantServices from "services/PlantServices";
 import GardenServices from "services/GardenServices";
 import TaskServices from "services/TaskServices";
+import { sortTasks } from "services/DateServices";
 
 const PlantManagement = () => {
 
@@ -72,23 +73,30 @@ const PlantManagement = () => {
 
   const editPlant = editedPlant => {
     
-    // send edited plant to db
+    // send edited plant to db, then update locally with the data from the db
     PlantServices.updatePlant(editedPlant)
-    
-    // update locally
-    // const editedPlantIndex = plants.findIndex(plant => plant.id === editedPlant.id);
-    // const updatedPlants = [...plants];
-    // updatedPlants[editedPlantIndex] = editedPlant;
-    // setPlants(updatedPlants);
-
+      .then(dbUpdatedPlant => {
+        const editedPlantIndex = plants.findIndex(plant => plant.id === editedPlant.id);
+        const updatedPlants = [...plants];
+        updatedPlants[editedPlantIndex] = dbUpdatedPlant;
+        setPlants(updatedPlants);
+      })
   };
 
   // Task functionalities
   const createTask = newTask => {
     TaskServices.addTask(newTask)
-    .then(savedTask =>
-        setTasks([ ...tasks, savedTask ]));
-        // To-Do: Sort task in list
+    .then((savedTask) => {
+      // let updatedTasks = [...tasks];
+      // console.log(updatedTasks);
+      // updatedTasks.push(savedTask);
+      // console.log("after push");
+      // console.log(updatedTasks);
+      // sortTasks(updatedTasks);
+      // console.log("after sort");
+      // console.log(updatedTasks);
+      // setTasks(updatedTasks);
+      })
     };
 
   const deleteTask = idToDelete => {

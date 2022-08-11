@@ -1,7 +1,6 @@
 import { convertStringsToDates, convertDatesToStrings } from "./DateServices";
 
 const baseURL = 'http://localhost:8080/api/careTasks/';
-const upcomingCareURL = 'http://localhost:8080/api/toDo/';
 
 const TaskServices =  {
     
@@ -10,13 +9,6 @@ const TaskServices =  {
         .then(res => res.json())
         .then(tasks => tasks.map((task) =>
         convertStringsToDates(task)))
-    },
-
-    getUpcomingCareTasks() {
-        return fetch(upcomingCareURL)
-        .then(res => res.json())
-        .then(upcomingTasks => upcomingTasks.map((upcomingTask) =>
-        convertStringsToDates(upcomingTask)))
     },
 
     addTask(task) {

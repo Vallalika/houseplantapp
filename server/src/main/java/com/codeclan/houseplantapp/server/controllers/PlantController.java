@@ -65,7 +65,7 @@ public class PlantController {
     public ResponseEntity updatePlantById(@RequestBody Plant plant, @PathVariable Long id) {
         plant.setId(id);
         plantRepository.save(plant);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity(plant, HttpStatus.OK);
     }
 
 }
