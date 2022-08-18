@@ -70,12 +70,19 @@ export const convertDatesToStrings = (task) => {
     return updatedTask;
 }
 
-// Sort tasks by later date first
+// Sort tasks by later date first, then by id
 // Sort array in place, so let tasks be a copy of another array
+
 export const sortTasks = (tasks) => {
-    const sortTasks = tasks.sort((taskA, taskB) => Number(taskB.start)-Number(taskA.start));
-    return sortTasks;
-}
+    const sortedTasks = tasks.sort((taskA, taskB) => { 
+        if (taskA.start - taskB.start === 0) {
+            return taskB.id - taskA.id;
+        }
+        return taskB.start - taskA.start;
+        }
+    );
+    return sortedTasks;
+};
 
 export const isToDoTask = (newTask) => {
     let todayStart = new Date();

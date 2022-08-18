@@ -76,10 +76,10 @@ const TaskCreation = ({createTask, plants, setSelectedMenu}) => {
 
     return (
         <>
-            <p>Fill in the below form to add a task to your calendar.</p>
+            <p>Fill in the below form to add a task to your calendar and to-do list.</p>
             <form onSubmit = { handleSubmit }>
 
-                <input type="text" placeholder = "Task title" name="title" id="title" size="50" value = {title} onChange = { handleTitleChange } required />
+                <input type="text" placeholder = "Task title" name="title" id="title" size="50" value = { title } onChange = { handleTitleChange } required />
                 <span className = "required-field"> *</span>
                 <br />
 
