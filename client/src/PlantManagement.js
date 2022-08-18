@@ -168,7 +168,7 @@ const PlantManagement = () => {
                 element = {<TaskCreation
                           createTask = { createTask }
                           plants = { plants }
-                          setSelectedMenu = { setSelectedMenu }/>} />
+                          setSelectedMenu = { setSelectedMenu } />} />
         
         </Routes>
 

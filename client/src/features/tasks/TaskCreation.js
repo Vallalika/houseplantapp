@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
+import { isToDoTask } from "services/DateServices";
 
 const TaskCreation = ({createTask, plants, setSelectedMenu}) => {
 
@@ -55,12 +56,16 @@ const TaskCreation = ({createTask, plants, setSelectedMenu}) => {
         setEnd("");
         setCompleted(false);
         setPlantId(1);
-        setSelectedMenu("calendar");
-        Navigate(("/calendar"));
+        if ( isToDoTask(newTask) ) {
+            Navigate(("/toDo"));
+        } else {
+            setSelectedMenu("calendar");
+            Navigate(("/calendar"));
+        }
     }
 
     const handleCancelClick = () => {
-        Navigate(("/calendar"));
+        Navigate(("/toDo"));
     }
 
     const generatePlantOptions = plants.map((plant, index) =>
