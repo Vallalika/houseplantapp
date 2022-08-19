@@ -36,11 +36,9 @@ const ToDoList = ({ tasks, setSelectedTask, editTask, deleteTask }) => {
     <>
         <Link to="/createTask" className = "add-buttons">Add new task</Link>
         <div className="table-wrapper">
-            <h4>Date</h4>
-            <h4>Task</h4>
-            <h4 className = "centered">Completed</h4>
-            <h4>Edit</h4>
-            <h4 className = "centered">Delete</h4>
+            <p className = "completed-header">Completed</p>
+            <p className = "header-style">Edit</p>
+            <p className = "header-style">Delete</p>
         </div>
         { generateTaskList }
     </>

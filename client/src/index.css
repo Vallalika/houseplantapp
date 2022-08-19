@@ -297,15 +297,29 @@ select {
 
 .table-wrapper {
   display: grid;
-  grid-template-columns: 250px 280px 200px 80px 80px;
+  grid-template-columns: 320px 180px 80px 80px;
   align-items: center;
 }
 
-.centered {
+.header-style {
   justify-self: center;
+  margin-bottom: 0px;
+  font-size: 16px;
+  color: #4d514d;
+  font-weight: bold;
 }
 
-.centered-delete-icon {
+.completed-header {
+  justify-self: center;
+  grid-column: 2 / 3;
+  margin-bottom: 0px;
+  font-size: 16px;
+  color: #4d514d;
+  font-weight: bold;
+  
+}
+
+.centered-icons {
   justify-self: center;
   min-width: 25px;
   max-height: 25px;
