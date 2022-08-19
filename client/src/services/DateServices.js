@@ -105,4 +105,8 @@ export const isToDoTask = (newTask) => {
         } else {
             return false
         };
-}
+};
+
+export const isOnSameDate = (taskA, taskB) => {
+    return taskA.getTime() === taskB.getTime();
+};
