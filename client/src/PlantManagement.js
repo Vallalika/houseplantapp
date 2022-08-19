@@ -125,6 +125,7 @@ const PlantManagement = () => {
                 element = {<ToDoList
                           tasks = { tasks }
                           setSelectedTask = { setSelectedTask }
+                          editTask = { editTask }
                           deleteTask = { deleteTask } />} />
           
           <Route path="/editTask"
