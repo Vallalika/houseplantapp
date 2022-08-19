@@ -293,10 +293,21 @@ select {
   display: none;
 }
 
-/* To-do page styling */
+/* TO-DO PAGE AND TASKS STYLING */
 
-.task-wrapper {
+.table-wrapper {
   display: grid;
-  grid-template-columns: 250px 300px 100px 50px 50px;
+  grid-template-columns: 250px 280px 200px 80px 80px;
   align-items: center;
+}
+
+.centered {
+  justify-self: center;
+}
+
+.centered-delete-icon {
+  justify-self: center;
+  min-width: 25px;
+  max-height: 25px;
+  cursor: pointer;
 }

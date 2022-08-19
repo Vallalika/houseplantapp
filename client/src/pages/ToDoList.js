@@ -18,6 +18,13 @@ const ToDoList = ({ tasks, setSelectedTask, editTask, deleteTask }) => {
     return (
     <>
         <Link to="/createTask" className = "add-buttons">Add new task</Link>
+        <div className="table-wrapper">
+            <h4>Date</h4>
+            <h4>Task</h4>
+            <h4 className = "centered">Completed</h4>
+            <h4>Edit</h4>
+            <h4 className = "centered">Delete</h4>
+        </div>
         { generateTaskList }
     </>
     )
