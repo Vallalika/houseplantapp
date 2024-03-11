@@ -1,14 +1,12 @@
 import React from 'react';
 import './App.css';
-import PlantManagement from './PlantManagement';
+import PlantManagement from './pages/PlantManagement';
 
 
 function App() {
 
   return (
-    <>
       <PlantManagement />
-    </>
   );
 }
 
