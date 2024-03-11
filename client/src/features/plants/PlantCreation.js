@@ -35,7 +35,7 @@ const PlantCreation = ({createPlant,gardens}) => {
     const handleRepottingChange = (ev) => setRepotting(ev.target.value);
     const handleNotesChange = (ev) => setNotes(ev.target.value);
 
-    const Navigate = useNavigate();
+    // const Navigate = useNavigate();
 
     const handleSubmit = ev => {
         ev.preventDefault();
@@ -60,7 +60,7 @@ const PlantCreation = ({createPlant,gardens}) => {
             }
         }
         createPlant(newPlant);
-        Navigate("/");
+        // Navigate("/");
         setPlantNameOne("");
         setPlantNameTwo("");
         setOrigin("");
@@ -79,7 +79,7 @@ const PlantCreation = ({createPlant,gardens}) => {
     }
 
     const handleCancelClick = () => {
-        Navigate(("/"));
+        // Navigate(("/"));
     }
 
     return (

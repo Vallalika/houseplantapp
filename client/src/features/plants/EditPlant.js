@@ -35,7 +35,7 @@ const EditPlant = ({editPlant, selectedPlant, gardens}) => {
     const handleRepottingChange = (ev) => setRepotting(ev.target.value);
     const handleNotesChange = (ev) => setNotes(ev.target.value);
 
-    const Navigate = useNavigate();
+    // const Navigate = useNavigate();
 
     const handleSubmit = ev => {
         ev.preventDefault();
@@ -62,11 +62,11 @@ const EditPlant = ({editPlant, selectedPlant, gardens}) => {
             }
         };
         editPlant(editedPlant);
-        Navigate("/");
+        // Navigate("/");
     }
 
     const handleCancelClick = () => {
-        Navigate(("/"));
+        // Navigate(("/"));
     }
 
     return (

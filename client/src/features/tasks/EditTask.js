@@ -33,7 +33,7 @@ const EditTask = ({ editTask, selectedTask, setSelectedTask, plants }) => {
     }
     const handlePlantIdChange = (ev) => setPlantId(ev.target.value);
 
-    const Navigate = useNavigate();
+    // const Navigate = useNavigate();
 
     const handleSubmit = ev => {
         ev.preventDefault();
@@ -49,12 +49,12 @@ const EditTask = ({ editTask, selectedTask, setSelectedTask, plants }) => {
             }
         };
         editTask(editedTask);
-        Navigate("/toDo");
+        // Navigate("/toDo");
         setSelectedTask({});
     }
 
     const handleCancelClick = () => {
-        Navigate("/toDo");
+        // Navigate("/toDo");
     }
 
     const generatePlantOptions = plants.map((plant, index) =>

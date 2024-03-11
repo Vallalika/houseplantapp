@@ -18,12 +18,12 @@ const PlantList = ({ plants, setSelectedPlant, deletePlant }) => {
 
   return (
     <>
-      <Link
+      {/* <Link
         to='/createPlant'
         className='add-buttons'
       >
         Add new plant
-      </Link>
+      </Link> */}
       <div className='plantcard-view-wrapper'>{mapPlants}</div>
     </>
   );
