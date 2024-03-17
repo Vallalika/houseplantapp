@@ -8,7 +8,6 @@ import PlantList from 'pages/PlantList';
 import CalendarViewer from 'pages/CalendarViewer';
 
 import PlantDetails from 'features/plants/PlantDetails';
-import PlantCreation from 'features/plants/PlantCreation';
 import EditPlant from 'features/plants/EditPlant';
 import TaskCreation from 'features/tasks/TaskCreation';
 import EditTask from 'features/tasks/EditTask';
@@ -21,7 +20,7 @@ import { sortTasks } from 'services/DateServices';
 import { appConstants } from 'appConstants';
 
 const PlantManagement = () => {
-  // const [gardens, setGardens] = useState([]);
+  const [gardens, setGardens] = useState([]);
   const [plants, setPlants] = useState([]);
   const [tasks, setTasks] = useState([]);
 
@@ -46,13 +45,6 @@ const PlantManagement = () => {
     const currentKey = sessionStorage.getItem(key);
     return currentKey ? currentKey : defaultValue;
   }
-
-  // Plant functionalities
-  const createPlant = (newPlant) => {
-    PlantServices.addPlant(newPlant).then((savedPlant) =>
-      setPlants([...plants, savedPlant])
-    );
-  };
 
   const deletePlant = (idToDelete) => {
     PlantServices.deletePlant(idToDelete);
@@ -108,7 +100,9 @@ const PlantManagement = () => {
 
       {selectedMenu === appConstants.PLANTS_MENU && (
         <PlantList
+          gardens={gardens}
           plants={plants}
+          setPlants={setPlants}
           setSelectedPlant={setSelectedPlant}
           setSelectedMenu={setSelectedMenu}
           deletePlant={deletePlant}
