@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PlantServices } from 'services/PlantServices';
+import PlantServices from 'services/PlantServices';
 import PlantCreation from 'features/plants/PlantCreation';
 import PlantCard from 'features/plants/PlantCard';
 
@@ -44,14 +44,17 @@ const PlantList = ({
           createPlant={createPlant}
         />
       )}
-
-      <button
-        className='add-buttons'
-        onClick={handleAddPlant}
-      >
-        Add new plant
-      </button>
-      <div className='plantcard-view-wrapper'>{mapPlants}</div>
+      {!showPlantForm && (
+        <>
+          <button
+            className='add-buttons'
+            onClick={handleAddPlant}
+          >
+            Add new plant
+          </button>
+          <div className='plantcard-view-wrapper'>{mapPlants}</div>
+        </>
+      )}
     </>
   );
 };
