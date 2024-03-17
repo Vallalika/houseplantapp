@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PlantCard from 'features/plants/PlantCard';
 
 const PlantList = ({ plants, setSelectedPlant, deletePlant }) => {
@@ -16,14 +15,18 @@ const PlantList = ({ plants, setSelectedPlant, deletePlant }) => {
     </section>
   ));
 
+  const handleAddPlant = () => {
+    console.log('clicked');
+  };
+
   return (
     <>
-      {/* <Link
-        to='/createPlant'
+      <button
         className='add-buttons'
+        onClick={handleAddPlant}
       >
         Add new plant
-      </Link> */}
+      </button>
       <div className='plantcard-view-wrapper'>{mapPlants}</div>
     </>
   );

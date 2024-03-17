@@ -79,11 +79,12 @@ h1 {
   border-bottom-right-radius: 65% 5%;
 }
 
-/* ADD BUTTONS STYLING */
+/* BUTTONS STYLING */
 
 .add-buttons {
   text-decoration: none;
   background-color: #7fc6a4;
+  border: 2px solid #7fc6a4;
   border-radius: 6px;
   color: #fff;
   cursor: pointer;
@@ -97,6 +98,7 @@ h1 {
 
 .add-buttons:hover {
   color: #d6f8d6;
+  border: 2px solid #7fc6a4;
   background-color: #4c5f69;
 }
 

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import AppHeader from 'shared-components/AppHeader';
 import Navigation from 'shared-components/Navigation';
@@ -111,6 +110,7 @@ const PlantManagement = () => {
         <PlantList
           plants={plants}
           setSelectedPlant={setSelectedPlant}
+          setSelectedMenu={setSelectedMenu}
           deletePlant={deletePlant}
         />
       )}
