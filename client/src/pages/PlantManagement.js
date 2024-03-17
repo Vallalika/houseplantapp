@@ -22,7 +22,7 @@ import { sortTasks } from 'services/DateServices';
 import { appConstants } from 'appConstants';
 
 const PlantManagement = () => {
-  const [gardens, setGardens] = useState([]);
+  // const [gardens, setGardens] = useState([]);
   const [plants, setPlants] = useState([]);
   const [tasks, setTasks] = useState([]);
 
@@ -34,7 +34,7 @@ const PlantManagement = () => {
 
   useEffect(() => {
     PlantServices.getPlants().then((plants) => setPlants(plants));
-    GardenServices.getGardens().then((gardens) => setGardens(gardens));
+    // GardenServices.getGardens().then((gardens) => setGardens(gardens));
     TaskServices.getTasks().then((tasks) => setTasks(tasks));
   }, []);
 
@@ -100,7 +100,6 @@ const PlantManagement = () => {
   };
 
   return (
-    // <Router>
     <>
       <AppHeader />
       <Navigation
@@ -133,98 +132,6 @@ const PlantManagement = () => {
         />
       )}
     </>
-
-    //   <Routes>
-    //     <Route
-    //       path='/toDo'
-    //       element={
-    //         <ToDoList
-    //           tasks={tasks}
-    //           setSelectedTask={setSelectedTask}
-    //           editTask={editTask}
-    //           deleteTask={deleteTask}
-    //         />
-    //       }
-    //     />
-
-    //     <Route
-    //       path='/editTask'
-    //       element={
-    //         <EditTask
-    //           selectedTask={selectedTask}
-    //           setSelectedTask={setSelectedTask}
-    //           plants={plants}
-    //           editTask={editTask}
-    //           deleteTask={deleteTask}
-    //         />
-    //       }
-    //     />
-
-    //     <Route
-    //       path='/'
-    //       element={
-    //         <PlantList
-    //           plants={plants}
-    //           setSelectedPlant={setSelectedPlant}
-    //           deletePlant={deletePlant}
-    //         />
-    //       }
-    //     />
-
-    //     <Route
-    //       path='/calendar'
-    //       element={
-    //         <CalendarViewer
-    //           tasks={tasks}
-    //           selectedTask={selectedTask}
-    //           setSelectedTask={setSelectedTask}
-    //         />
-    //       }
-    //     />
-
-    //     <Route
-    //       path='/plantDetails'
-    //       element={
-    //         <PlantDetails
-    //           selectedPlant={selectedPlant}
-    //           setSelectedPlant={setSelectedPlant}
-    //         />
-    //       }
-    //     />
-
-    //     <Route
-    //       path='/createPlant'
-    //       element={
-    //         <PlantCreation
-    //           createPlant={createPlant}
-    //           gardens={gardens}
-    //         />
-    //       }
-    //     />
-
-    //     <Route
-    //       path='/editPlant'
-    //       element={
-    //         <EditPlant
-    //           editPlant={editPlant}
-    //           selectedPlant={selectedPlant}
-    //           gardens={gardens}
-    //         />
-    //       }
-    //     />
-
-    //     <Route
-    //       path='/createTask'
-    //       element={
-    //         <TaskCreation
-    //           createTask={createTask}
-    //           plants={plants}
-    //           setSelectedMenu={setSelectedMenu}
-    //         />
-    //       }
-    //     />
-    //   </Routes>
-    // </Router>
   );
 };
 
