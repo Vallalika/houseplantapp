@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 
-const PlantCreation = ({ createPlant, gardens, setShowPlantForm }) => {
+const PlantCreation = ({
+  createPlant,
+  gardens,
+  setShowPlantForm,
+  setShowPlantList,
+}) => {
   const [plantNameOne, setPlantNameOne] = useState('');
   const [plantNameTwo, setPlantNameTwo] = useState('');
   const [origin, setOrigin] = useState('');
@@ -79,6 +84,7 @@ const PlantCreation = ({ createPlant, gardens, setShowPlantForm }) => {
 
   const handleCancelClick = () => {
     setShowPlantForm(false);
+    setShowPlantList(true);
     setPlantNameOne('');
     setPlantNameTwo('');
     setOrigin('');

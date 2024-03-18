@@ -30,6 +30,7 @@ const PlantList = ({ gardens, plants, setPlants, deletePlant }) => {
 
   const handleAddPlant = () => {
     setShowPlantForm(true);
+    setShowPlantList(false);
   };
 
   // Plant functionalities
