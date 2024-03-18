@@ -7,8 +7,6 @@ import ToDoList from 'pages/ToDoList';
 import PlantList from 'pages/PlantList';
 import CalendarViewer from 'pages/CalendarViewer';
 
-import PlantDetails from 'features/plants/PlantDetails';
-import EditPlant from 'features/plants/EditPlant';
 import TaskCreation from 'features/tasks/TaskCreation';
 import EditTask from 'features/tasks/EditTask';
 
@@ -49,17 +47,6 @@ const PlantManagement = () => {
     PlantServices.deletePlant(idToDelete);
     setPlants(plants.filter((plant) => plant.id !== idToDelete));
     setTasks(tasks.filter((task) => task.plant.id !== idToDelete));
-  };
-
-  const editPlant = (editedPlant) => {
-    PlantServices.updatePlant(editedPlant).then((dbUpdatedPlant) => {
-      const editedPlantIndex = plants.findIndex(
-        (plant) => plant.id === editedPlant.id
-      );
-      const updatedPlants = [...plants];
-      updatedPlants[editedPlantIndex] = dbUpdatedPlant;
-      setPlants(updatedPlants);
-    });
   };
 
   // Task functionalities

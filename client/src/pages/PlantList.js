@@ -3,6 +3,7 @@ import PlantServices from 'services/PlantServices';
 import PlantCreation from 'features/plants/PlantCreation';
 import PlantCard from 'features/plants/PlantCard';
 import PlantDetails from 'features/plants/PlantDetails';
+import EditPlant from 'features/plants/EditPlant';
 
 const PlantList = ({ gardens, plants, setPlants, deletePlant }) => {
   const [showPlantForm, setShowPlantForm] = useState(false);
@@ -22,6 +23,7 @@ const PlantList = ({ gardens, plants, setPlants, deletePlant }) => {
         deletePlant={deletePlant}
         setShowPlantList={setShowPlantList}
         setShowPlantDetails={setShowPlantDetails}
+        setShowEditPlant={setShowEditPlant}
       />
     </section>
   ));
@@ -35,6 +37,17 @@ const PlantList = ({ gardens, plants, setPlants, deletePlant }) => {
     PlantServices.addPlant(newPlant).then((savedPlant) =>
       setPlants([...plants, savedPlant])
     );
+  };
+
+  const editPlant = (editedPlant) => {
+    PlantServices.updatePlant(editedPlant).then((dbUpdatedPlant) => {
+      const editedPlantIndex = plants.findIndex(
+        (plant) => plant.id === editedPlant.id
+      );
+      const updatedPlants = [...plants];
+      updatedPlants[editedPlantIndex] = dbUpdatedPlant;
+      setPlants(updatedPlants);
+    });
   };
 
   return (
@@ -61,6 +74,15 @@ const PlantList = ({ gardens, plants, setPlants, deletePlant }) => {
         <PlantDetails
           selectedPlant={selectedPlant}
           setSelectedPlant={setSelectedPlant}
+        />
+      )}
+      {showEditPlant && (
+        <EditPlant
+          gardens={gardens}
+          selectedPlant={selectedPlant}
+          editPlant={editPlant}
+          setShowEditPlant={setShowEditPlant}
+          setShowPlantList={setShowPlantList}
         />
       )}
     </>

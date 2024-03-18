@@ -6,6 +6,7 @@ const PlantCard = ({
   deletePlant,
   setShowPlantList,
   setShowPlantDetails,
+  setShowEditPlant,
 }) => {
   const handleViewClick = () => {
     setSelectedPlant(plantDetails);
@@ -15,7 +16,8 @@ const PlantCard = ({
 
   const handleClickEdit = () => {
     setSelectedPlant(plantDetails);
-    // Navigate(("/editPlant"));
+    setShowPlantList(false);
+    setShowEditPlant(true);
   };
 
   const handleDeletePlant = () => {
