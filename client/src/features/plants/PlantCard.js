@@ -1,12 +1,16 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
-const PlantCard = ({ plantDetails, setSelectedPlant, deletePlant }) => {
-  // const Navigate = useNavigate();
-
+const PlantCard = ({
+  plantDetails,
+  setSelectedPlant,
+  deletePlant,
+  setShowPlantList,
+  setShowPlantDetails,
+}) => {
   const handleViewClick = () => {
     setSelectedPlant(plantDetails);
-    // Navigate("/plantDetails");
+    setShowPlantList(false);
+    setShowPlantDetails(true);
   };
 
   const handleClickEdit = () => {
@@ -23,7 +27,7 @@ const PlantCard = ({ plantDetails, setSelectedPlant, deletePlant }) => {
       <img
         className='plant-thumbnail'
         src={plantDetails.imageUrl}
-        alt='Picture of plant'
+        alt='Plant'
       />
 
       <div className='plant-card-text-wrapper'>

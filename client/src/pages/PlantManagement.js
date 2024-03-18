@@ -24,7 +24,6 @@ const PlantManagement = () => {
   const [plants, setPlants] = useState([]);
   const [tasks, setTasks] = useState([]);
 
-  const [selectedPlant, setSelectedPlant] = useState({});
   const [selectedTask, setSelectedTask] = useState({});
   const [selectedMenu, setSelectedMenu] = useState(
     getSessionStorage('menu', 'plants')
@@ -103,7 +102,6 @@ const PlantManagement = () => {
           gardens={gardens}
           plants={plants}
           setPlants={setPlants}
-          setSelectedPlant={setSelectedPlant}
           setSelectedMenu={setSelectedMenu}
           deletePlant={deletePlant}
         />

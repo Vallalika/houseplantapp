@@ -2,15 +2,14 @@ import React, { useState } from 'react';
 import PlantServices from 'services/PlantServices';
 import PlantCreation from 'features/plants/PlantCreation';
 import PlantCard from 'features/plants/PlantCard';
+import PlantDetails from 'features/plants/PlantDetails';
 
-const PlantList = ({
-  gardens,
-  plants,
-  setPlants,
-  setSelectedPlant,
-  deletePlant,
-}) => {
+const PlantList = ({ gardens, plants, setPlants, deletePlant }) => {
   const [showPlantForm, setShowPlantForm] = useState(false);
+  const [showPlantList, setShowPlantList] = useState(true);
+  const [showPlantDetails, setShowPlantDetails] = useState(false);
+  const [showEditPlant, setShowEditPlant] = useState(false);
+  const [selectedPlant, setSelectedPlant] = useState({});
 
   const mapPlants = plants.map((plant, index) => (
     <section
@@ -21,6 +20,8 @@ const PlantList = ({
         plantDetails={plant}
         setSelectedPlant={setSelectedPlant}
         deletePlant={deletePlant}
+        setShowPlantList={setShowPlantList}
+        setShowPlantDetails={setShowPlantDetails}
       />
     </section>
   ));
@@ -42,9 +43,10 @@ const PlantList = ({
         <PlantCreation
           gardens={gardens}
           createPlant={createPlant}
+          setShowPlantForm={setShowPlantForm}
         />
       )}
-      {!showPlantForm && (
+      {showPlantList && (
         <>
           <button
             className='add-buttons'
@@ -54,6 +56,12 @@ const PlantList = ({
           </button>
           <div className='plantcard-view-wrapper'>{mapPlants}</div>
         </>
+      )}
+      {showPlantDetails && (
+        <PlantDetails
+          selectedPlant={selectedPlant}
+          setSelectedPlant={setSelectedPlant}
+        />
       )}
     </>
   );
