@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import AppHeader from 'shared-components/AppHeader';
 import Navigation from 'shared-components/Navigation';
 
-import ToDoList from 'pages/ToDoList';
-import PlantList from 'pages/PlantList';
+import ToDoHome from 'pages/ToDoHome';
+import PlantHome from 'pages/PlantHome';
 import CalendarViewer from 'pages/CalendarViewer';
 
 import TaskCreation from 'features/tasks/TaskCreation';
@@ -79,7 +79,7 @@ const PlantManagement = () => {
       />
 
       {selectedMenu === appConstants.PLANTS_MENU && (
-        <PlantList
+        <PlantHome
           gardens={gardens}
           plants={plants}
           tasks={tasks}
@@ -98,7 +98,7 @@ const PlantManagement = () => {
       )}
 
       {selectedMenu === appConstants.TODO_MENU && (
-        <ToDoList
+        <ToDoHome
           tasks={tasks}
           setSelectedTask={setSelectedTask}
           editTask={editTask}

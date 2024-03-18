@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { isToDoTask } from 'services/DateServices';
 import { formatDateToPrettyString, isOnSameDate } from 'services/DateServices';
 
-const ToDoList = ({ tasks, setSelectedTask, editTask, deleteTask }) => {
+const ToDoHome = ({ tasks, setSelectedTask, editTask, deleteTask }) => {
   const filteredTaskList = tasks.filter((task) => isToDoTask(task));
 
   const generateTaskList = filteredTaskList.map(
@@ -53,4 +53,4 @@ const ToDoList = ({ tasks, setSelectedTask, editTask, deleteTask }) => {
   );
 };
 
-export default ToDoList;
+export default ToDoHome;

@@ -5,7 +5,7 @@ import PlantCard from 'features/plants/PlantCard';
 import PlantDetails from 'features/plants/PlantDetails';
 import EditPlant from 'features/plants/EditPlant';
 
-const PlantList = ({ gardens, plants, tasks, setPlants, setTasks }) => {
+const PlantHome = ({ gardens, plants, tasks, setPlants, setTasks }) => {
   const [showPlantForm, setShowPlantForm] = useState(false);
   const [showPlantList, setShowPlantList] = useState(true);
   const [showPlantDetails, setShowPlantDetails] = useState(false);
@@ -97,4 +97,4 @@ const PlantList = ({ gardens, plants, tasks, setPlants, setTasks }) => {
   );
 };
 
-export default PlantList;
+export default PlantHome;
