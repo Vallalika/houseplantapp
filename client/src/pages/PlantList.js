@@ -5,12 +5,18 @@ import PlantCard from 'features/plants/PlantCard';
 import PlantDetails from 'features/plants/PlantDetails';
 import EditPlant from 'features/plants/EditPlant';
 
-const PlantList = ({ gardens, plants, setPlants, deletePlant }) => {
+const PlantList = ({ gardens, plants, tasks, setPlants, setTasks }) => {
   const [showPlantForm, setShowPlantForm] = useState(false);
   const [showPlantList, setShowPlantList] = useState(true);
   const [showPlantDetails, setShowPlantDetails] = useState(false);
   const [showEditPlant, setShowEditPlant] = useState(false);
   const [selectedPlant, setSelectedPlant] = useState({});
+
+  const deletePlant = (idToDelete) => {
+    PlantServices.deletePlant(idToDelete);
+    setPlants(plants.filter((plant) => plant.id !== idToDelete));
+    setTasks(tasks.filter((task) => task.plant.id !== idToDelete));
+  };
 
   const mapPlants = plants.map((plant, index) => (
     <section
@@ -58,6 +64,7 @@ const PlantList = ({ gardens, plants, setPlants, deletePlant }) => {
           gardens={gardens}
           createPlant={createPlant}
           setShowPlantForm={setShowPlantForm}
+          setShowPlantList={setShowPlantList}
         />
       )}
       {showPlantList && (

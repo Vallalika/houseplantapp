@@ -39,8 +39,6 @@ const PlantCreation = ({
   const handleRepottingChange = (ev) => setRepotting(ev.target.value);
   const handleNotesChange = (ev) => setNotes(ev.target.value);
 
-  // const Navigate = useNavigate();
-
   const handleSubmit = (ev) => {
     ev.preventDefault();
     let newPlant = {
@@ -65,6 +63,7 @@ const PlantCreation = ({
     };
     createPlant(newPlant);
     setShowPlantForm(false);
+    setShowPlantList(true);
     setPlantNameOne('');
     setPlantNameTwo('');
     setOrigin('');

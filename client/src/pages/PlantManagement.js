@@ -29,7 +29,7 @@ const PlantManagement = () => {
 
   useEffect(() => {
     PlantServices.getPlants().then((plants) => setPlants(plants));
-    // GardenServices.getGardens().then((gardens) => setGardens(gardens));
+    GardenServices.getGardens().then((gardens) => setGardens(gardens));
     TaskServices.getTasks().then((tasks) => setTasks(tasks));
   }, []);
 
@@ -42,12 +42,6 @@ const PlantManagement = () => {
     const currentKey = sessionStorage.getItem(key);
     return currentKey ? currentKey : defaultValue;
   }
-
-  const deletePlant = (idToDelete) => {
-    PlantServices.deletePlant(idToDelete);
-    setPlants(plants.filter((plant) => plant.id !== idToDelete));
-    setTasks(tasks.filter((task) => task.plant.id !== idToDelete));
-  };
 
   // Task functionalities
   const createTask = (newTask) => {
@@ -88,9 +82,10 @@ const PlantManagement = () => {
         <PlantList
           gardens={gardens}
           plants={plants}
+          tasks={tasks}
           setPlants={setPlants}
           setSelectedMenu={setSelectedMenu}
-          deletePlant={deletePlant}
+          setTasks={setTasks}
         />
       )}
 
