@@ -3,43 +3,33 @@ import { Link } from 'react-router-dom';
 import { isToDoTask } from 'services/DateServices';
 import { formatDateToPrettyString, isOnSameDate } from 'services/DateServices';
 
-const ToDoList = ({ tasks, setSelectedTask, editTask, deleteTask }) => {
+const ToDoList = ({ tasks, setSelectedTask, setTasks }) => {
   const filteredTaskList = tasks.filter((task) => isToDoTask(task));
 
   const generateTaskList = filteredTaskList.map(
     (toDoTask, index, workingArray) => {
-      const taskInfo = (
-        <Task
-          key={toDoTask.id}
-          toDoTask={toDoTask}
-          setSelectedTask={setSelectedTask}
-          editTask={editTask}
-          deleteTask={deleteTask}
-        />
-      );
+      const sameDate =
+        index === 0
+          ? false
+          : isOnSameDate(
+              workingArray[index].start,
+              workingArray[index - 1].start
+            );
 
-      if (index === 0) {
-        return (
-          <>
-            <h3>{formatDateToPrettyString(toDoTask.start)}</h3>
-            {taskInfo}
-          </>
-        );
-      } else if (
-        isOnSameDate(workingArray[index].start, workingArray[index - 1].start)
-      ) {
-        return {taskInfo};
-      } else {
-        return (
-          <>
-            <h3> {formatDateToPrettyString(toDoTask.start)} </h3>
-            {taskInfo}
-          </>
-        );
-      }
+      return (
+        <div key={toDoTask.id}>
+          {!sameDate && <h3>{formatDateToPrettyString(toDoTask.start)}</h3>}
+          <Task
+            key={toDoTask.id}
+            toDoTask={toDoTask}
+            setSelectedTask={setSelectedTask}
+            setTasks={setTasks}
+            tasks={tasks}
+          />
+        </div>
+      );
     }
   );
-
   return (
     <>
       <Link
