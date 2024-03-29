@@ -11,10 +11,7 @@ const ToDoList = ({ tasks, setSelectedTask, setTasks }) => {
       const sameDate =
         index === 0
           ? false
-          : isOnSameDate(
-              workingArray[index].start,
-              workingArray[index - 1].start
-            );
+          : isOnSameDate(toDoTask.start, workingArray[index - 1].start);
 
       return (
         <div key={toDoTask.id}>
