@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { isToDoTask } from 'services/DateServices';
+import TaskServices from 'services/TaskServices';
+import { sortTasks } from 'services/DateServices';
 
-const TaskCreation = ({ createTask, plants, setSelectedMenu }) => {
+const TaskCreation = ({ plants, tasks, setTasks, setSelectedMenu }) => {
   const [title, setTitle] = useState('');
   const [taskDescription, setTaskDescription] = useState('');
   const [start, setStart] = useState('');
@@ -24,6 +26,16 @@ const TaskCreation = ({ createTask, plants, setSelectedMenu }) => {
     } else {
       setCompleted(false);
     }
+  };
+
+  const createTask = (newTask) => {
+    TaskServices.addTask(newTask).then((savedTask) => {
+      let updatedTasks = [...tasks];
+      updatedTasks.push(savedTask);
+      console.log('updatedTasks', updatedTasks);
+      sortTasks(updatedTasks);
+      setTasks(updatedTasks);
+    });
   };
 
   const handlePlantIdChange = (ev) => setPlantId(ev.target.value);

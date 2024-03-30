@@ -1,134 +1,285 @@
-import React, {useState} from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const EditPlant = ({editPlant, selectedPlant, gardens}) => {
+import PlantServices from 'services/PlantServices';
 
-    const [plantNameOne, setPlantNameOne] = useState(selectedPlant.plantNameOne);
-    const [plantNameTwo, setPlantNameTwo] = useState(selectedPlant.plantNameTwo);
-    const [origin, setOrigin] = useState(selectedPlant.origin);
-    const [acquisitionDate, setAcquisitionDate] = useState(selectedPlant.acquisitionDate);
-    const [status, setStatus] = useState(selectedPlant.status);
-    const [growingSeason, setGrowingSeason] = useState(selectedPlant.growingSeason);
-    const [light, setLight] = useState(selectedPlant.light);
-    const [water, setWater] = useState(selectedPlant.water);
-    const [temperature, setTemperature] = useState(selectedPlant.temperature);
-    const [nutrients, setNutrients] = useState(selectedPlant.nutrients);
-    const [soil, setSoil] = useState(selectedPlant.soil);
-    const [humidity, setHumidity] = useState(selectedPlant.humidity);
-    const [pruning, setPruning] = useState(selectedPlant.pruning);
-    const [repotting, setRepotting] = useState(selectedPlant.repotting);
-    const [notes, setNotes] = useState(selectedPlant.notes);
-    
-    const handleNameOneChange = (ev) => setPlantNameOne(ev.target.value);
-    const handleNameTwoChange = (ev) => setPlantNameTwo(ev.target.value);
-    const handleOriginChange = (ev) => setOrigin(ev.target.value);
-    const handleAcquisitionDateChange = (ev) => setAcquisitionDate(ev.target.value);
-    const handleStatusChange = (ev) => setStatus(ev.target.value);
-    const handleGrowingSeasonChange = (ev) => setGrowingSeason(ev.target.value);
-    const handleLightChange = (ev) => setLight(ev.target.value);
-    const handleWaterChange = (ev) => setWater(ev.target.value);
-    const handleTemperatureChange = (ev) => setTemperature(ev.target.value);
-    const handleNutrientsChange = (ev) => setNutrients(ev.target.value);
-    const handleSoilChange = (ev) => setSoil(ev.target.value);
-    const handleHumidityChange = (ev) => setHumidity(ev.target.value);
-    const handlePruningChange = (ev) => setPruning(ev.target.value);
-    const handleRepottingChange = (ev) => setRepotting(ev.target.value);
-    const handleNotesChange = (ev) => setNotes(ev.target.value);
+const EditPlant = ({ plants, setPlants, selectedPlant, gardens }) => {
+  const [plantNameOne, setPlantNameOne] = useState(selectedPlant.plantNameOne);
+  const [plantNameTwo, setPlantNameTwo] = useState(selectedPlant.plantNameTwo);
+  const [origin, setOrigin] = useState(selectedPlant.origin);
+  const [acquisitionDate, setAcquisitionDate] = useState(
+    selectedPlant.acquisitionDate
+  );
+  const [status, setStatus] = useState(selectedPlant.status);
+  const [growingSeason, setGrowingSeason] = useState(
+    selectedPlant.growingSeason
+  );
+  const [light, setLight] = useState(selectedPlant.light);
+  const [water, setWater] = useState(selectedPlant.water);
+  const [temperature, setTemperature] = useState(selectedPlant.temperature);
+  const [nutrients, setNutrients] = useState(selectedPlant.nutrients);
+  const [soil, setSoil] = useState(selectedPlant.soil);
+  const [humidity, setHumidity] = useState(selectedPlant.humidity);
+  const [pruning, setPruning] = useState(selectedPlant.pruning);
+  const [repotting, setRepotting] = useState(selectedPlant.repotting);
+  const [notes, setNotes] = useState(selectedPlant.notes);
 
-    const Navigate = useNavigate();
+  const handleNameOneChange = (ev) => setPlantNameOne(ev.target.value);
+  const handleNameTwoChange = (ev) => setPlantNameTwo(ev.target.value);
+  const handleOriginChange = (ev) => setOrigin(ev.target.value);
+  const handleAcquisitionDateChange = (ev) =>
+    setAcquisitionDate(ev.target.value);
+  const handleStatusChange = (ev) => setStatus(ev.target.value);
+  const handleGrowingSeasonChange = (ev) => setGrowingSeason(ev.target.value);
+  const handleLightChange = (ev) => setLight(ev.target.value);
+  const handleWaterChange = (ev) => setWater(ev.target.value);
+  const handleTemperatureChange = (ev) => setTemperature(ev.target.value);
+  const handleNutrientsChange = (ev) => setNutrients(ev.target.value);
+  const handleSoilChange = (ev) => setSoil(ev.target.value);
+  const handleHumidityChange = (ev) => setHumidity(ev.target.value);
+  const handlePruningChange = (ev) => setPruning(ev.target.value);
+  const handleRepottingChange = (ev) => setRepotting(ev.target.value);
+  const handleNotesChange = (ev) => setNotes(ev.target.value);
 
-    const handleSubmit = ev => {
-        ev.preventDefault();
-        let editedPlant = {
-            id: selectedPlant.id,
-            plantNameOne: plantNameOne,
-            plantNameTwo: plantNameTwo,
-            origin: origin,
-            acquisitionDate: acquisitionDate,
-            status: status,
-            growingSeason: growingSeason,
-            light: light,
-            water: water,
-            temperature: temperature,
-            nutrients: nutrients,
-            soil: soil,
-            humidity: humidity,
-            pruning: pruning,
-            repotting: repotting,
-            notes: notes,
-            imageUrl: selectedPlant.imageUrl,
-            garden: {
-                id: gardens[0].id
-            }
-        };
-        editPlant(editedPlant);
-        Navigate("/");
-    }
+  const Navigate = useNavigate();
 
-    const handleCancelClick = () => {
-        Navigate(("/"));
-    }
+  const editPlant = (editedPlant) => {
+    // send edited plant to db, then update locally with the data from the db
+    PlantServices.updatePlant(editedPlant).then((dbUpdatedPlant) => {
+      const editedPlantIndex = plants.findIndex(
+        (plant) => plant.id === editedPlant.id
+      );
+      const updatedPlants = [...plants];
+      updatedPlants[editedPlantIndex] = dbUpdatedPlant;
+      setPlants(updatedPlants);
+    });
+  };
 
-    return (
-        <>
-            <h3>Edit plant</h3>
-            <form onSubmit = { handleSubmit }>
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+    let editedPlant = {
+      id: selectedPlant.id,
+      plantNameOne: plantNameOne,
+      plantNameTwo: plantNameTwo,
+      origin: origin,
+      acquisitionDate: acquisitionDate,
+      status: status,
+      growingSeason: growingSeason,
+      light: light,
+      water: water,
+      temperature: temperature,
+      nutrients: nutrients,
+      soil: soil,
+      humidity: humidity,
+      pruning: pruning,
+      repotting: repotting,
+      notes: notes,
+      imageUrl: selectedPlant.imageUrl,
+      garden: {
+        id: gardens[0].id,
+      },
+    };
+    editPlant(editedPlant);
+    Navigate('/');
+  };
 
-                <input text="text" placeholder = "Name" name="plantNameOne" id="plantNameOne" size="50" value = {plantNameOne} onChange = {handleNameOneChange} required />
-                <span className = "required-field"> *</span>
-                <br />
+  const handleCancelClick = () => {
+    Navigate('/');
+  };
 
-                <input text="text" placeholder = "Second name" name="plantNameTwo" id="plantNameTwo" size="50" value={plantNameTwo} onChange={handleNameTwoChange} />
-                <br />
+  return (
+    <>
+      <h3>Edit plant</h3>
+      <form onSubmit={handleSubmit}>
+        <input
+          text='text'
+          placeholder='Name'
+          name='plantNameOne'
+          id='plantNameOne'
+          size='50'
+          value={plantNameOne}
+          onChange={handleNameOneChange}
+          required
+        />
+        <span className='required-field'> *</span>
+        <br />
 
-                <input text="text" placeholder = "Origin" name="origin" id="origin" size="50" value={origin} onChange = {handleOriginChange} />
-                <br />
+        <input
+          text='text'
+          placeholder='Second name'
+          name='plantNameTwo'
+          id='plantNameTwo'
+          size='50'
+          value={plantNameTwo}
+          onChange={handleNameTwoChange}
+        />
+        <br />
 
-                <input text="text" placeholder = "Acquisition date" name="acquisitionDate" id="acquisitionDate" size="50" value = {acquisitionDate} onChange = {handleAcquisitionDateChange} />
-                <br />        
-        
-                <input text="text" placeholder="Status e.g. healthy" name="status" id="status" size="50" value = {status} onChange = {handleStatusChange} required />
-                <span className = "required-field"> *</span>
-                <br />
-                
-                <input text="text" placeholder="Growing season" name="growingSeason" id="growingSeason" size="50" value = {growingSeason} onChange = {handleGrowingSeasonChange} />
-                <br />
+        <input
+          text='text'
+          placeholder='Origin'
+          name='origin'
+          id='origin'
+          size='50'
+          value={origin}
+          onChange={handleOriginChange}
+        />
+        <br />
 
-                <input text="text" placeholder="Light needs e.g. direct sunlight, partial shade, etc." name="light" id="light" size="50" value = {light} onChange = {handleLightChange} required />
-                <span className = "required-field"> *</span>
-                <br />
+        <input
+          text='text'
+          placeholder='Acquisition date'
+          name='acquisitionDate'
+          id='acquisitionDate'
+          size='50'
+          value={acquisitionDate}
+          onChange={handleAcquisitionDateChange}
+        />
+        <br />
 
-                <input text="text" placeholder="Water e.g. signs of ideal soil humidity" name="water" id="water" size="50" value = { water } onChange = {handleWaterChange} required />
-                <span className = "required-field"> *</span>
-                <br />
+        <input
+          text='text'
+          placeholder='Status e.g. healthy'
+          name='status'
+          id='status'
+          size='50'
+          value={status}
+          onChange={handleStatusChange}
+          required
+        />
+        <span className='required-field'> *</span>
+        <br />
 
-                <input text="text" placeholder="Ideal temperature range" name="temperature" id="temperature" size="50" value = { temperature } onChange = {handleTemperatureChange} />
-                <br />
-                
-                <input text="text" placeholder="Nutrient needs e.g. NPK, general schedule, etc." name="nutrients" id="nutrients" size="50" value = {nutrients} onChange = {handleNutrientsChange} />
-                <br />
+        <input
+          text='text'
+          placeholder='Growing season'
+          name='growingSeason'
+          id='growingSeason'
+          size='50'
+          value={growingSeason}
+          onChange={handleGrowingSeasonChange}
+        />
+        <br />
 
-                <input text="text" placeholder="Ideal potting mix, including soil additives such as perlites" name="soil" id="soil" size="50" value = { soil } onChange = {handleSoilChange} />
-                <br />
-            
-                <input text="text" placeholder="Ideal air humidity levels" name="humidity" id="humidity" size="50" value = {humidity} onChange = {handleHumidityChange} />
-                <br />
+        <input
+          text='text'
+          placeholder='Light needs e.g. direct sunlight, partial shade, etc.'
+          name='light'
+          id='light'
+          size='50'
+          value={light}
+          onChange={handleLightChange}
+          required
+        />
+        <span className='required-field'> *</span>
+        <br />
 
-                <input text="text" placeholder="Pruning" name="pruning" id="pruning" size="50" value = {pruning} onChange = {handlePruningChange} />
-                <br />
+        <input
+          text='text'
+          placeholder='Water e.g. signs of ideal soil humidity'
+          name='water'
+          id='water'
+          size='50'
+          value={water}
+          onChange={handleWaterChange}
+          required
+        />
+        <span className='required-field'> *</span>
+        <br />
 
-                <input text="text" placeholder="Repotting frequency" name="repotting" id="repotting" size="50" value = {repotting} onChange = {handleRepottingChange} />
-                <br />
+        <input
+          text='text'
+          placeholder='Ideal temperature range'
+          name='temperature'
+          id='temperature'
+          size='50'
+          value={temperature}
+          onChange={handleTemperatureChange}
+        />
+        <br />
 
-                <textarea placeholder="Additional notes" name="notes" id="notes" rows="7" cols="41" value = {notes} onChange = {handleNotesChange} />
-                <br />
+        <input
+          text='text'
+          placeholder='Nutrient needs e.g. NPK, general schedule, etc.'
+          name='nutrients'
+          id='nutrients'
+          size='50'
+          value={nutrients}
+          onChange={handleNutrientsChange}
+        />
+        <br />
 
-                <button className = "cancel-button" onClick = { handleCancelClick }> Cancel </button>
-                <input className = "submit-button" type="submit" name="Submit" value="Update" />
+        <input
+          text='text'
+          placeholder='Ideal potting mix, including soil additives such as perlites'
+          name='soil'
+          id='soil'
+          size='50'
+          value={soil}
+          onChange={handleSoilChange}
+        />
+        <br />
 
-            </form>
-        </>
-    );
-}
+        <input
+          text='text'
+          placeholder='Ideal air humidity levels'
+          name='humidity'
+          id='humidity'
+          size='50'
+          value={humidity}
+          onChange={handleHumidityChange}
+        />
+        <br />
+
+        <input
+          text='text'
+          placeholder='Pruning'
+          name='pruning'
+          id='pruning'
+          size='50'
+          value={pruning}
+          onChange={handlePruningChange}
+        />
+        <br />
+
+        <input
+          text='text'
+          placeholder='Repotting frequency'
+          name='repotting'
+          id='repotting'
+          size='50'
+          value={repotting}
+          onChange={handleRepottingChange}
+        />
+        <br />
+
+        <textarea
+          placeholder='Additional notes'
+          name='notes'
+          id='notes'
+          rows='7'
+          cols='41'
+          value={notes}
+          onChange={handleNotesChange}
+        />
+        <br />
+
+        <button
+          className='cancel-button'
+          onClick={handleCancelClick}
+        >
+          {' '}
+          Cancel{' '}
+        </button>
+        <input
+          className='submit-button'
+          type='submit'
+          name='Submit'
+          value='Update'
+        />
+      </form>
+    </>
+  );
+};
 
 export default EditPlant;

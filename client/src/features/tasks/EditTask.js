@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { formatDateToString } from 'services/DateServices';
+import TaskServices from 'services/TaskServices';
+import { sortTasks } from 'services/DateServices';
 
-const EditTask = ({ editTask, selectedTask, setSelectedTask, plants }) => {
+const EditTask = ({
+  tasks,
+  setTasks,
+  selectedTask,
+  setSelectedTask,
+  plants,
+}) => {
   const noNullValueForDescription = () => {
     if (selectedTask.taskDescription === null) {
       return '';
@@ -34,6 +42,19 @@ const EditTask = ({ editTask, selectedTask, setSelectedTask, plants }) => {
   const handlePlantIdChange = (ev) => setPlantId(ev.target.value);
 
   const navigate = useNavigate();
+
+  const editTask = (editedTask) => {
+    // send edited task to db, then update state with new task
+    TaskServices.updateTask(editedTask).then((dbUpdatedTask) => {
+      const editedTaskIndex = tasks.findIndex(
+        (task) => task.id === editedTask.id
+      );
+      const updatedTasks = [...tasks];
+      updatedTasks[editedTaskIndex] = dbUpdatedTask;
+      sortTasks(updatedTasks);
+      setTasks(updatedTasks);
+    });
+  };
 
   const handleSubmit = (ev) => {
     ev.preventDefault();

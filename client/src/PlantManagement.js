@@ -9,12 +9,9 @@ import TasksRoutes from 'routes/TasksRoutes';
 import AppHeader from 'shared-components/AppHeader';
 import Navigation from 'shared-components/Navigation';
 
-import CalendarViewer from 'pages/CalendarViewer';
-
 import PlantServices from 'services/PlantServices';
 import GardenServices from 'services/GardenServices';
 import TaskServices from 'services/TaskServices';
-import { sortTasks } from 'services/DateServices';
 
 const PlantManagement = () => {
   const [plants, setPlants] = useState([]);
@@ -29,9 +26,7 @@ const PlantManagement = () => {
 
   useEffect(() => {
     PlantServices.getPlants().then((plants) => setPlants(plants));
-
     GardenServices.getGardens().then((gardens) => setGardens(gardens));
-
     TaskServices.getTasks().then((tasks) => setTasks(tasks));
   }, []);
 
@@ -47,60 +42,6 @@ const PlantManagement = () => {
     }
     return currentMenu;
   }
-
-  // Plant functionalities
-
-  const createPlant = (newPlant) => {
-    PlantServices.addPlant(newPlant).then((savedPlant) =>
-      setPlants([...plants, savedPlant])
-    );
-  };
-
-  const deletePlant = (idToDelete) => {
-    PlantServices.deletePlant(idToDelete);
-    setPlants(plants.filter((plant) => plant.id !== idToDelete));
-    setTasks(tasks.filter((task) => task.plant.id !== idToDelete));
-  };
-
-  const editPlant = (editedPlant) => {
-    // send edited plant to db, then update locally with the data from the db
-    PlantServices.updatePlant(editedPlant).then((dbUpdatedPlant) => {
-      const editedPlantIndex = plants.findIndex(
-        (plant) => plant.id === editedPlant.id
-      );
-      const updatedPlants = [...plants];
-      updatedPlants[editedPlantIndex] = dbUpdatedPlant;
-      setPlants(updatedPlants);
-    });
-  };
-
-  // Task functionalities
-  const createTask = (newTask) => {
-    TaskServices.addTask(newTask).then((savedTask) => {
-      let updatedTasks = [...tasks];
-      updatedTasks.push(savedTask);
-      sortTasks(updatedTasks);
-      setTasks(updatedTasks);
-    });
-  };
-
-  const deleteTask = (idToDelete) => {
-    TaskServices.deleteTask(idToDelete);
-    setTasks(tasks.filter((task) => task.id !== idToDelete));
-  };
-
-  const editTask = (editedTask) => {
-    // send edited task to db, then update state with new task
-    TaskServices.updateTask(editedTask).then((dbUpdatedTask) => {
-      const editedTaskIndex = tasks.findIndex(
-        (task) => task.id === editedTask.id
-      );
-      const updatedTasks = [...tasks];
-      updatedTasks[editedTaskIndex] = dbUpdatedTask;
-      sortTasks(updatedTasks);
-      setTasks(updatedTasks);
-    });
-  };
 
   return (
     <>
@@ -125,36 +66,23 @@ const PlantManagement = () => {
             <PlantRoutes
               gardens={gardens}
               plants={plants}
+              setPlants={setPlants}
               selectedPlant={selectedPlant}
               setSelectedPlant={setSelectedPlant}
-              createPlant={createPlant}
-              editPlant={editPlant}
-              deletePlant={deletePlant}
-            />
-          }
-        />
-        <Route
-          path={`/${appConstants.CALENDAR_MENU}`}
-          element={
-            <CalendarViewer
               tasks={tasks}
-              selectedTask={selectedTask}
-              setSelectedTask={setSelectedTask}
-              createTask={createTask}
+              setTasks={setTasks}
             />
           }
         />
         <Route
-          path={`/tasks/*`}
+          path={`/${appConstants.TASKS_HOME_ROUTE}/*`}
           element={
             <TasksRoutes
               plants={plants}
               tasks={tasks}
+              setTasks={setTasks}
               selectedTask={selectedTask}
               setSelectedTask={setSelectedTask}
-              createTask={createTask}
-              editTask={editTask}
-              deleteTask={deleteTask}
             />
           }
         />

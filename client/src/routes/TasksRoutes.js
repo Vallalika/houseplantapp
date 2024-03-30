@@ -1,6 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { appConstants } from 'appConstants';
 
+import CalendarViewer from 'pages/CalendarViewer';
 import ToDoList from 'pages/ToDoList';
 import TaskCreation from 'features/tasks/TaskCreation';
 import EditTask from 'features/tasks/EditTask';
@@ -8,36 +10,41 @@ import EditTask from 'features/tasks/EditTask';
 const TasksRoutes = ({
   plants,
   tasks,
+  setTasks,
   selectedTask,
   setSelectedTask,
-  createTask,
-  editTask,
-  deleteTask,
 }) => {
   return (
     <Routes>
       <Route
-        path='/to-do'
+        path={`/${appConstants.CALENDAR_MENU}`}
         element={
-          <ToDoList
+          <CalendarViewer
             tasks={tasks}
+            selectedTask={selectedTask}
             setSelectedTask={setSelectedTask}
-            createTask={createTask}
-            editTask={editTask}
-            deleteTask={deleteTask}
           />
         }
       />
-
+      <Route
+        path={`/${appConstants.TODO_MENU}`}
+        element={
+          <ToDoList
+            tasks={tasks}
+            setTasks={setTasks}
+            setSelectedTask={setSelectedTask}
+          />
+        }
+      />
       <Route
         path='/:id/edit'
         element={
           <EditTask
+            plants={plants}
+            tasks={tasks}
+            setTasks={setTasks}
             selectedTask={selectedTask}
             setSelectedTask={setSelectedTask}
-            plants={plants}
-            editTask={editTask}
-            deleteTask={deleteTask}
           />
         }
       />
@@ -46,11 +53,11 @@ const TasksRoutes = ({
         path='/new'
         element={
           <TaskCreation
+            plants={plants}
+            tasks={tasks}
             selectedTask={selectedTask}
             setSelectedTask={setSelectedTask}
-            plants={plants}
-            editTask={editTask}
-            deleteTask={deleteTask}
+            setTasks={setTasks}
           />
         }
       />

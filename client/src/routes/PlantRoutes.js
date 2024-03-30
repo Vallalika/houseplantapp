@@ -6,13 +6,13 @@ import PlantCreation from 'features/plants/PlantCreation';
 import EditPlant from 'features/plants/EditPlant';
 
 const PlantRoutes = ({
-  plants,
   gardens,
+  plants,
+  setPlants,
   selectedPlant,
   setSelectedPlant,
-  createPlant,
-  editPlant,
-  deletePlant,
+  tasks,
+  setTasks
 }) => {
   return (
     <Routes>
@@ -21,8 +21,10 @@ const PlantRoutes = ({
         element={
           <PlantList
             plants={plants}
+            setPlants = {setPlants}
             setSelectedPlant={setSelectedPlant}
-            deletePlant={deletePlant}
+            tasks={tasks}
+            setTasks={setTasks}
           />
         }
       />
@@ -39,8 +41,9 @@ const PlantRoutes = ({
         path='/new'
         element={
           <PlantCreation
-            createPlant={createPlant}
             gardens={gardens}
+            plants={plants}
+            setPlants={setPlants}
           />
         }
       />
@@ -48,9 +51,10 @@ const PlantRoutes = ({
         path='/:id/edit'
         element={
           <EditPlant
-            editPlant={editPlant}
-            selectedPlant={selectedPlant}
             gardens={gardens}
+            plants={plants}
+            setPlants={setPlants}
+            selectedPlant={selectedPlant}
           />
         }
       />

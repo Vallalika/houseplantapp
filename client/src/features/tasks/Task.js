@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Task = ({ toDoTask, deleteTask, setSelectedTask }) => {
+import TaskServices from 'services/TaskServices';
+
+const Task = ({ tasks, toDoTask, setTasks, setSelectedTask }) => {
   const [isComplete, setIsComplete] = useState(toDoTask.completed);
 
   const navigate = useNavigate();
@@ -12,7 +14,9 @@ const Task = ({ toDoTask, deleteTask, setSelectedTask }) => {
   };
 
   const handleClickDelete = () => {
-    deleteTask(toDoTask.id);
+    TaskServices.deleteTask(toDoTask.id);
+    const updatedTasks = tasks.filter((task) => task.id !== toDoTask.id);
+    setTasks(updatedTasks);
   };
 
   const handleIsCompleteChange = () => {

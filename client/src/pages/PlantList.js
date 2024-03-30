@@ -2,16 +2,25 @@ import React from 'react';
 import PlantCard from 'features/plants/PlantCard';
 import { Link } from 'react-router-dom';
 
-const PlantList = ({ plants, setSelectedPlant, deletePlant }) => {
+const PlantList = ({
+  plants,
+  setPlants,
+  tasks,
+  setTasks,
+  setSelectedPlant,
+}) => {
   const mapPlants = plants.map((plant, index) => (
     <section
       key={index}
       className='plant-card-wrapper'
     >
       <PlantCard
+        plants={plants}
+        setPlants={setPlants}
+        tasks={tasks}
+        setTasks={setTasks}
         plantDetails={plant}
         setSelectedPlant={setSelectedPlant}
-        deletePlant={deletePlant}
       />
     </section>
   ));

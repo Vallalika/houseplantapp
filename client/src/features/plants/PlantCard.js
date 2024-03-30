@@ -1,7 +1,15 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import PlantServices from 'services/PlantServices';
 
-const PlantCard = ({ plantDetails, setSelectedPlant, deletePlant }) => {
+const PlantCard = ({
+  plants,
+  setPlants,
+  tasks,
+  setTasks,
+  plantDetails,
+  setSelectedPlant,
+}) => {
   const navigate = useNavigate();
 
   const handleViewClick = () => {
@@ -15,7 +23,12 @@ const PlantCard = ({ plantDetails, setSelectedPlant, deletePlant }) => {
   };
 
   const handleDeletePlant = () => {
-    deletePlant(plantDetails.id);
+    const idToDelete = plantDetails.id;
+    PlantServices.deletePlant(idToDelete);
+    const updatedPlants = plants.filter((plant) => plant.id !== idToDelete);
+    setPlants(updatedPlants);
+    const updatedTasks = tasks.filter((task) => task.plant.id !== idToDelete);
+    setTasks(updatedTasks);
   };
 
   return (
