@@ -14,53 +14,51 @@ const Navigation = ({ selectedMenu, setSelectedMenu }) => {
   };
 
   return (
-    <>
-      <nav>
-        <ul className='menu-wrapper'>
-          <li>
-            <Link
-              to={`/${appConstants.PLANTS_MENU}`}
-              className={
-                selectedMenu === appConstants.PLANTS_MENU
-                  ? 'menu-link-selected'
-                  : 'menu-link'
-              }
-              onClick={handleClick}
-            >
-              Plants
-            </Link>
-          </li>
+    <nav>
+      <ul className='menu-wrapper'>
+        <li>
+          <Link
+            to={`/${appConstants.PLANTS_MENU}`}
+            className={
+              selectedMenu === appConstants.PLANTS_MENU
+                ? 'menu-link-selected'
+                : 'menu-link'
+            }
+            onClick={handleClick}
+          >
+            Plants
+          </Link>
+        </li>
 
-          <li>
-            <Link
-              to={`/${appConstants.CALENDAR_MENU}`}
-              className={
-                selectedMenu === appConstants.CALENDAR_MENU
-                  ? 'menu-link-selected'
-                  : 'menu-link'
-              }
-              onClick={handleClick}
-            >
-              Calendar
-            </Link>
-          </li>
+        <li>
+          <Link
+            to={`/${appConstants.TASKS_HOME_ROUTE}/${appConstants.CALENDAR_MENU}`}
+            className={
+              selectedMenu === appConstants.CALENDAR_MENU
+                ? 'menu-link-selected'
+                : 'menu-link'
+            }
+            onClick={handleClick}
+          >
+            Calendar
+          </Link>
+        </li>
 
-          <li>
-            <Link
-              to={`/tasks/${appConstants.TODO_MENU}`}
-              className={
-                selectedMenu === appConstants.TODO_MENU
-                  ? 'menu-link-selected'
-                  : 'menu-link'
-              }
-              onClick={handleClick}
-            >
-              To Do
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </>
+        <li>
+          <Link
+            to={`/${appConstants.TASKS_HOME_ROUTE}/${appConstants.TODO_MENU}`}
+            className={
+              selectedMenu === appConstants.TODO_MENU
+                ? 'menu-link-selected'
+                : 'menu-link'
+            }
+            onClick={handleClick}
+          >
+            To Do
+          </Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 
