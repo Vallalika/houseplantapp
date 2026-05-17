@@ -1,25 +1,37 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { isToDoTask } from 'services/DateServices';
-import TaskServices from 'services/TaskServices';
-import { sortTasks } from 'services/DateServices';
+import { formatDateToString } from '@/services/DateServices';
+import TaskServices from '@/services/TaskServices';
+import { sortTasks } from '@/services/DateServices';
 
-const TaskCreation = ({ plants, tasks, setTasks, setSelectedMenu }) => {
-  const [title, setTitle] = useState('');
-  const [taskDescription, setTaskDescription] = useState('');
-  const [start, setStart] = useState('');
-  const [end, setEnd] = useState('');
-  const [completed, setCompleted] = useState(false);
-  const [plantId, setPlantId] = useState(0);
+const EditTask = ({
+  tasks,
+  setTasks,
+  selectedTask,
+  setSelectedTask,
+  plants,
+}) => {
+  const noNullValueForDescription = () => {
+    if (selectedTask.taskDescription === null) {
+      return '';
+    } else {
+      return selectedTask.taskDescription;
+    }
+  };
+
+  const [title, setTitle] = useState(selectedTask.title);
+  const [taskDescription, setTaskDescription] = useState(
+    noNullValueForDescription(),
+  );
+  const [start, setStart] = useState(formatDateToString(selectedTask.start));
+  const [end, setEnd] = useState(formatDateToString(selectedTask.end));
+  const [completed, setCompleted] = useState(selectedTask.completed);
+  const [plantId, setPlantId] = useState(selectedTask.plant.id);
 
   const handleTitleChange = (ev) => setTitle(ev.target.value);
-
   const handleDescriptionChange = (ev) => setTaskDescription(ev.target.value);
-
-  const handleStartDateChange = (ev) => setStart(ev.target.value);
-
-  const handleEndDateChange = (ev) => setEnd(ev.target.value);
-
+  const handleStartChange = (ev) => setStart(ev.target.value);
+  const handleEndChange = (ev) => setEnd(ev.target.value);
   const handleCompletedChange = (ev) => {
     if (ev.target.value === 'Complete') {
       setCompleted(true);
@@ -27,51 +39,39 @@ const TaskCreation = ({ plants, tasks, setTasks, setSelectedMenu }) => {
       setCompleted(false);
     }
   };
+  const handlePlantIdChange = (ev) => setPlantId(ev.target.value);
 
-  const createTask = (newTask) => {
-    TaskServices.addTask(newTask).then((savedTask) => {
-      let updatedTasks = [...tasks];
-      updatedTasks.push(savedTask);
-      console.log('updatedTasks', updatedTasks);
+  const navigate = useNavigate();
+
+  const editTask = (editedTask) => {
+    // send edited task to db, then update state with new task
+    TaskServices.updateTask(editedTask).then((dbUpdatedTask) => {
+      const editedTaskIndex = tasks.findIndex(
+        (task) => task.id === editedTask.id,
+      );
+      const updatedTasks = [...tasks];
+      updatedTasks[editedTaskIndex] = dbUpdatedTask;
       sortTasks(updatedTasks);
       setTasks(updatedTasks);
     });
   };
 
-  const handlePlantIdChange = (ev) => setPlantId(ev.target.value);
-
-  const navigate = useNavigate();
-
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    const targetPlantIndex = plants.findIndex((plant) => plant.id == plantId);
-    const newPlant = {
-      id: plantId,
-      plantNameOne: plants[targetPlantIndex].plantNameOne,
-      status: plants[targetPlantIndex].status,
-    };
-    let newTask = {
+    let editedTask = {
+      id: selectedTask.id,
       title: title,
       taskDescription: taskDescription,
-      allDay: true,
       start: new Date(start),
       end: new Date(end),
       completed: completed,
-      plant: newPlant,
+      plant: {
+        id: plantId,
+      },
     };
-    createTask(newTask);
-    setTitle('');
-    setTaskDescription('');
-    setStart('');
-    setEnd('');
-    setCompleted(false);
-    setPlantId(1);
-    if (isToDoTask(newTask)) {
-      navigate('/tasks/to-do');
-    } else {
-      setSelectedMenu('calendar');
-      navigate('/calendar');
-    }
+    editTask(editedTask);
+    navigate('/tasks/to-do');
+    setSelectedTask({});
   };
 
   const handleCancelClick = () => {
@@ -90,13 +90,10 @@ const TaskCreation = ({ plants, tasks, setTasks, setSelectedMenu }) => {
 
   return (
     <>
-      <p>
-        Fill in the below form to add a task to your calendar and to-do list.
-      </p>
+      <h3>Edit task</h3>
       <form onSubmit={handleSubmit}>
         <input
-          type='text'
-          placeholder='Task title'
+          text='text'
           name='title'
           id='title'
           size='50'
@@ -109,35 +106,32 @@ const TaskCreation = ({ plants, tasks, setTasks, setSelectedMenu }) => {
 
         <textarea
           type='text'
-          placeholder='Task description'
           name='taskDescription'
           id='taskDescription'
-          rows='10'
+          rows='8'
           cols='41'
           value={taskDescription}
           onChange={handleDescriptionChange}
         />
         <br />
 
-        <label>Start </label>
         <input
           type='date'
           name='start'
           id='start'
           value={start}
-          onChange={handleStartDateChange}
+          onChange={handleStartChange}
           required
         />
         <span className='required-field'> *</span>
         <br />
 
-        <label>End &nbsp; </label>
         <input
           type='date'
           name='end'
           id='end'
           value={end}
-          onChange={handleEndDateChange}
+          onChange={handleEndChange}
           required
         />
         <span className='required-field'> *</span>
@@ -152,6 +146,7 @@ const TaskCreation = ({ plants, tasks, setTasks, setSelectedMenu }) => {
           <option value='Incomplete'>Incomplete</option>
           <option value='Complete'>Complete</option>
         </select>
+        <span className='required-field'> *</span>
         <br />
 
         <select
@@ -160,7 +155,7 @@ const TaskCreation = ({ plants, tasks, setTasks, setSelectedMenu }) => {
           onChange={handlePlantIdChange}
           required
         >
-          <option value='Select an option'> Select a plant </option>
+          <option value={plantId}> {selectedTask.plant.plantNameOne} </option>
           {generatePlantOptions}
         </select>
         <span className='required-field'> *</span>
@@ -184,4 +179,4 @@ const TaskCreation = ({ plants, tasks, setTasks, setSelectedMenu }) => {
   );
 };
 
-export default TaskCreation;
+export default EditTask;

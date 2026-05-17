@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
-import { formatDateToPrettyString } from 'services/DateServices';
+import { formatDateToPrettyString } from '@/services/DateServices';
 import format from 'date-fns/format';
 import parse from 'date-fns/parse';
 import startOfWeek from 'date-fns/startOfWeek';
 import getDay from 'date-fns/getDay';
+import { enGB } from 'date-fns/locale';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 const CalendarViewer = ({ tasks, selectedTask, setSelectedTask }) => {
@@ -31,7 +32,7 @@ const CalendarViewer = ({ tasks, selectedTask, setSelectedTask }) => {
   };
 
   const locales = {
-    'en-GB': require('date-fns/locale/en-GB'),
+    'en-GB': enGB,
   };
 
   const localizer = dateFnsLocalizer({

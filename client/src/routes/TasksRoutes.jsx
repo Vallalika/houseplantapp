@@ -1,11 +1,10 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { appConstants } from 'appConstants';
+import { appConstants } from '@/appConstants';
 
-import CalendarViewer from 'pages/CalendarViewer';
-import ToDoList from 'pages/ToDoList';
-import TaskCreation from 'features/tasks/TaskCreation';
-import EditTask from 'features/tasks/EditTask';
+import CalendarViewer from '@/pages/CalendarViewer';
+import ToDoList from '@/pages/ToDoList';
+import TaskCreation from '@/features/tasks/TaskCreation';
+import EditTask from '@/features/tasks/EditTask';
 
 const TasksRoutes = ({
   plants,
@@ -14,6 +13,7 @@ const TasksRoutes = ({
   selectedTask,
   setSelectedTask,
 }) => {
+  console.log(`/${appConstants.CALENDAR_MENU}`);
   return (
     <Routes>
       <Route

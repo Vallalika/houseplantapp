@@ -1,9 +1,8 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import PlantList from 'pages/PlantList';
-import PlantDetails from 'features/plants/PlantDetails';
-import PlantCreation from 'features/plants/PlantCreation';
-import EditPlant from 'features/plants/EditPlant';
+import PlantList from '@/pages/PlantList';
+import PlantDetails from '@/features/plants/PlantDetails';
+import PlantCreation from '@/features/plants/PlantCreation';
+import EditPlant from '@/features/plants/EditPlant';
 
 const PlantRoutes = ({
   gardens,
@@ -12,7 +11,7 @@ const PlantRoutes = ({
   selectedPlant,
   setSelectedPlant,
   tasks,
-  setTasks
+  setTasks,
 }) => {
   return (
     <Routes>
@@ -21,7 +20,7 @@ const PlantRoutes = ({
         element={
           <PlantList
             plants={plants}
-            setPlants = {setPlants}
+            setPlants={setPlants}
             setSelectedPlant={setSelectedPlant}
             tasks={tasks}
             setTasks={setTasks}

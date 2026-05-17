@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import TaskServices from 'services/TaskServices';
+import TaskServices from '@/services/TaskServices';
 
 const Task = ({ tasks, toDoTask, setTasks, setSelectedTask }) => {
   const [isComplete, setIsComplete] = useState(toDoTask.completed);

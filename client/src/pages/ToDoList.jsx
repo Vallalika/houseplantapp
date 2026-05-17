@@ -1,7 +1,7 @@
-import Task from 'features/tasks/Task';
+import Task from '@/features/tasks/Task';
 import { Link } from 'react-router-dom';
-import { isToDoTask } from 'services/DateServices';
-import { formatDateToPrettyString, isOnSameDate } from 'services/DateServices';
+import { isToDoTask } from '@/services/DateServices';
+import { formatDateToPrettyString, isOnSameDate } from '@/services/DateServices';
 
 const ToDoList = ({ tasks, setSelectedTask, setTasks }) => {
   const filteredTaskList = tasks.filter((task) => isToDoTask(task));
