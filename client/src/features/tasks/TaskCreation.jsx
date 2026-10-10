@@ -1,37 +1,25 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { formatDateToString } from 'services/DateServices';
-import TaskServices from 'services/TaskServices';
-import { sortTasks } from 'services/DateServices';
+import { isToDoTask } from '@/services/DateServices';
+import TaskServices from '@/services/TaskServices';
+import { sortTasks } from '@/services/DateServices';
 
-const EditTask = ({
-  tasks,
-  setTasks,
-  selectedTask,
-  setSelectedTask,
-  plants,
-}) => {
-  const noNullValueForDescription = () => {
-    if (selectedTask.taskDescription === null) {
-      return '';
-    } else {
-      return selectedTask.taskDescription;
-    }
-  };
-
-  const [title, setTitle] = useState(selectedTask.title);
-  const [taskDescription, setTaskDescription] = useState(
-    noNullValueForDescription()
-  );
-  const [start, setStart] = useState(formatDateToString(selectedTask.start));
-  const [end, setEnd] = useState(formatDateToString(selectedTask.end));
-  const [completed, setCompleted] = useState(selectedTask.completed);
-  const [plantId, setPlantId] = useState(selectedTask.plant.id);
+const TaskCreation = ({ plants, tasks, setTasks, setSelectedMenu }) => {
+  const [title, setTitle] = useState('');
+  const [taskDescription, setTaskDescription] = useState('');
+  const [start, setStart] = useState('');
+  const [end, setEnd] = useState('');
+  const [completed, setCompleted] = useState(false);
+  const [plantId, setPlantId] = useState(0);
 
   const handleTitleChange = (ev) => setTitle(ev.target.value);
+
   const handleDescriptionChange = (ev) => setTaskDescription(ev.target.value);
-  const handleStartChange = (ev) => setStart(ev.target.value);
-  const handleEndChange = (ev) => setEnd(ev.target.value);
+
+  const handleStartDateChange = (ev) => setStart(ev.target.value);
+
+  const handleEndDateChange = (ev) => setEnd(ev.target.value);
+
   const handleCompletedChange = (ev) => {
     if (ev.target.value === 'Complete') {
       setCompleted(true);
@@ -39,39 +27,51 @@ const EditTask = ({
       setCompleted(false);
     }
   };
-  const handlePlantIdChange = (ev) => setPlantId(ev.target.value);
 
-  const navigate = useNavigate();
-
-  const editTask = (editedTask) => {
-    // send edited task to db, then update state with new task
-    TaskServices.updateTask(editedTask).then((dbUpdatedTask) => {
-      const editedTaskIndex = tasks.findIndex(
-        (task) => task.id === editedTask.id
-      );
-      const updatedTasks = [...tasks];
-      updatedTasks[editedTaskIndex] = dbUpdatedTask;
+  const createTask = (newTask) => {
+    TaskServices.addTask(newTask).then((savedTask) => {
+      let updatedTasks = [...tasks];
+      updatedTasks.push(savedTask);
+      console.log('updatedTasks', updatedTasks);
       sortTasks(updatedTasks);
       setTasks(updatedTasks);
     });
   };
 
+  const handlePlantIdChange = (ev) => setPlantId(ev.target.value);
+
+  const navigate = useNavigate();
+
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    let editedTask = {
-      id: selectedTask.id,
+    const targetPlantIndex = plants.findIndex((plant) => plant.id == plantId);
+    const newPlant = {
+      id: plantId,
+      plantNameOne: plants[targetPlantIndex].plantNameOne,
+      status: plants[targetPlantIndex].status,
+    };
+    let newTask = {
       title: title,
       taskDescription: taskDescription,
+      allDay: true,
       start: new Date(start),
       end: new Date(end),
       completed: completed,
-      plant: {
-        id: plantId,
-      },
+      plant: newPlant,
     };
-    editTask(editedTask);
-    navigate('/tasks/to-do');
-    setSelectedTask({});
+    createTask(newTask);
+    setTitle('');
+    setTaskDescription('');
+    setStart('');
+    setEnd('');
+    setCompleted(false);
+    setPlantId(1);
+    if (isToDoTask(newTask)) {
+      navigate('/tasks/to-do');
+    } else {
+      setSelectedMenu('calendar');
+      navigate('/calendar');
+    }
   };
 
   const handleCancelClick = () => {
@@ -90,10 +90,13 @@ const EditTask = ({
 
   return (
     <>
-      <h3>Edit task</h3>
+      <p>
+        Fill in the below form to add a task to your calendar and to-do list.
+      </p>
       <form onSubmit={handleSubmit}>
         <input
-          text='text'
+          type='text'
+          placeholder='Task title'
           name='title'
           id='title'
           size='50'
@@ -106,32 +109,35 @@ const EditTask = ({
 
         <textarea
           type='text'
+          placeholder='Task description'
           name='taskDescription'
           id='taskDescription'
-          rows='8'
+          rows='10'
           cols='41'
           value={taskDescription}
           onChange={handleDescriptionChange}
         />
         <br />
 
+        <label>Start </label>
         <input
           type='date'
           name='start'
           id='start'
           value={start}
-          onChange={handleStartChange}
+          onChange={handleStartDateChange}
           required
         />
         <span className='required-field'> *</span>
         <br />
 
+        <label>End &nbsp; </label>
         <input
           type='date'
           name='end'
           id='end'
           value={end}
-          onChange={handleEndChange}
+          onChange={handleEndDateChange}
           required
         />
         <span className='required-field'> *</span>
@@ -146,7 +152,6 @@ const EditTask = ({
           <option value='Incomplete'>Incomplete</option>
           <option value='Complete'>Complete</option>
         </select>
-        <span className='required-field'> *</span>
         <br />
 
         <select
@@ -155,7 +160,7 @@ const EditTask = ({
           onChange={handlePlantIdChange}
           required
         >
-          <option value={plantId}> {selectedTask.plant.plantNameOne} </option>
+          <option value='Select an option'> Select a plant </option>
           {generatePlantOptions}
         </select>
         <span className='required-field'> *</span>
@@ -179,4 +184,4 @@ const EditTask = ({
   );
 };
 
-export default EditTask;
+export default TaskCreation;

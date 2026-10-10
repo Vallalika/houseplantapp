@@ -1,6 +1,5 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import PlantServices from 'services/PlantServices';
+import PlantServices from '@/services/PlantServices';
 
 const PlantCard = ({
   plants,

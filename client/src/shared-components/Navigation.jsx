@@ -1,5 +1,4 @@
-import React from 'react';
-import { appConstants } from 'appConstants';
+import { appConstants } from '@/appConstants';
 import { Link } from 'react-router-dom';
 
 const Navigation = ({ selectedMenu, setSelectedMenu }) => {

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import PlantServices from 'services/PlantServices';
+import PlantServices from '@/services/PlantServices';
 
 const PlantCreation = ({ gardens, plants, setPlants }) => {
   const [plantNameOne, setPlantNameOne] = useState('');
@@ -41,7 +41,7 @@ const PlantCreation = ({ gardens, plants, setPlants }) => {
 
   const createPlant = (newPlant) => {
     PlantServices.addPlant(newPlant).then((savedPlant) =>
-      setPlants([...plants, savedPlant])
+      setPlants([...plants, savedPlant]),
     );
   };
 

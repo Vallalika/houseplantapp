@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import { appConstants } from './appConstants';
+import { appConstants } from '@/appConstants';
 
-import PlantRoutes from 'routes/PlantRoutes';
-import TasksRoutes from 'routes/TasksRoutes';
+import PlantRoutes from '@/routes/PlantRoutes';
+import TasksRoutes from '@/routes/TasksRoutes';
 
-import AppHeader from 'shared-components/AppHeader';
-import Navigation from 'shared-components/Navigation';
+import AppHeader from '@/shared-components/AppHeader';
+import Navigation from '@/shared-components/Navigation';
 
-import PlantServices from 'services/PlantServices';
-import GardenServices from 'services/GardenServices';
-import TaskServices from 'services/TaskServices';
+import PlantServices from '@/services/PlantServices';
+import GardenServices from '@/services/GardenServices';
+import TaskServices from '@/services/TaskServices';
 
 const PlantManagement = () => {
   const [plants, setPlants] = useState([]);

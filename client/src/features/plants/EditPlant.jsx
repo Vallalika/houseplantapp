@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import PlantServices from 'services/PlantServices';
+import PlantServices from '@/services/PlantServices';
 
 const EditPlant = ({ plants, setPlants, selectedPlant, gardens }) => {
   const [plantNameOne, setPlantNameOne] = useState(selectedPlant.plantNameOne);
