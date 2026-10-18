@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.1</version>
+		<version>2.7.18</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.codeclan.houseplantapp</groupId>
@@ -15,6 +15,12 @@
 	<description>Java server for houseplantapp</description>
 	<properties>
 		<java.version>1.8</java.version>
+		<!-- Security overrides: Boot 2.7.18 is the last OSS 2.x release, so newer patches are pinned here -->
+		<postgresql.version>42.7.14</postgresql.version>
+		<snakeyaml.version>2.2</snakeyaml.version>
+		<tomcat.version>9.0.123</tomcat.version>
+		<spring-framework.version>5.3.39</spring-framework.version>
+		<logback.version>1.2.13</logback.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -45,15 +51,9 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.24</version>
 			<scope>provided</scope>
 		</dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+	</dependencies>
 
 	<build>
 		<plugins>
