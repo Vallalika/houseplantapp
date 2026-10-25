@@ -6,9 +6,7 @@ import { sortTasks } from '@/services/DateServices';
 
 const EditTask = ({ tasks, setTasks, selectedTask, plants }) => {
   const [title, setTitle] = useState(selectedTask.title);
-  const [taskDescription, setTaskDescription] = useState(
-    selectedTask.taskDescription ?? '',
-  );
+  const [taskDescription, setTaskDescription] = useState(selectedTask.taskDescription ?? '');
   const [start, setStart] = useState(formatDateToString(selectedTask.start));
   const [end, setEnd] = useState(formatDateToString(selectedTask.end));
   const [completed, setCompleted] = useState(selectedTask.completed);
@@ -32,9 +30,7 @@ const EditTask = ({ tasks, setTasks, selectedTask, plants }) => {
   const editTask = (editedTask) => {
     // send edited task to db, then update state with new task
     TaskServices.updateTask(editedTask).then((dbUpdatedTask) => {
-      const editedTaskIndex = tasks.findIndex(
-        (task) => task.id === editedTask.id,
-      );
+      const editedTaskIndex = tasks.findIndex((task) => task.id === editedTask.id);
       const updatedTasks = [...tasks];
       updatedTasks[editedTaskIndex] = dbUpdatedTask;
       sortTasks(updatedTasks);
