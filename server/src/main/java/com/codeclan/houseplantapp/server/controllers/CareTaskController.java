@@ -53,6 +53,9 @@ public class CareTaskController {
 
     @PutMapping(value = "/api/careTasks/{id}")
     public ResponseEntity updateTaskById(@RequestBody CareTask task, @PathVariable Long id) {
+        if (!careTaskRepository.existsById(id)) {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
         task.setId(id);
         careTaskRepository.save(task);
         return new ResponseEntity(careTaskRepository.findById(id), HttpStatus.OK);

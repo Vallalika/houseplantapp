@@ -1,4 +1,4 @@
-const baseURL = import.meta.env.VITE_API_URL + '/gardens/';
+const baseURL = import.meta.env.VITE_API_URL + '/gardens';
 
 const GardenServices = {
   getGardens() {
@@ -16,7 +16,7 @@ const GardenServices = {
   },
 
   updateGarden(garden) {
-    return fetch(baseURL + garden._id, {
+    return fetch(baseURL + '/' + garden.id, {
       method: 'PUT',
       body: JSON.stringify(garden),
       headers: {
@@ -26,7 +26,7 @@ const GardenServices = {
   },
 
   deleteGarden(id) {
-    return fetch(baseURL + id, {
+    return fetch(baseURL + '/' + id, {
       method: 'DELETE',
     });
   },
