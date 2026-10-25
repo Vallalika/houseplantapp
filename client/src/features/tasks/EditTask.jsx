@@ -5,17 +5,9 @@ import TaskServices from '@/services/TaskServices';
 import { sortTasks } from '@/services/DateServices';
 
 const EditTask = ({ tasks, setTasks, selectedTask, plants }) => {
-  const noNullValueForDescription = () => {
-    if (selectedTask.taskDescription === null) {
-      return '';
-    } else {
-      return selectedTask.taskDescription;
-    }
-  };
-
   const [title, setTitle] = useState(selectedTask.title);
   const [taskDescription, setTaskDescription] = useState(
-    noNullValueForDescription(),
+    selectedTask.taskDescription ?? '',
   );
   const [start, setStart] = useState(formatDateToString(selectedTask.start));
   const [end, setEnd] = useState(formatDateToString(selectedTask.end));
