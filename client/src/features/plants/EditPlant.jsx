@@ -1,34 +1,29 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 import PlantServices from '@/services/PlantServices';
 
 const EditPlant = ({ plants, setPlants, selectedPlant, gardens }) => {
-  const [plantNameOne, setPlantNameOne] = useState(selectedPlant.plantNameOne);
-  const [plantNameTwo, setPlantNameTwo] = useState(selectedPlant.plantNameTwo);
-  const [origin, setOrigin] = useState(selectedPlant.origin);
-  const [acquisitionDate, setAcquisitionDate] = useState(
-    selectedPlant.acquisitionDate
-  );
-  const [status, setStatus] = useState(selectedPlant.status);
-  const [growingSeason, setGrowingSeason] = useState(
-    selectedPlant.growingSeason
-  );
-  const [light, setLight] = useState(selectedPlant.light);
-  const [water, setWater] = useState(selectedPlant.water);
-  const [temperature, setTemperature] = useState(selectedPlant.temperature);
-  const [nutrients, setNutrients] = useState(selectedPlant.nutrients);
-  const [soil, setSoil] = useState(selectedPlant.soil);
-  const [humidity, setHumidity] = useState(selectedPlant.humidity);
-  const [pruning, setPruning] = useState(selectedPlant.pruning);
-  const [repotting, setRepotting] = useState(selectedPlant.repotting);
-  const [notes, setNotes] = useState(selectedPlant.notes);
+  const [plantNameOne, setPlantNameOne] = useState(selectedPlant.plantNameOne ?? '');
+  const [plantNameTwo, setPlantNameTwo] = useState(selectedPlant.plantNameTwo ?? '');
+  const [origin, setOrigin] = useState(selectedPlant.origin ?? '');
+  const [acquisitionDate, setAcquisitionDate] = useState(selectedPlant.acquisitionDate ?? '');
+  const [status, setStatus] = useState(selectedPlant.status ?? '');
+  const [growingSeason, setGrowingSeason] = useState(selectedPlant.growingSeason ?? '');
+  const [light, setLight] = useState(selectedPlant.light ?? '');
+  const [water, setWater] = useState(selectedPlant.water ?? '');
+  const [temperature, setTemperature] = useState(selectedPlant.temperature ?? '');
+  const [nutrients, setNutrients] = useState(selectedPlant.nutrients ?? '');
+  const [soil, setSoil] = useState(selectedPlant.soil ?? '');
+  const [humidity, setHumidity] = useState(selectedPlant.humidity ?? '');
+  const [pruning, setPruning] = useState(selectedPlant.pruning ?? '');
+  const [repotting, setRepotting] = useState(selectedPlant.repotting ?? '');
+  const [notes, setNotes] = useState(selectedPlant.notes ?? '');
 
   const handleNameOneChange = (ev) => setPlantNameOne(ev.target.value);
   const handleNameTwoChange = (ev) => setPlantNameTwo(ev.target.value);
   const handleOriginChange = (ev) => setOrigin(ev.target.value);
-  const handleAcquisitionDateChange = (ev) =>
-    setAcquisitionDate(ev.target.value);
+  const handleAcquisitionDateChange = (ev) => setAcquisitionDate(ev.target.value);
   const handleStatusChange = (ev) => setStatus(ev.target.value);
   const handleGrowingSeasonChange = (ev) => setGrowingSeason(ev.target.value);
   const handleLightChange = (ev) => setLight(ev.target.value);
@@ -46,9 +41,7 @@ const EditPlant = ({ plants, setPlants, selectedPlant, gardens }) => {
   const editPlant = (editedPlant) => {
     // send edited plant to db, then update locally with the data from the db
     PlantServices.updatePlant(editedPlant).then((dbUpdatedPlant) => {
-      const editedPlantIndex = plants.findIndex(
-        (plant) => plant.id === editedPlant.id
-      );
+      const editedPlantIndex = plants.findIndex((plant) => plant.id === editedPlant.id);
       const updatedPlants = [...plants];
       updatedPlants[editedPlantIndex] = dbUpdatedPlant;
       setPlants(updatedPlants);

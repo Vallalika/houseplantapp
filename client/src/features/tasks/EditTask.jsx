@@ -1,28 +1,12 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { formatDateToString } from '@/services/DateServices';
 import TaskServices from '@/services/TaskServices';
 import { sortTasks } from '@/services/DateServices';
 
-const EditTask = ({
-  tasks,
-  setTasks,
-  selectedTask,
-  setSelectedTask,
-  plants,
-}) => {
-  const noNullValueForDescription = () => {
-    if (selectedTask.taskDescription === null) {
-      return '';
-    } else {
-      return selectedTask.taskDescription;
-    }
-  };
-
+const EditTask = ({ tasks, setTasks, selectedTask, plants }) => {
   const [title, setTitle] = useState(selectedTask.title);
-  const [taskDescription, setTaskDescription] = useState(
-    noNullValueForDescription(),
-  );
+  const [taskDescription, setTaskDescription] = useState(selectedTask.taskDescription ?? '');
   const [start, setStart] = useState(formatDateToString(selectedTask.start));
   const [end, setEnd] = useState(formatDateToString(selectedTask.end));
   const [completed, setCompleted] = useState(selectedTask.completed);
@@ -46,9 +30,7 @@ const EditTask = ({
   const editTask = (editedTask) => {
     // send edited task to db, then update state with new task
     TaskServices.updateTask(editedTask).then((dbUpdatedTask) => {
-      const editedTaskIndex = tasks.findIndex(
-        (task) => task.id === editedTask.id,
-      );
+      const editedTaskIndex = tasks.findIndex((task) => task.id === editedTask.id);
       const updatedTasks = [...tasks];
       updatedTasks[editedTaskIndex] = dbUpdatedTask;
       sortTasks(updatedTasks);
@@ -71,7 +53,6 @@ const EditTask = ({
     };
     editTask(editedTask);
     navigate('/tasks/to-do');
-    setSelectedTask({});
   };
 
   const handleCancelClick = () => {

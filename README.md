@@ -7,7 +7,7 @@ A web-app to help keep houseplants healthy!
 **Tech stack:**
 
 - Server: Java 21, Spring Boot 3.5, Spring Data JPA (Hibernate 6.6), PostgreSQL, Lombok, Maven.
-- Client: React 18, Vite 8, React Router 6, HTML and CSS + React libraries react-big-calendar and react-modal, and date-fns.
+- Client: React 19, Vite 8, React Router 7, HTML and CSS + React libraries react-big-calendar and react-modal, and date-fns.
 
 Current features:
 

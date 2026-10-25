@@ -1,5 +1,5 @@
 import Task from '@/features/tasks/Task';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { isToDoTask } from '@/services/DateServices';
 import { formatDateToPrettyString, isOnSameDate } from '@/services/DateServices';
 
