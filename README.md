@@ -6,8 +6,8 @@ A web-app to help keep houseplants healthy!
 
 **Tech stack:**
 
-- Server: Java, Spring Boot, Spring Data JPA, PostgreSQL, Lombok, Maven.
-- Client: React, Vite, React Router, HTML and CSS + React libraries react-big-calendar and react-modal, and date-fns.
+- Server: Java 21, Spring Boot 3.5, Spring Data JPA (Hibernate 6.6), PostgreSQL, Lombok, Maven.
+- Client: React 18, Vite 8, React Router 6, HTML and CSS + React libraries react-big-calendar and react-modal, and date-fns.
 
 Current features:
 
@@ -21,7 +21,18 @@ Current features:
 
 You only need to do these steps once.
 
-1.  Make sure you have PostgreSQL, Node, Node Package Manager, JDK and IntelliJ all installed.
+1.  Make sure you have the following installed:
+
+    - JDK 21. The server targets Java 21 and won't build with an older JDK.
+    - PostgreSQL 12 or newer.
+    - Node.js 20.19+ or 22.12+, which Vite 8 requires. Node Package Manager (npm) comes with it.
+    - IntelliJ IDEA 2023.3 or newer, for Java 21 support. It comes with Maven, so you don't need to install Maven separately.
+
+    You can check your versions in the terminal:
+
+        java -version
+        psql --version
+        node -v
 2.  Open the terminal and navigate to the folder where you want to install the app.
 3.  Copy-paste the below in the terminal:
 
@@ -49,7 +60,7 @@ You only need to do these steps once.
 
 1. In IntelliJ, go to File → Open and select the `server` folder (the one containing `pom.xml`), not the main app folder. Accept the "Trust project" prompt. If IntelliJ doesn't recognise it as a Maven project, right-click `pom.xml` and click "Add as Maven Project".
 2. Wait for IntelliJ to download the dependencies and index the project. This needs an internet connection and can take a few minutes - follow the progress bar at the bottom of the window. If the code still shows red errors afterwards, click Reload in the Maven tool window.
-3. Set the project's JDK: go to File → Project Structure → Project → SDK and select your installed JDK, or use "Download JDK" there.
+3. Set the project's JDK: go to File → Project Structure → Project, set SDK to your JDK 21 (or use "Download JDK" there and pick version 21), and set Language level to 21.
 4. Enable annotation processing, which the project needs for Lombok: go to Settings → Build, Execution, Deployment → Compiler → Annotation Processors and tick "Enable annotation processing". IntelliJ may also offer to do this in a popup the first time it builds the project.
 5. _Optional:_ check the server is set up correctly by right-clicking `src/test/java` and clicking "Run 'All Tests'". The tests don't use the database, so you can run them before PostgreSQL is set up.
 
