@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router';
 import { appConstants } from '@/appConstants';
 
 import CalendarViewer from '@/pages/CalendarViewer';
@@ -12,6 +12,7 @@ const TasksRoutes = ({
   setTasks,
   selectedTask,
   setSelectedTask,
+  setSelectedMenu,
 }) => {
   console.log(`/${appConstants.CALENDAR_MENU}`);
   return (
@@ -58,6 +59,7 @@ const TasksRoutes = ({
             selectedTask={selectedTask}
             setSelectedTask={setSelectedTask}
             setTasks={setTasks}
+            setSelectedMenu={setSelectedMenu}
           />
         }
       />

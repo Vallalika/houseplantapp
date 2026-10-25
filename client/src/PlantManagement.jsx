@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router';
 
 import { appConstants } from '@/appConstants';
 
@@ -83,6 +83,7 @@ const PlantManagement = () => {
               setTasks={setTasks}
               selectedTask={selectedTask}
               setSelectedTask={setSelectedTask}
+              setSelectedMenu={setSelectedMenu}
             />
           }
         />

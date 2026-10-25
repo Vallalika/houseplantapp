@@ -1,16 +1,10 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { formatDateToString } from '@/services/DateServices';
 import TaskServices from '@/services/TaskServices';
 import { sortTasks } from '@/services/DateServices';
 
-const EditTask = ({
-  tasks,
-  setTasks,
-  selectedTask,
-  setSelectedTask,
-  plants,
-}) => {
+const EditTask = ({ tasks, setTasks, selectedTask, plants }) => {
   const noNullValueForDescription = () => {
     if (selectedTask.taskDescription === null) {
       return '';
@@ -71,7 +65,6 @@ const EditTask = ({
     };
     editTask(editedTask);
     navigate('/tasks/to-do');
-    setSelectedTask({});
   };
 
   const handleCancelClick = () => {

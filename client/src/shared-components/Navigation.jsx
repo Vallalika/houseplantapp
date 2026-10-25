@@ -1,5 +1,5 @@
 import { appConstants } from '@/appConstants';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const Navigation = ({ selectedMenu, setSelectedMenu }) => {
   const handleClick = (event) => {

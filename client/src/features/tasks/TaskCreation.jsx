@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { isToDoTask } from '@/services/DateServices';
 import TaskServices from '@/services/TaskServices';
 import { sortTasks } from '@/services/DateServices';
@@ -70,7 +70,7 @@ const TaskCreation = ({ plants, tasks, setTasks, setSelectedMenu }) => {
       navigate('/tasks/to-do');
     } else {
       setSelectedMenu('calendar');
-      navigate('/calendar');
+      navigate('/tasks/calendar');
     }
   };
 

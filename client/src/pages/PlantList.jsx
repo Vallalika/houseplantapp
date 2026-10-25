@@ -1,5 +1,5 @@
 import PlantCard from '@/features/plants/PlantCard';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const PlantList = ({
   plants,

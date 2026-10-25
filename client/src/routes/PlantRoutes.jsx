@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router';
 import PlantList from '@/pages/PlantList';
 import PlantDetails from '@/features/plants/PlantDetails';
 import PlantCreation from '@/features/plants/PlantCreation';

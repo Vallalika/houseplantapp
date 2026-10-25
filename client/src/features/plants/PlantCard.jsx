@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import PlantServices from '@/services/PlantServices';
 
 const PlantCard = ({
@@ -18,7 +18,7 @@ const PlantCard = ({
 
   const handleClickEdit = () => {
     setSelectedPlant(plantDetails);
-    navigate(`/plants/${plantDetails}/edit`);
+    navigate(`/plants/${plantDetails.id}/edit`);
   };
 
   const handleDeletePlant = () => {
