@@ -63,6 +63,9 @@ public class PlantController {
 
     @PutMapping(value = "/api/plants/{id}")
     public ResponseEntity updatePlantById(@RequestBody Plant plant, @PathVariable Long id) {
+        if (!plantRepository.existsById(id)) {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
         plant.setId(id);
         plantRepository.save(plant);
         return new ResponseEntity(plantRepository.findById(id), HttpStatus.OK);

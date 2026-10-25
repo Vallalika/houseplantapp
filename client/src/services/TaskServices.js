@@ -1,6 +1,6 @@
 import { convertStringsToDates, convertDatesToStrings } from './DateServices';
 
-const baseURL = import.meta.env.VITE_API_URL + '/careTasks/';
+const baseURL = import.meta.env.VITE_API_URL + '/careTasks';
 
 const TaskServices = {
   getTasks() {
@@ -23,7 +23,7 @@ const TaskServices = {
   },
 
   updateTask(task) {
-    return fetch(baseURL + task.id, {
+    return fetch(baseURL + '/' + task.id, {
       method: 'PUT',
       body: JSON.stringify(task),
       headers: {
@@ -35,7 +35,7 @@ const TaskServices = {
   },
 
   deleteTask(id) {
-    return fetch(baseURL + id, {
+    return fetch(baseURL + '/' + id, {
       method: 'DELETE',
     });
   },

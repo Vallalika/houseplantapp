@@ -3,11 +3,11 @@ package com.codeclan.houseplantapp.server;
 import com.codeclan.houseplantapp.server.classes.CareTask;
 import com.codeclan.houseplantapp.server.classes.Garden;
 import com.codeclan.houseplantapp.server.classes.Plant;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.test.context.ActiveProfiles;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
 
@@ -20,7 +20,7 @@ public class CareTaskTest {
     private LocalDate aDate;
     private Plant myPlant;
 
-    @Before
+    @BeforeEach
     public void before() {
         aDate = LocalDate.of(2022,7,3);
         myGarden = Garden

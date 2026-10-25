@@ -40,6 +40,9 @@ public class GardenController {
 
     @PutMapping(value = "/api/gardens/{id}")
     public ResponseEntity updateGardenById(@RequestBody Garden garden, @PathVariable Long id) {
+        if (!gardenRepository.existsById(id)) {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
         garden.setId(id);
         gardenRepository.save(garden);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
