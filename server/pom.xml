@@ -14,7 +14,7 @@
 	<name>server</name>
 	<description>Java server for houseplantapp</description>
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 		<!-- Security overrides: Boot 2.7.18 is the last OSS 2.x release, so newer patches are pinned here -->
 		<postgresql.version>42.7.14</postgresql.version>
 		<snakeyaml.version>2.2</snakeyaml.version>
